@@ -5,6 +5,10 @@ import rx.Observable;
 import rx.Subscription;
 import twitter4j.Status;
 
+import java.time.DayOfWeek;
+
+import static rx.Observable.just;
+
 /**
  * Created by abondar on 2/2/17.
  */
@@ -37,6 +41,11 @@ public class Main {
         System.out.println("Unsubscribed 1");
         sub2.unsubscribe();
         System.out.println("Unsubscribed 2");
+        Basics.simpleFilterWithMap();
+        Basics.numbersFlatMap();
+        showMorse();
+        Basics.shakespeare();
+        Basics.trueFlalse();
 
 
 
@@ -52,5 +61,21 @@ public class Main {
         Basics.rxLoad(24);
         Basics.rxLoad1(1);
         client.processTweets();
+        Basics.simpleFilter();
+        client.mapTweets();
+        showForDay();
+    }
+
+    public static void showMorse(){
+        just('S','p','a','r','t','a')
+                .map(Character::toLowerCase)
+                .flatMap(Basics::toMorseCode)
+        .subscribe(System.out::println);
+    }
+
+    public static void showForDay(){
+        Observable
+                .just(DayOfWeek.SUNDAY,DayOfWeek.MONDAY)
+                .concatMap(Basics::loadRecordsFor);
     }
 }

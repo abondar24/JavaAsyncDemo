@@ -7,8 +7,12 @@ package org.abondar.experimental.javarxdemo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import rx.Observable;
+import rx.functions.Func1;
 import rx.subscriptions.Subscriptions;
 import twitter4j.*;
+
+import java.time.Instant;
+import java.util.Date;
 
 
 public class TwitterClient {
@@ -70,5 +74,16 @@ public class TwitterClient {
         });
 
 
+    }
+
+    public void mapTweets(){
+        Observable<Status> tweets = consumeTweets();
+        Observable<Date> dates = tweets.map(Status::getCreatedAt);
+        dates.subscribe(System.out::println);
+
+        Observable<Instant> instants = tweets
+                .map(Status::getCreatedAt)
+                .map(Date::toInstant);
+        instants.subscribe(System.out::println);
     }
 }

@@ -1,10 +1,13 @@
 package org.abondar.experimental.javarxdemo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import rx.*;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.Subscriptions;
 
 import java.math.BigInteger;
+import java.time.DayOfWeek;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
@@ -12,6 +15,12 @@ import java.util.function.Consumer;
 import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.ZERO;
 import static java.util.concurrent.TimeUnit.MICROSECONDS;
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
+import static org.abondar.experimental.javarxdemo.Sound.DAH;
+import static org.abondar.experimental.javarxdemo.Sound.DI;
+import static rx.Observable.just;
+import org.apache.commons.lang3.tuple.Pair;
+
 
 /**
  * Created by abondar on 2/2/17.
@@ -19,6 +28,7 @@ import static java.util.concurrent.TimeUnit.MICROSECONDS;
 public class Basics {
 
     public static String SOME_KEY = "SS217";
+    private static final Logger log = LoggerFactory.getLogger(Basics.class);
 
     public static void helloRx() {
         Observable.create(subscriber -> {
@@ -237,19 +247,19 @@ public class Basics {
 
 
     //parrallelloading of data
-    public static Observable<Data> rxLoad(int id){
+    public static Observable<Data> rxLoad(int id) {
         return Observable.create(subscriber -> {
             try {
                 subscriber.onNext(load(id));
                 subscriber.onCompleted();
-            } catch (Exception e){
+            } catch (Exception e) {
                 subscriber.onError(e);
             }
         });
     }
 
-    public static Observable<Data> rxLoad1(int id){
-        return Observable.fromCallable(()->load(id));
+    public static Observable<Data> rxLoad1(int id) {
+        return Observable.fromCallable(() -> load(id));
     }
 
 
@@ -262,11 +272,192 @@ public class Basics {
     }
 
 
-    public static void interval()  {
+    public static void interval() {
         Observable
                 .interval(1_000_000 / 60, MICROSECONDS)
                 .subscribe((Long i) -> log(i));
         Sleeper.sleep(Duration.ofSeconds(2));
+    }
+
+    public static void simpleFilter() {
+        Observable<String> strings = Observable.empty();
+        Observable<String> filtered = strings.filter(s -> s.startsWith("#"));
+        filtered.subscribe(System.out::println);
+    }
+
+
+    public static void simpleFilterWithMap() {
+        just(8, 9, 10)
+                .doOnNext(i -> System.out.println("A: " + i))
+                .filter(i -> i % 3 > 0)
+                .doOnNext(i -> System.out.println("B: " + i))
+                .map(i -> "#" + i * 10)
+                .doOnNext(s -> System.out.println("C: " + s))
+                .filter(s -> s.length() < 4)
+                .subscribe(s -> System.out.println("D: " + s));
+    }
+
+
+    public static void numbersFlatMap() {
+        Observable<Integer> numbers = just(1, 2, 3, 4);
+
+
+        numbers.flatMap(x -> just(x * 2));
+        numbers.flatMap(x -> (x != 10) ? just(x) : Observable.create(System.out::println));
+    }
+
+
+    public static Observable<Sound> toMorseCode(char ch) {
+        switch (ch) {
+            case 'a':
+                return just(DI, DAH);
+            case 'b':
+                return just(DAH, DI, DI, DI);
+            case 'c':
+                return just(DAH, DI, DAH, DI);
+            case 'd':
+                return just(DAH, DI, DI);
+            case 'e':
+                return just(DI);
+            case 'f':
+                return just(DI, DI, DAH, DI);
+            case 'g':
+                return just(DAH, DAH, DI);
+            case 'h':
+                return just(DI, DI, DI, DI);
+            case 'i':
+                return just(DI, DI);
+            case 'j':
+                return just(DI, DAH, DAH, DAH);
+            case 'k':
+                return just(DAH, DI, DAH);
+            case 'l':
+                return just(DI, DAH, DI, DI);
+            case 'm':
+                return just(DAH, DAH);
+            case 'n':
+                return just(DAH, DI);
+            case 'o':
+                return just(DAH, DAH, DAH);
+            case 'p':
+                return just(DI, DAH, DAH, DI);
+            case 'q':
+                return just(DAH, DAH, DI, DAH);
+            case 'r':
+                return just(DI, DAH, DI);
+            case 's':
+                return just(DI, DI, DI);
+            case 't':
+                return just(DAH);
+            case 'u':
+                return just(DI, DI, DAH);
+            case 'v':
+                return just(DI, DI, DI, DAH);
+            case 'w':
+                return just(DI, DAH, DAH);
+            case 'x':
+                return just(DAH, DI, DI, DAH);
+            case 'y':
+                return just(DAH, DI, DAH, DAH);
+            case 'z':
+                return just(DAH, DAH, DI, DI);
+            case '0':
+                return just(DAH, DAH, DAH, DAH, DAH);
+            case '1':
+                return just(DI, DAH, DAH, DAH, DAH);
+            case '2':
+                return just(DI, DI, DAH, DAH, DAH);
+            case '3':
+                return just(DI, DI, DI, DAH, DAH);
+            case '4':
+                return just(DI, DI, DI, DI, DAH);
+            case '5':
+                return just(DI, DI, DI, DI, DI);
+            case '6':
+                return just(DAH, DI, DI, DI, DI);
+            case '7':
+                return just(DAH, DAH, DI, DI, DI);
+            case '8':
+                return just(DAH, DAH, DAH, DI, DI);
+            case '9':
+                return just(DAH, DAH, DAH, DAH, DI);
+            default:
+                return Observable.empty();
+        }
+    }
+
+    public static Observable<String> loadRecordsFor(DayOfWeek dow) {
+        switch (dow) {
+            case SUNDAY:
+                return Observable
+                        .interval(90, MILLISECONDS)
+                        .take(5)
+                        .map(i -> "Sun-" + i);
+            case MONDAY:
+                return Observable
+                        .interval(65, MILLISECONDS)
+                        .take(5)
+                        .map(i -> "Mon-" + i);
+            default:
+                throw new IllegalArgumentException("Illegal: " + dow);
+        }
+    }
+
+    public static void shakespeare(){
+        Observable<String> alice = speak(
+                "To be, or not to be: that is the question", 110);
+        Observable<String> bob = speak(
+                "Though this be madness, yet there is method in't", 90);
+        Observable<String> jane = speak(
+                "There are more things in Heaven and Earth, " +
+                        "Horatio, than are dreamt of in your philosophy", 100);
+//
+//        Observable
+//                .merge(
+//                        alice.map(w -> "Alice: " + w),
+//                        bob.map(w   -> "Bob:   " + w),
+//                        jane.map(w  -> "Jane:  " + w)
+//                )
+//                .subscribe(System.out::println);
+//
+
+
+        Observable
+                .concat(
+                        alice.map(w -> "Alice: " + w),
+                        bob.map(w   -> "Bob:   " + w),
+                        jane.map(w  -> "Jane:  " + w)
+                )
+                .subscribe(System.out::println);
+
+
+        Sleeper.sleep(Duration.ofSeconds(10));
+    }
+
+    public static void trueFlalse(){
+        Observable<Boolean> trueFalse = Observable.just(true,false).repeat();
+        Observable<Integer> upstream = Observable.range(30,8);
+        Observable<Integer> downstream = upstream
+                .zipWith(trueFalse,Pair::of)
+                .filter(Pair::getRight)
+                .map(Pair::getLeft);
+
+        downstream.subscribe(System.out::println);
+
+
+    }
+
+    private static Observable<String> speak(String quote, long millisPerChar){
+        String [] tokens = quote.replaceAll("[:,]","").split(" ");
+        Observable<String> words = Observable.from(tokens);
+        Observable<Long> absDelay = words
+                .map(String::length)
+                .map(len -> len * millisPerChar)
+                .scan((total,currernt)->total + currernt);
+        return words
+                .zipWith(absDelay.startWith(0L),Pair::of)
+                .flatMap(pair -> just(pair.getLeft())
+                .delay(pair.getRight(),MILLISECONDS));
     }
 
 
@@ -341,4 +532,6 @@ public class Basics {
     private static Data load(Integer id) {
         return new Data();
     }
+
+
 }
