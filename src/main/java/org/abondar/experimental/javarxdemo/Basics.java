@@ -9,6 +9,7 @@ import rx.subscriptions.Subscriptions;
 import java.math.BigInteger;
 import java.time.DayOfWeek;
 import java.time.Duration;
+import java.time.Instant;
 import java.util.concurrent.*;
 import java.util.function.Consumer;
 
@@ -472,6 +473,17 @@ public class Basics {
         });
         System.out.println("Main end");
         worker.unsubscribe();
+    }
+
+    public static void singleDemo(){
+        Single<String> single = Single.just("Hiiii");
+        single.subscribe(System.out::println);
+
+        Single<Instant> error = Single.error(new RuntimeException("Ooops!"));
+        error.observeOn(Schedulers.io())
+                .subscribe(
+                        System.out::println,
+                        Throwable::printStackTrace);
     }
 
     private static Observable<String> speak(String quote, long millisPerChar) {

@@ -13,5 +13,6 @@ public class Main1 {
    //    schedulersDemo.subscribeOnDemo();
        //schedulersDemo.observeOnDemo();
        schedulersDemo.subcribeOnObserveOnDemo();
+       Basics.singleDemo();
       }
 }
