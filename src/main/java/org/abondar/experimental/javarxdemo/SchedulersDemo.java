@@ -7,6 +7,7 @@ import rx.schedulers.Schedulers;
 
 import java.math.BigDecimal;
 import java.util.Observer;
+import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ThreadFactory;
 
@@ -28,7 +29,6 @@ public class SchedulersDemo {
 
     private final long start;
 
-    private RxGroceries rxGroceries;
 
     public SchedulersDemo() {
         poolA = newFixedThreadPool(10, threadFactory("Sched-A-%d"));
@@ -44,7 +44,6 @@ public class SchedulersDemo {
 
         start = System.currentTimeMillis();
 
-        rxGroceries = new RxGroceries();
 
     }
 
@@ -60,12 +59,40 @@ public class SchedulersDemo {
         log("Exiting");
     }
 
-    public void purchase1(){
-        Observable<BigDecimal> totalPrice = Observable
-                .just("bread","butter","milk","tomato","cheese")
-                .subscribeOn(schedulerA)
-                .map(prod ->rxGroceries.doPurchase(prod,1))
-                .single();
+    public void observeOnDemo(){
+        log("Starting");
+        final Observable<String> observable = simple();
+        log("created");
+        observable
+                .doOnNext(x -> log("Found 1: " +x))
+                .observeOn(schedulerA)
+                .doOnNext(x -> log("Found 2: " +x))
+                .subscribe(
+                        x->log("Got 1: "+x),
+                        Throwable::printStackTrace,
+                        ()->log("Completed"));
+        log("Exiting");
+    }
+
+
+    public void subcribeOnObserveOnDemo(){
+        log("Starting");
+        Observable<String> observable = Observable.create(subscriber -> {
+            log("Subscribed");
+            subscriber.onNext("A");
+            subscriber.onNext("B");
+            subscriber.onNext("C");
+            subscriber.onNext("D");
+            subscriber.onCompleted();
+        });
+        log("Created");
+        observable.subscribeOn(schedulerA)
+                .flatMap(record -> store(record).subscribeOn(schedulerB))
+                .observeOn(schedulerC)
+                .subscribe(x -> log("Got: "+x),
+                        Throwable::printStackTrace,
+                        ()->log("Completed"));
+        log("Exiting");
     }
 
     private Observable<String> simple() {
@@ -91,19 +118,12 @@ public class SchedulersDemo {
                 .build();
     }
 
-
-    public class RxGroceries {
-        public Observable<BigDecimal> purchase(String productName, int quantity){
-            return Observable.fromCallable(()->doPurchase(productName,quantity));
-
-        }
-
-        private BigDecimal doPurchase(String productName, int quantity){
-            log("Purchasing " + quantity + " " + productName);
-            log("Done " + quantity + " " + productName);
-            BigDecimal priceForProduct = BigDecimal.ONE;
-            return priceForProduct;
-        }
-
+    Observable<UUID> store(String s) {
+        return Observable.create(subscriber -> {
+            log("Storing " + s);
+            subscriber.onNext(UUID.randomUUID());
+            subscriber.onCompleted();
+        });
     }
+
 }
