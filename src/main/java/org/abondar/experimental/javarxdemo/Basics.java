@@ -9,7 +9,7 @@ import rx.subscriptions.Subscriptions;
 import java.math.BigInteger;
 import java.time.DayOfWeek;
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.function.Consumer;
 
 import static java.math.BigInteger.ONE;
@@ -19,6 +19,7 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static org.abondar.experimental.javarxdemo.Sound.DAH;
 import static org.abondar.experimental.javarxdemo.Sound.DI;
 import static rx.Observable.just;
+
 import org.apache.commons.lang3.tuple.Pair;
 
 
@@ -403,7 +404,7 @@ public class Basics {
         }
     }
 
-    public static void shakespeare(){
+    public static void shakespeare() {
         Observable<String> alice = speak(
                 "To be, or not to be: that is the question", 110);
         Observable<String> bob = speak(
@@ -425,8 +426,8 @@ public class Basics {
         Observable
                 .concat(
                         alice.map(w -> "Alice: " + w),
-                        bob.map(w   -> "Bob:   " + w),
-                        jane.map(w  -> "Jane:  " + w)
+                        bob.map(w -> "Bob:   " + w),
+                        jane.map(w -> "Jane:  " + w)
                 )
                 .subscribe(System.out::println);
 
@@ -434,32 +435,57 @@ public class Basics {
         Sleeper.sleep(Duration.ofSeconds(10));
     }
 
-    public static void trueFlalse(){
-        Observable<Boolean> trueFalse = Observable.just(true,false).repeat();
-        Observable<Integer> upstream = Observable.range(30,8);
+    public static void trueFalse() {
+        Observable<Boolean> trueFalse = Observable.just(true, false).repeat();
+        Observable<Integer> upstream = Observable.range(30, 8);
         Observable<Integer> downstream = upstream
-                .zipWith(trueFalse,Pair::of)
+                .zipWith(trueFalse, Pair::of)
                 .filter(Pair::getRight)
                 .map(Pair::getLeft);
 
         downstream.subscribe(System.out::println);
 
-
     }
 
-    private static Observable<String> speak(String quote, long millisPerChar){
-        String [] tokens = quote.replaceAll("[:,]","").split(" ");
+
+    public static void scheduler1() {
+        Scheduler scheduler = Schedulers.immediate();
+        //Scheduler scheduler = Schedulers.trampoline();
+        Scheduler.Worker worker = scheduler.createWorker();
+        System.out.println("Main start");
+        worker.schedule(() -> {
+            System.out.println("Outer start");
+            Sleeper.sleep(Duration.ofSeconds(1));
+            worker.schedule(() -> {
+                System.out.println("Middle start");
+                Sleeper.sleep(Duration.ofSeconds(1));
+                worker.schedule(() -> {
+                    System.out.println("Inner start");
+                    Sleeper.sleep(Duration.ofSeconds(1));
+                    System.out.println("Inner end");
+                });
+                System.out.println("Middle end");
+            });
+
+            System.out.println("Outer End");
+
+        });
+        System.out.println("Main end");
+        worker.unsubscribe();
+    }
+
+    private static Observable<String> speak(String quote, long millisPerChar) {
+        String[] tokens = quote.replaceAll("[:,]", "").split(" ");
         Observable<String> words = Observable.from(tokens);
         Observable<Long> absDelay = words
                 .map(String::length)
                 .map(len -> len * millisPerChar)
-                .scan((total,currernt)->total + currernt);
+                .scan((total, currernt) -> total + currernt);
         return words
-                .zipWith(absDelay.startWith(0L),Pair::of)
+                .zipWith(absDelay.startWith(0L), Pair::of)
                 .flatMap(pair -> just(pair.getLeft())
-                .delay(pair.getRight(),MILLISECONDS));
+                        .delay(pair.getRight(), MILLISECONDS));
     }
-
 
 
     private static Callback getDataAsynchronously(String key) {

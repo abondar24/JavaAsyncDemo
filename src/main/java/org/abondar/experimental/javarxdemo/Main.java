@@ -45,10 +45,7 @@ public class Main {
         Basics.numbersFlatMap();
         showMorse();
         Basics.shakespeare();
-        Basics.trueFlalse();
-
-
-
+        Basics.trueFalse();
 
 
                 //these methods are just skeletons to understand. there is no actual subscribtion made
