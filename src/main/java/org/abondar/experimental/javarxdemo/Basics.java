@@ -10,13 +10,18 @@ import java.math.BigInteger;
 import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.List;
+import java.util.Random;
+import java.util.StringJoiner;
 import java.util.concurrent.*;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.ZERO;
 import static java.util.concurrent.TimeUnit.MICROSECONDS;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
+import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.abondar.experimental.javarxdemo.Sound.DAH;
 import static org.abondar.experimental.javarxdemo.Sound.DI;
 import static rx.Observable.just;
@@ -235,7 +240,7 @@ public class Basics {
     public static <T> Observable<T> delayed(T x) {
         return Observable.create(subscriber -> {
             Runnable r = () -> {
-                sleep(10, TimeUnit.SECONDS);
+                sleep(10, SECONDS);
                 if (!subscriber.isUnsubscribed()) {
                     subscriber.onNext(x);
                     subscriber.onCompleted();
@@ -268,7 +273,7 @@ public class Basics {
     //eq to thread sleep
     public static void observableByTimer() {
         Observable
-                .timer(1, TimeUnit.SECONDS)
+                .timer(1, SECONDS)
                 .subscribe(Basics::log);
         Sleeper.sleep(Duration.ofSeconds(2));
     }
@@ -475,7 +480,7 @@ public class Basics {
         worker.unsubscribe();
     }
 
-    public static void singleDemo(){
+    public static void singleDemo() {
         Single<String> single = Single.just("Hiiii");
         single.subscribe(System.out::println);
 
@@ -485,6 +490,113 @@ public class Basics {
                         System.out::println,
                         Throwable::printStackTrace);
     }
+
+    public static void delays() {
+        long startTime = System.currentTimeMillis();
+        Observable
+                .interval(7, TimeUnit.MILLISECONDS)
+                .timestamp()
+                .sample(1, SECONDS)
+                .map(ts -> ts.getTimestampMillis() - startTime + "ms: " + ts.getValue())
+                .take(5)
+                .subscribe(System.out::println);
+    }
+
+    public static void delayedNamesSample() {
+        Observable<String> delayedNames = delayedNames();
+        delayedNames.sample(1, SECONDS)
+                .subscribe(System.out::println);
+    }
+
+    public static void delayedNamesConcatWith() {
+        Observable<String> delayedNames = delayedNames();
+
+        delayedNames
+                .concatWith(Observable.<String>empty().delay(1, SECONDS))
+                .sample(1, SECONDS)
+                .subscribe(System.out::println);
+    }
+
+    public static void delayedNamesThrottleFirst() {
+        Observable<String> delayedNames = delayedNames();
+
+        delayedNames
+                .throttleFirst(1, SECONDS)
+                .subscribe(System.out::println);
+    }
+
+    public static void listBuffer(){
+        Observable.range(1,7)
+                .buffer(3)
+                .subscribe(Basics::listOP);
+    }
+
+    public static void listBufferAvg(){
+        Random random = new Random();
+        Observable.defer(()->just(random.nextGaussian()))
+                .repeat(1000)
+                .buffer(100,1)
+                .map(Basics::averageOfList)
+                .subscribe(System.out::println);
+    }
+
+    public static void delayedNamesBuffered(){
+        Observable<String> names =
+                just("Mary", "Patricia", "Linda",
+                        "Barbara",
+                        "Elizabeth", "Jennifer", "Maria", "Susan",
+                        "Margaret", "Dorothy");
+
+        Observable<Long> absDelayMillis =
+                just(0.1, 0.6, 0.9,
+                        1.1,
+                        3.3, 3.4, 3.5, 3.6,
+                        4.4, 4.8)
+                        .map(d -> (long) (d * 1_000));
+
+        final Observable<String> delayedNames =Observable
+                .zip(names,absDelayMillis,
+                        (n, d) -> just(n).delay(d, MILLISECONDS))
+                .flatMap(o -> o);
+
+        delayedNames.buffer(1,SECONDS)
+                .subscribe(System.out::println);
+
+    }
+
+
+
+    private static double averageOfList(List<Double> list){
+        return list.stream().collect(Collectors.averagingDouble(x->x));
+    }
+    private static void listOP(List<Integer> list){
+        list.forEach(System.out::println);
+    }
+
+
+    private static Observable<String> delayedNames() {
+        Observable<String> names =
+                just("Mary", "Patricia", "Linda",
+                        "Barbara",
+                        "Elizabeth", "Jennifer", "Maria", "Susan",
+                        "Margaret", "Dorothy");
+
+        Observable<Long> absDelayMillis =
+                just(0.1, 0.6, 0.9,
+                        1.1,
+                        3.3, 3.4, 3.5, 3.6,
+                        4.4, 4.8)
+                        .map(d -> (long) (d * 1_000));
+
+        final Observable<String> delayedNames = names
+                .zipWith(absDelayMillis,
+                        (n, d) -> just(n).delay(d, MILLISECONDS))
+                .flatMap(o -> o);
+
+        return delayedNames;
+    }
+
+
 
     private static Observable<String> speak(String quote, long millisPerChar) {
         String[] tokens = quote.replaceAll("[:,]", "").split(" ");
