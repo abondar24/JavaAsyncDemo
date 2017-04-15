@@ -1,11 +1,9 @@
-package org.abondar.experimental.javarxdemo;
+package org.abondar.experimental.javaasyncdemo.javarx;
 
 import io.reactivex.netty.protocol.http.server.HttpServer;
 import rx.Observable;
 
 import java.math.BigDecimal;
-
-import static io.netty.handler.codec.http.HttpHeaders.Names.CONTENT_LENGTH;
 
 /**
  * Created by alexabon on 2/9/2017.

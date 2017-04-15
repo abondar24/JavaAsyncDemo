@@ -1,4 +1,4 @@
-package org.abondar.experimental.javarxdemo;
+package org.abondar.experimental.javaasyncdemo.javarx;
 
 /**
  * Created by alexabon on 2/9/2017.

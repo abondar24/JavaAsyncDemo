@@ -1,4 +1,4 @@
-package org.abondar.experimental.javarxdemo;
+package org.abondar.experimental.javaasyncdemo.javarx;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +12,6 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
 import java.util.Random;
-import java.util.StringJoiner;
 import java.util.concurrent.*;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -22,8 +21,6 @@ import static java.math.BigInteger.ZERO;
 import static java.util.concurrent.TimeUnit.MICROSECONDS;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
-import static org.abondar.experimental.javarxdemo.Sound.DAH;
-import static org.abondar.experimental.javarxdemo.Sound.DI;
 import static rx.Observable.just;
 
 import org.apache.commons.lang3.tuple.Pair;
@@ -317,77 +314,77 @@ public class Basics {
     public static Observable<Sound> toMorseCode(char ch) {
         switch (ch) {
             case 'a':
-                return just(DI, DAH);
+                return just(Sound.DI, Sound.DAH);
             case 'b':
-                return just(DAH, DI, DI, DI);
+                return just(Sound.DAH, Sound.DI, Sound.DI, Sound.DI);
             case 'c':
-                return just(DAH, DI, DAH, DI);
+                return just(Sound.DAH, Sound.DI, Sound.DAH, Sound.DI);
             case 'd':
-                return just(DAH, DI, DI);
+                return just(Sound.DAH, Sound.DI, Sound.DI);
             case 'e':
-                return just(DI);
+                return just(Sound.DI);
             case 'f':
-                return just(DI, DI, DAH, DI);
+                return just(Sound.DI, Sound.DI, Sound.DAH, Sound.DI);
             case 'g':
-                return just(DAH, DAH, DI);
+                return just(Sound.DAH, Sound.DAH, Sound.DI);
             case 'h':
-                return just(DI, DI, DI, DI);
+                return just(Sound.DI, Sound.DI, Sound.DI, Sound.DI);
             case 'i':
-                return just(DI, DI);
+                return just(Sound.DI, Sound.DI);
             case 'j':
-                return just(DI, DAH, DAH, DAH);
+                return just(Sound.DI, Sound.DAH, Sound.DAH, Sound.DAH);
             case 'k':
-                return just(DAH, DI, DAH);
+                return just(Sound.DAH, Sound.DI, Sound.DAH);
             case 'l':
-                return just(DI, DAH, DI, DI);
+                return just(Sound.DI, Sound.DAH, Sound.DI, Sound.DI);
             case 'm':
-                return just(DAH, DAH);
+                return just(Sound.DAH, Sound.DAH);
             case 'n':
-                return just(DAH, DI);
+                return just(Sound.DAH, Sound.DI);
             case 'o':
-                return just(DAH, DAH, DAH);
+                return just(Sound.DAH, Sound.DAH, Sound.DAH);
             case 'p':
-                return just(DI, DAH, DAH, DI);
+                return just(Sound.DI, Sound.DAH, Sound.DAH, Sound.DI);
             case 'q':
-                return just(DAH, DAH, DI, DAH);
+                return just(Sound.DAH, Sound.DAH, Sound.DI, Sound.DAH);
             case 'r':
-                return just(DI, DAH, DI);
+                return just(Sound.DI, Sound.DAH, Sound.DI);
             case 's':
-                return just(DI, DI, DI);
+                return just(Sound.DI, Sound.DI, Sound.DI);
             case 't':
-                return just(DAH);
+                return just(Sound.DAH);
             case 'u':
-                return just(DI, DI, DAH);
+                return just(Sound.DI, Sound.DI, Sound.DAH);
             case 'v':
-                return just(DI, DI, DI, DAH);
+                return just(Sound.DI, Sound.DI, Sound.DI, Sound.DAH);
             case 'w':
-                return just(DI, DAH, DAH);
+                return just(Sound.DI, Sound.DAH, Sound.DAH);
             case 'x':
-                return just(DAH, DI, DI, DAH);
+                return just(Sound.DAH, Sound.DI, Sound.DI, Sound.DAH);
             case 'y':
-                return just(DAH, DI, DAH, DAH);
+                return just(Sound.DAH, Sound.DI, Sound.DAH, Sound.DAH);
             case 'z':
-                return just(DAH, DAH, DI, DI);
+                return just(Sound.DAH, Sound.DAH, Sound.DI, Sound.DI);
             case '0':
-                return just(DAH, DAH, DAH, DAH, DAH);
+                return just(Sound.DAH, Sound.DAH, Sound.DAH, Sound.DAH, Sound.DAH);
             case '1':
-                return just(DI, DAH, DAH, DAH, DAH);
+                return just(Sound.DI, Sound.DAH, Sound.DAH, Sound.DAH, Sound.DAH);
             case '2':
-                return just(DI, DI, DAH, DAH, DAH);
+                return just(Sound.DI, Sound.DI, Sound.DAH, Sound.DAH, Sound.DAH);
             case '3':
-                return just(DI, DI, DI, DAH, DAH);
+                return just(Sound.DI, Sound.DI, Sound.DI, Sound.DAH, Sound.DAH);
             case '4':
-                return just(DI, DI, DI, DI, DAH);
+                return just(Sound.DI, Sound.DI, Sound.DI, Sound.DI, Sound.DAH);
             case '5':
-                return just(DI, DI, DI, DI, DI);
+                return just(Sound.DI, Sound.DI, Sound.DI, Sound.DI, Sound.DI);
             case '6':
-                return just(DAH, DI, DI, DI, DI);
+                return just(Sound.DAH, Sound.DI, Sound.DI, Sound.DI, Sound.DI);
             case '7':
-                return just(DAH, DAH, DI, DI, DI);
+                return just(Sound.DAH, Sound.DAH, Sound.DI, Sound.DI, Sound.DI);
             case '8':
-                return just(DAH, DAH, DAH, DI, DI);
+                return just(Sound.DAH, Sound.DAH, Sound.DAH, Sound.DI, Sound.DI);
             case '9':
-                return just(DAH, DAH, DAH, DAH, DI);
+                return just(Sound.DAH, Sound.DAH, Sound.DAH, Sound.DAH, Sound.DI);
             default:
                 return Observable.empty();
         }

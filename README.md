@@ -1,2 +1,2 @@
-# JavaRxDemo
-Bunch of JavaRx demos
+# JavaAsyncDemo
+Basic Java Concurency, NIO and RX demos

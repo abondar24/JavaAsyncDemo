@@ -1,11 +1,9 @@
-package org.abondar.experimental.javarxdemo;
+package org.abondar.experimental.javaasyncdemo.javarx;
 
 import io.netty.handler.codec.LineBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.reactivex.netty.protocol.tcp.server.TcpServer;
 import rx.Observable;
-
-import java.math.BigDecimal;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 

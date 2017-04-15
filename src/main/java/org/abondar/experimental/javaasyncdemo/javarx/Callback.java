@@ -1,4 +1,4 @@
-package org.abondar.experimental.javarxdemo;
+package org.abondar.experimental.javaasyncdemo.javarx;
 
 import java.util.function.Consumer;
 

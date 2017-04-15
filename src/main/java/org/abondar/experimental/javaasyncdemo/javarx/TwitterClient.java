@@ -1,4 +1,4 @@
-package org.abondar.experimental.javarxdemo;
+package org.abondar.experimental.javaasyncdemo.javarx;
 
 /**
  * Created by abondar on 2/6/17.
@@ -7,7 +7,6 @@ package org.abondar.experimental.javarxdemo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import rx.Observable;
-import rx.functions.Func1;
 import rx.subscriptions.Subscriptions;
 import twitter4j.*;
 

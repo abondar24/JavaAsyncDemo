@@ -1,12 +1,10 @@
-package org.abondar.experimental.javarxdemo;
+package org.abondar.experimental.javaasyncdemo.javarx;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import rx.Observable;
 import rx.Scheduler;
 import rx.schedulers.Schedulers;
 
-import java.math.BigDecimal;
-import java.util.Observer;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ThreadFactory;

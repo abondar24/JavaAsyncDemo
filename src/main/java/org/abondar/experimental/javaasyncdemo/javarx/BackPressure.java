@@ -1,7 +1,6 @@
-package org.abondar.experimental.javarxdemo;
+package org.abondar.experimental.javaasyncdemo.javarx;
 
 import rx.Observable;
-import rx.Subscriber;
 import rx.internal.operators.OnSubscribeRange;
 
 
