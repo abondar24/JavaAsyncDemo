@@ -102,9 +102,8 @@ public class MapFile {
             }
 
             if (nulls != 0) {
-                sb.append("|[");
-                sb.append(nulls);
-                sb.append(" nulls]|");
+                String nullsStr = "|[" + nulls + "nulls]|";
+                sb.append(nullsStr);
                 nulls = 0;
             }
             sb.append(c);
