@@ -7,6 +7,8 @@ Set of Java Multithreading, NIO and RX demos.
 Use arg (mt) to run demos.
 1. Thread (tc) - run several threads.
 2. Thread Pool (tpc) - create a thread pool via executor service. 
+3. Thread Synchronisation (tsc) - synchronise threads by flag.
+
 
 ## NIO
 

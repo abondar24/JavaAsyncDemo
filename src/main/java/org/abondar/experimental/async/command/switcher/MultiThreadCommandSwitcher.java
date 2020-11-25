@@ -3,6 +3,7 @@ package org.abondar.experimental.async.command.switcher;
 import org.abondar.experimental.async.command.params.MtCommands;
 import org.abondar.experimental.async.multithread.command.ThreadCommand;
 import org.abondar.experimental.async.multithread.command.ThreadPoolCommand;
+import org.abondar.experimental.async.multithread.command.ThreadSyncCommand;
 
 public class MultiThreadCommandSwitcher extends CommandSwitcher {
 
@@ -18,6 +19,11 @@ public class MultiThreadCommandSwitcher extends CommandSwitcher {
                 case TPC:
                     ThreadPoolCommand tpc = new ThreadPoolCommand();
                     executor.executeCommand(tpc);
+                    break;
+
+                case TSC:
+                    ThreadSyncCommand tsc = new ThreadSyncCommand();
+                    executor.executeCommand(tsc);
                     break;
 
             }
