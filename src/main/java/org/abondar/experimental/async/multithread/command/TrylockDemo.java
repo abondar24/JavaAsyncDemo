@@ -1,17 +1,18 @@
-package org.abondar.experimental.async.multithread;
+package org.abondar.experimental.async.multithread.command;
 
 
-public class ReentrantLockDemo {
+import org.abondar.experimental.async.multithread.runner.TryLockRunner;
 
+public class TrylockDemo {
     public static void main(String[] args) throws Exception {
-        final Runner runner = new Runner();
+        final TryLockRunner runner = new TryLockRunner();
 
         Thread t1 = new Thread(()->{
-           try {
-               runner.firstThread();
-           }catch (InterruptedException e){
-               e.printStackTrace();
-           }
+            try {
+                runner.firstThread();
+            }catch (InterruptedException e){
+                e.printStackTrace();
+            }
         });
 
         Thread t2 = new Thread(()->{

@@ -1,5 +1,7 @@
-package org.abondar.experimental.async.multithread;
+package org.abondar.experimental.async.multithread.command;
 
+
+import org.abondar.experimental.async.multithread.processor.MultiProcessor;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

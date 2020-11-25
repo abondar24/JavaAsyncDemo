@@ -1,4 +1,6 @@
-package org.abondar.experimental.async.multithread;
+package org.abondar.experimental.async.multithread.runner;
+
+import org.abondar.experimental.async.multithread.Account;
 
 import java.util.Random;
 import java.util.concurrent.locks.Lock;

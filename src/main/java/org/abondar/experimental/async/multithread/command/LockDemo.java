@@ -1,4 +1,4 @@
-package org.abondar.experimental.async.multithread;
+package org.abondar.experimental.async.multithread.command;
 
 import java.util.ArrayList;
 import java.util.List;

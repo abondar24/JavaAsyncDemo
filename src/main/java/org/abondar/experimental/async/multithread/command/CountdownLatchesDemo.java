@@ -1,5 +1,7 @@
-package org.abondar.experimental.async.multithread;
+package org.abondar.experimental.async.multithread.command;
 
+
+import org.abondar.experimental.async.multithread.processor.LatchProcessor;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;

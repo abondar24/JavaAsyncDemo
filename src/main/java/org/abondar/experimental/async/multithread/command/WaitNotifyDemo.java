@@ -1,6 +1,7 @@
-package org.abondar.experimental.async.multithread;
+package org.abondar.experimental.async.multithread.command;
 
 
+import org.abondar.experimental.async.multithread.processor.WaitProcessor;
 
 public class WaitNotifyDemo {
 

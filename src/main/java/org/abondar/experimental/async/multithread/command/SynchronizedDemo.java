@@ -1,4 +1,4 @@
-package org.abondar.experimental.async.multithread;
+package org.abondar.experimental.async.multithread.command;
 
 
 public class SynchronizedDemo {

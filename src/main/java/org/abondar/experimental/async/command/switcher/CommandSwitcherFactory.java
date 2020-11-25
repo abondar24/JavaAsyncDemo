@@ -1,5 +1,7 @@
 package org.abondar.experimental.async.command.switcher;
 
+import org.abondar.experimental.async.command.params.CommandSwitchers;
+
 import java.util.Optional;
 
 public class CommandSwitcherFactory {

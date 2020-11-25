@@ -1,5 +1,8 @@
-package org.abondar.experimental.async.multithread;
+package org.abondar.experimental.async.multithread.command;
 
+
+import org.abondar.experimental.async.multithread.thread.ThreadOne;
+import org.abondar.experimental.async.multithread.thread.ThreadTwo;
 
 public class ThreadDemo {
     public static void main(String[] args) {
