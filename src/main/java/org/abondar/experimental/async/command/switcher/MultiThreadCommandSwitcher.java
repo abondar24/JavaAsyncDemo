@@ -5,6 +5,7 @@ import org.abondar.experimental.async.multithread.command.ThreadCommand;
 import org.abondar.experimental.async.multithread.command.ThreadInterruptionCommand;
 import org.abondar.experimental.async.multithread.command.ThreadPoolCommand;
 import org.abondar.experimental.async.multithread.command.ThreadSyncCommand;
+import org.abondar.experimental.async.multithread.command.WaitNotifyCommand;
 
 public class MultiThreadCommandSwitcher extends CommandSwitcher {
 
@@ -30,6 +31,11 @@ public class MultiThreadCommandSwitcher extends CommandSwitcher {
                 case TSC:
                     ThreadSyncCommand tsc = new ThreadSyncCommand();
                     executor.executeCommand(tsc);
+                    break;
+
+                case WNC:
+                    WaitNotifyCommand wnc = new WaitNotifyCommand();
+                    executor.executeCommand(wnc);
                     break;
 
             }

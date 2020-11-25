@@ -20,7 +20,7 @@ public class WaitProcessor {
         Thread.sleep(10000);
 
         synchronized (this) {
-            System.out.println("Waiting for return");
+            System.out.println("Waiting for return. Press any key to continue!");
             scanner.nextLine();
             System.out.println("Return pressed.");
             notify();

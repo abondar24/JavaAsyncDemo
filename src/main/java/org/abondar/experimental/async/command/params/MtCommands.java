@@ -5,4 +5,6 @@ public enum  MtCommands {
     TIC,
     TPC,
     TSC,
+    WNC,
+
 }
