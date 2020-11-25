@@ -12,6 +12,7 @@ Use arg (mt) to run demos.
 5. Wait Notify (wnc) - Usage of wait and notify base methods from Object.
 6. Synchronized (sc) - Usage of synchronized method.
 7. Countdown Latch (clc) - Usage of CountdownLatch class.
+8. Low Level Wait (lwc) - Wait Notify demo based on synchronized block.
 
 ## NIO
 

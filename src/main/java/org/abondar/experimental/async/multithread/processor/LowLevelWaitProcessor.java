@@ -6,8 +6,7 @@ import java.util.Random;
 
 public class LowLevelWaitProcessor {
 
-    private LinkedList<Integer> linkedList = new LinkedList<>();
-    private final int LIMIT = 10;
+    private final LinkedList<Integer> linkedList = new LinkedList<>();
 
     private final Object lock = new Object();
 
@@ -16,6 +15,7 @@ public class LowLevelWaitProcessor {
         int val = 0;
         while (true) {
             synchronized (lock) {
+                int LIMIT = 10;
                 while (linkedList.size() == LIMIT){
                     lock.wait();
                 }
