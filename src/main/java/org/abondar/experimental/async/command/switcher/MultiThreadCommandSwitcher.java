@@ -5,6 +5,7 @@ import org.abondar.experimental.async.multithread.command.CallableFutureCommand;
 import org.abondar.experimental.async.multithread.command.CountdownLatchCommand;
 import org.abondar.experimental.async.multithread.command.LockCommand;
 import org.abondar.experimental.async.multithread.command.LowLevelWaitCommand;
+import org.abondar.experimental.async.multithread.command.ProducerConsumerCommand;
 import org.abondar.experimental.async.multithread.command.ReentrantLockCommand;
 import org.abondar.experimental.async.multithread.command.SemaphoreCommand;
 import org.abondar.experimental.async.multithread.command.SynchronizedCommand;
@@ -40,6 +41,11 @@ public class MultiThreadCommandSwitcher extends CommandSwitcher {
                 case LWC:
                     LowLevelWaitCommand lwc = new LowLevelWaitCommand();
                     executor.executeCommand(lwc);
+                    break;
+
+                case PCC:
+                    ProducerConsumerCommand pcc = new ProducerConsumerCommand();
+                    executor.executeCommand(pcc);
                     break;
 
                 case RLC:
