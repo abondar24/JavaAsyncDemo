@@ -1,6 +1,7 @@
 package org.abondar.experimental.async.command.switcher;
 
 import org.abondar.experimental.async.command.params.MtCommands;
+import org.abondar.experimental.async.multithread.command.CallableFutureCommand;
 import org.abondar.experimental.async.multithread.command.CountdownLatchCommand;
 import org.abondar.experimental.async.multithread.command.LowLevelWaitCommand;
 import org.abondar.experimental.async.multithread.command.SynchronizedCommand;
@@ -16,6 +17,12 @@ public class MultiThreadCommandSwitcher extends CommandSwitcher {
     public void executeCommand(String cmd) {
        try {
             switch (MtCommands.valueOf(cmd)){
+
+                case CFC:
+                    CallableFutureCommand cfc = new CallableFutureCommand();
+                    executor.executeCommand(cfc);
+                    break;
+
                 case CLC:
                     CountdownLatchCommand clc = new CountdownLatchCommand();
                     executor.executeCommand(clc);

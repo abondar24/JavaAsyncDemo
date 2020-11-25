@@ -1,17 +1,21 @@
 package org.abondar.experimental.async.multithread.command;
 
 
+import org.abondar.experimental.async.command.Command;
+
 import java.io.IOException;
 import java.util.Random;
 import java.util.concurrent.*;
 
-public class CallableFutureDemo {
+public class CallableFutureCommand implements Command {
 
-    public static void main(String[] args) {
+
+    @Override
+    public void execute() {
         ExecutorService executorService = Executors.newCachedThreadPool();
 
         //callable used
-      Future<Integer> future = executorService.submit(() -> {
+        Future<Integer> future = executorService.submit(() -> {
             Random random = new Random();
             int duration = random.nextInt(4000);
 
@@ -39,7 +43,8 @@ public class CallableFutureDemo {
         try {
             System.out.println("Result: "+ future.get());
         } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
+            System.exit(2);
         }
     }
 }

@@ -31,7 +31,8 @@ public class SynchronizedCommand implements Command {
             t1.join();
             t2.join();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
+            System.exit(2);
         }
 
 

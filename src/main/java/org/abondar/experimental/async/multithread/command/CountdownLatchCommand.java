@@ -23,7 +23,8 @@ public class CountdownLatchCommand implements Command {
         try {
             latch.await();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
+            System.exit(2);
         }
     }
 }

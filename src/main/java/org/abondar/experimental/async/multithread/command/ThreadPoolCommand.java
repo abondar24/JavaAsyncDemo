@@ -26,7 +26,8 @@ public class ThreadPoolCommand implements Command {
         try {
             executor.awaitTermination(20, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
+            System.exit(2);
         }
     }
 }
