@@ -11,6 +11,7 @@ Use arg (mt) to run demos.
 4. Thread Interruption (tic) - Interrupt thread by random value.
 5. Wait Notify (wnc) - Usage of wait and notify base methods from Object.
 6. Synchronized (sc) - Usage of synchronized method.
+7. Countdown Latch (clc) - Usage of CountdownLatch class.
 
 ## NIO
 

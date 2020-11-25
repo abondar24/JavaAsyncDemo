@@ -1,15 +1,17 @@
 package org.abondar.experimental.async.multithread.command;
 
 
+import org.abondar.experimental.async.command.Command;
 import org.abondar.experimental.async.multithread.processor.LatchProcessor;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class CountdownLatchesDemo {
+public class CountdownLatchCommand implements Command {
 
-    public static void main(String[] args) {
+    @Override
+    public void execute() {
         CountDownLatch latch = new CountDownLatch(7);
 
         ExecutorService service = Executors.newFixedThreadPool(3);

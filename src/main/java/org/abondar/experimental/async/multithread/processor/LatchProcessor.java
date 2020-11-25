@@ -3,7 +3,7 @@ package org.abondar.experimental.async.multithread.processor;
 import java.util.concurrent.CountDownLatch;
 
 public class LatchProcessor implements Runnable {
-    private CountDownLatch latch;
+    private final CountDownLatch latch;
 
     public LatchProcessor(CountDownLatch latch) {
         this.latch = latch;
