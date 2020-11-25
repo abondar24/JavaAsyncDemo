@@ -15,6 +15,7 @@ Use arg (mt) to run demos.
 8. Low Level Wait (lwc) - Wait Notify demo based on synchronized block.
 9. Callable Future (cfc) - Callable Future usage example.
 10. Lock (lc) - Basic lock usage example.
+11. Reentrant lock (rlc) - Reentrant lock usage examle.
 
 ## NIO
 
