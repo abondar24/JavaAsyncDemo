@@ -19,7 +19,7 @@ public class Processor extends Thread{
     }
 
 
-    void shutdown(){
+    public void shutdown(){
         shutdown = false;
     }
 }

@@ -4,7 +4,7 @@ public class MultiProcessor implements Runnable {
 
     private int id;
 
-    MultiProcessor(int id) {
+    public MultiProcessor(int id) {
         this.id = id;
     }
 

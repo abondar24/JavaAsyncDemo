@@ -5,7 +5,7 @@ import org.abondar.experimental.async.command.CommandExecutor;
 
 public  abstract  class CommandSwitcher {
 
-    private final CommandExecutor executor;
+    protected final CommandExecutor executor;
 
     public CommandSwitcher() {
         this.executor = new CommandExecutor();

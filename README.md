@@ -4,15 +4,17 @@ Set of Java Multithreading, NIO and RX demos.
 
 ## Multithreading
 
-Use arg "mt" to run demos.
+Use arg (mt) to run demos.
+1. Thread (tc) - run several threads.
+
 
 ## NIO
 
-Use arg "nio" to run demos.
+Use arg (nio) to run demos.
 
 ## RX
 
-Use arg "rx" to run demos.
+Use arg (rx) to run demos.
 
 
 
