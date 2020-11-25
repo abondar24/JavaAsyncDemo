@@ -1,19 +1,21 @@
 package org.abondar.experimental.async.multithread.command;
 
+import org.abondar.experimental.async.command.Command;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 
-public class LockDemo {
-    private static Random random = new Random();
+public class LockCommand implements Command {
+    private static final Random random = new Random();
 
 
-    private static Object lock1 = new Object();
-    private static Object lock2 = new Object();
+    private static final Object lock1 = new Object();
+    private static final Object lock2 = new Object();
 
-    private static List<Integer> list1 = new ArrayList<>();
-    private static List<Integer> list2 = new ArrayList<>();
+    private static final List<Integer> list1 = new ArrayList<>();
+    private static final List<Integer> list2 = new ArrayList<>();
 
     private static void stageOne() {
 
@@ -49,17 +51,15 @@ public class LockDemo {
         }
     }
 
-    public static void main(String[] args) {
+
+    @Override
+    public void execute() {
         System.out.println("Starting ...");
         long start = System.currentTimeMillis();
-        Thread t1 = new Thread(() -> {
-            process();
-        });
+        Thread t1 = new Thread(LockCommand::process);
         t1.start();
 
-        Thread t2 = new Thread(() -> {
-            process();
-        });
+        Thread t2 = new Thread(LockCommand::process);
         t2.start();
 
 
@@ -75,7 +75,7 @@ public class LockDemo {
         process();
         System.out.printf("Time taken %d\n", end - start);
 
-        System.out.printf("List1: %d, List2: %d", list1.size(), list2.size());
+        System.out.printf("List1: %d, List2: %d\n", list1.size(), list2.size());
     }
 }
 
