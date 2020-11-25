@@ -1,16 +1,14 @@
 package org.abondar.experimental.async.multithread.command;
 
 
-public class SynchronizedDemo {
+import org.abondar.experimental.async.command.Command;
+
+public class SynchronizedCommand implements Command {
 
     private int count = 0;
 
     private synchronized void increment(){
         count++;
-    }
-    public static void main(String[] args) {
-        SynchronizedDemo demo = new SynchronizedDemo();
-        demo.doWork();
     }
 
     private void doWork() {
@@ -38,5 +36,10 @@ public class SynchronizedDemo {
 
 
         System.out.printf("Count is: %d\n",count);
+    }
+
+    @Override
+    public void execute() {
+        doWork();
     }
 }

@@ -1,6 +1,7 @@
 package org.abondar.experimental.async.command.switcher;
 
 import org.abondar.experimental.async.command.params.MtCommands;
+import org.abondar.experimental.async.multithread.command.SynchronizedCommand;
 import org.abondar.experimental.async.multithread.command.ThreadCommand;
 import org.abondar.experimental.async.multithread.command.ThreadInterruptionCommand;
 import org.abondar.experimental.async.multithread.command.ThreadPoolCommand;
@@ -13,6 +14,12 @@ public class MultiThreadCommandSwitcher extends CommandSwitcher {
     public void executeCommand(String cmd) {
        try {
             switch (MtCommands.valueOf(cmd)){
+
+                case SC:
+                    SynchronizedCommand sc = new SynchronizedCommand();
+                    executor.executeCommand(sc);
+                    break;
+
                 case TC:
                     ThreadCommand tc = new ThreadCommand();
                     executor.executeCommand(tc);
