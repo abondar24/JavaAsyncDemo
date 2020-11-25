@@ -7,6 +7,7 @@ public enum  MtCommands {
     LWC,
     RLC,
     SC,
+    SEC,
     TC,
     TIC,
     TPC,
