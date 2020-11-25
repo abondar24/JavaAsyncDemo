@@ -17,6 +17,7 @@ Use arg (mt) to run demos.
 10. Lock (lc) - Basic lock usage example.
 11. Reentrant lock (rlc) - Reentrant lock usage examle.
 12. Semaphore (sec) - Semaphore based on executor service.
+13. Try Lock (tlc) - Usage two reentrant locks in parallel.
 
 ## NIO
 

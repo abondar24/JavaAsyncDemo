@@ -9,11 +9,11 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class TryLockRunner {
 
-    private Account account1 = new Account();
-    private Account account2 = new Account();
+    private final Account account1 = new Account();
+    private final Account account2 = new Account();
 
-    private Lock lock1 = new ReentrantLock();
-    private Lock lock2 = new ReentrantLock();
+    private final Lock lock1 = new ReentrantLock();
+    private final Lock lock2 = new ReentrantLock();
 
     private void acquireLocks(Lock lock1, Lock lock2) throws InterruptedException {
         while (true) {

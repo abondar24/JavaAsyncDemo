@@ -12,6 +12,7 @@ import org.abondar.experimental.async.multithread.command.ThreadCommand;
 import org.abondar.experimental.async.multithread.command.ThreadInterruptionCommand;
 import org.abondar.experimental.async.multithread.command.ThreadPoolCommand;
 import org.abondar.experimental.async.multithread.command.ThreadSyncCommand;
+import org.abondar.experimental.async.multithread.command.TryLockCommand;
 import org.abondar.experimental.async.multithread.command.WaitNotifyCommand;
 
 public class MultiThreadCommandSwitcher extends CommandSwitcher {
@@ -64,6 +65,11 @@ public class MultiThreadCommandSwitcher extends CommandSwitcher {
                 case TIC:
                     ThreadInterruptionCommand tic = new ThreadInterruptionCommand();
                     executor.executeCommand(tic);
+                    break;
+
+                case TLC:
+                    TryLockCommand tlc = new TryLockCommand();
+                    executor.executeCommand(tlc);
                     break;
 
                 case TPC:
