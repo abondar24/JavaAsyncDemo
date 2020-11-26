@@ -49,6 +49,8 @@ Use arg (nio) to run demos.
 22. Simple Grep (sgc)  - Simple Grep from file input.
 23. Socket Server (ss) - Tiny socket server. Access via localhost:1818.
 24. Socket Selector Server (ses) - Server with socket selector. Access via localhost:1234.
+25. Socket Selector Thread pool Server (sest) - Server with socket selector and multithreaded worker.
+ Access via localhost:1234.
 
 ## RX
 

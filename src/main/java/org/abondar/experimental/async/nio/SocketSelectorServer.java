@@ -28,7 +28,7 @@ public class SocketSelectorServer implements Command {
 
     }
 
-    private void readDataFromSocket(SelectionKey key) throws IOException {
+    protected void readDataFromSocket(SelectionKey key) throws IOException {
         SocketChannel socketChannel = (SocketChannel) key.channel();
         int count;
         buffer.clear();

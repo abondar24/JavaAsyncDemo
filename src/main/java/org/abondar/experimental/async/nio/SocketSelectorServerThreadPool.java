@@ -10,15 +10,11 @@ import java.util.List;
 
 public class SocketSelectorServerThreadPool extends SocketSelectorServer {
     private static final int MAX_THREADS = 5;
-    private ThreadPool pool = new ThreadPool(MAX_THREADS);
+    private final ThreadPool pool = new ThreadPool(MAX_THREADS);
 
 
-//    public static void main(String[] args) throws Exception {
-//        new SocketSelectorServerThreadPool().go(args);
-//    }
 
-
-    protected void readDataFromSocket(SelectionKey key) throws Exception {
+    protected void readDataFromSocket(SelectionKey key)  {
         WorkerThread worker = pool.getWorker();
 
         if (worker == null) {

@@ -23,6 +23,7 @@ public enum NioCommands {
     RAC,
     RRC,
     SES,
+    SEST,
     SGC,
     SS,
 }
