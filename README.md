@@ -36,7 +36,8 @@ Use arg (nio) to run demos.
 9. Complex Grep (cgc) - Grep from multiple files in different modes(one by one, ignore case)
 10. Email finder (efc) - Check if a string from list matches an email-regex.
 11. Encode Text (etc) - Encode incoming string to different encodings.
-
+12. File Lock Update (flu) - Lock file for updates.
+13. File Lock Query (flq) - Lock file for reading.
 
 ## RX
 
@@ -54,3 +55,4 @@ java -jar <jar-locaiton>/async.jar <demo-type> <demo-name>
 
 - All demo names are in ().
 - Async Client requires a web server(nginx or apache).
+- File lock demos must run in parallel.

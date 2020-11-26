@@ -13,6 +13,8 @@ import org.abondar.experimental.async.nio.CharsetDecodeCommand;
 import org.abondar.experimental.async.nio.ComplexGrepCommand;
 import org.abondar.experimental.async.nio.EmailFinderCommand;
 import org.abondar.experimental.async.nio.EncodeTextCommand;
+import org.abondar.experimental.async.nio.FileLockQueryCommand;
+import org.abondar.experimental.async.nio.FileLockUpdateCommand;
 
 public class NioCommandSwitcher extends CommandSwitcher{
     @Override
@@ -72,6 +74,16 @@ public class NioCommandSwitcher extends CommandSwitcher{
                   case ETC:
                       EncodeTextCommand etc = new EncodeTextCommand();
                       executor.executeCommand(etc);
+                      break;
+
+                  case FLQ:
+                      FileLockQueryCommand flq = new FileLockQueryCommand();
+                      executor.executeCommand(flq);
+                      break;
+
+                  case FLU:
+                      FileLockUpdateCommand flu = new FileLockUpdateCommand();
+                      executor.executeCommand(flu);
                       break;
               }
           } catch (IllegalArgumentException ex){
