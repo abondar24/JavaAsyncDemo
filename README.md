@@ -39,6 +39,7 @@ Use arg (nio) to run demos.
 12. File Lock Update (flu) - Lock file for updates.
 13. File Lock Query (flq) - Lock file for reading.
 14. File Hole (fhc) - Create a temp file and write to it.
+15. Gathering Write (gwc) - Write data from three arrays to three columns in file.
 
 ## RX
 

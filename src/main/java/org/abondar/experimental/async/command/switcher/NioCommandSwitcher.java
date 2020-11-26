@@ -16,6 +16,7 @@ import org.abondar.experimental.async.nio.EncodeTextCommand;
 import org.abondar.experimental.async.nio.FileHoleCommand;
 import org.abondar.experimental.async.nio.FileLockQueryCommand;
 import org.abondar.experimental.async.nio.FileLockUpdateCommand;
+import org.abondar.experimental.async.nio.GatheringWriteCommand;
 
 public class NioCommandSwitcher extends CommandSwitcher{
     @Override
@@ -90,6 +91,11 @@ public class NioCommandSwitcher extends CommandSwitcher{
                   case FLU:
                       FileLockUpdateCommand flu = new FileLockUpdateCommand();
                       executor.executeCommand(flu);
+                      break;
+
+                  case GWC:
+                      GatheringWriteCommand gwc = new GatheringWriteCommand();
+                      executor.executeCommand(gwc);
                       break;
               }
           } catch (IllegalArgumentException ex){
