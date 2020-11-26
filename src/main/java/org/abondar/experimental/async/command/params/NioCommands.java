@@ -12,6 +12,7 @@ public enum NioCommands {
     CSC,
     EFC,
     ETC,
+    FHC,
     FLQ,
     FLU,
 }

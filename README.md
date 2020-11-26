@@ -38,6 +38,7 @@ Use arg (nio) to run demos.
 11. Encode Text (etc) - Encode incoming string to different encodings.
 12. File Lock Update (flu) - Lock file for updates.
 13. File Lock Query (flq) - Lock file for reading.
+14. File Hole (fhc) - Create a temp file and write to it.
 
 ## RX
 
