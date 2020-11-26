@@ -7,6 +7,7 @@ public enum NioCommands {
     BFD,
     CDC,
     CGC,
+    CHAC,
     CHC,
     CTF,
     CSC,

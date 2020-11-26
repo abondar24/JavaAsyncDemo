@@ -1,10 +1,6 @@
-package org.abondar.experimental.async.nio;
+package org.abondar.experimental.async.nio.charset;
 
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.charset.Charset;
@@ -12,25 +8,25 @@ import java.nio.charset.CharsetDecoder;
 import java.nio.charset.CharsetEncoder;
 import java.nio.charset.CoderResult;
 
-public class SS13Charset extends Charset {
+public class CustomCharset extends Charset {
 
     private static final String BASE_CHARSET_NAME = "UTF-8";
-    private Charset baseCharset;
+    private final Charset baseCharset;
 
 
-    protected SS13Charset(String canonical, String[] aliases) {
+    protected CustomCharset(String canonical, String[] aliases) {
         super(canonical, aliases);
         baseCharset = Charset.forName(BASE_CHARSET_NAME);
     }
 
     @Override
     public CharsetEncoder newEncoder() {
-        return new SS13Encoder(this, baseCharset.newEncoder());
+        return new CustomEncoder(this, baseCharset.newEncoder());
     }
 
     @Override
     public CharsetDecoder newDecoder() {
-        return new SS13Decoder(this, baseCharset.newDecoder());
+        return new CustomDecoder(this, baseCharset.newDecoder());
     }
 
 
@@ -61,11 +57,11 @@ public class SS13Charset extends Charset {
     }
 
 
-    private class SS13Encoder extends CharsetEncoder {
+    private class CustomEncoder extends CharsetEncoder {
 
         private CharsetEncoder baseEncoder;
 
-        SS13Encoder(Charset cs, CharsetEncoder baseEncoder) {
+        CustomEncoder(Charset cs, CharsetEncoder baseEncoder) {
             super(cs, baseEncoder.averageBytesPerChar(), baseEncoder.maxBytesPerChar());
             this.baseEncoder = baseEncoder;
         }
@@ -91,11 +87,11 @@ public class SS13Charset extends Charset {
     }
 
 
-    private class SS13Decoder extends CharsetDecoder {
+    private class CustomDecoder extends CharsetDecoder {
 
         private CharsetDecoder baseDecoder;
 
-        SS13Decoder(Charset cs, CharsetDecoder baseDecoder) {
+        CustomDecoder(Charset cs, CharsetDecoder baseDecoder) {
             super(cs, baseDecoder.averageCharsPerByte(), baseDecoder.maxCharsPerByte());
             this.baseDecoder = baseDecoder;
         }
@@ -113,23 +109,4 @@ public class SS13Charset extends Charset {
 
     }
 
-    public static void main(String[] args)throws Exception {
-        BufferedReader in;
-
-        if (args.length >0){
-            in = new BufferedReader(new FileReader(args[0]));
-        } else {
-            in = new BufferedReader(new InputStreamReader(System.in));
-        }
-
-        PrintStream out = new PrintStream(System.out,false,"X-SS13");
-
-        String s;
-
-        while ((s=in.readLine())!=null){
-            out.println(s);
-        }
-
-        out.flush();
-    }
 }

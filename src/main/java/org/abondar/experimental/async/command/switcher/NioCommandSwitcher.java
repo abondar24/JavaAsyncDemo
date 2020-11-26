@@ -11,6 +11,7 @@ import org.abondar.experimental.async.nio.ChannelTransferFilesCommand;
 import org.abondar.experimental.async.nio.CharSeqCommand;
 import org.abondar.experimental.async.nio.CharsetDecodeCommand;
 import org.abondar.experimental.async.nio.ComplexGrepCommand;
+import org.abondar.experimental.async.nio.CustomCharsetCommand;
 import org.abondar.experimental.async.nio.EmailFinderCommand;
 import org.abondar.experimental.async.nio.EncodeTextCommand;
 import org.abondar.experimental.async.nio.FileHoleCommand;
@@ -61,6 +62,11 @@ public class NioCommandSwitcher extends CommandSwitcher{
                   case CGC:
                       ComplexGrepCommand cgc = new ComplexGrepCommand();
                       executor.executeCommand(cgc);
+                      break;
+
+                  case CHAC:
+                      CustomCharsetCommand chac = new CustomCharsetCommand();
+                      executor.executeCommand(chac);
                       break;
 
                   case CHC:
