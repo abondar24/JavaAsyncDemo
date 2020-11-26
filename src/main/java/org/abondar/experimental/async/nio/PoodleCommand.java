@@ -1,29 +1,13 @@
 package org.abondar.experimental.async.nio;
 
+import org.abondar.experimental.async.command.Command;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-/**
- * Splitting strings demo. Outputs xml
- */
-public class Poodle {
-    public static void main(String[] args) throws Exception {
-        String input = "poodle zoo";
-        Pattern space = Pattern.compile(" ");
-        Pattern d = Pattern.compile("d");
-        Pattern o = Pattern.compile("o");
-        Pattern[] patterns = {space, d, o};
+public class PoodleCommand implements Command {
 
-        int limits[] = {1, 2, 5, -2, 0};
-
-        if (args.length != 0) {
-            input = args[0];
-            patterns = collectPatterns(args);
-        }
-
-        generateTable(input, patterns, limits);
-    }
 
     private static Pattern[] collectPatterns(String[] args) {
         List list = new ArrayList();
@@ -83,5 +67,18 @@ public class Poodle {
         sb.append("</table>\n");
 
         System.out.println(sb.toString());
+    }
+
+    @Override
+    public void execute() {
+        String input = "poodle zoo";
+        Pattern space = Pattern.compile(" ");
+        Pattern d = Pattern.compile("d");
+        Pattern o = Pattern.compile("o");
+        Pattern[] patterns = {space, d, o};
+
+        int[] limits = {1, 2, 5, -2, 0};
+
+        generateTable(input, patterns, limits);
     }
 }

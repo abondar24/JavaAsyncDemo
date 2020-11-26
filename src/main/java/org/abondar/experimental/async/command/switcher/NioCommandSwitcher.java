@@ -20,6 +20,7 @@ import org.abondar.experimental.async.nio.GatheringWriteCommand;
 import org.abondar.experimental.async.nio.MapFileCommand;
 import org.abondar.experimental.async.nio.MappedHttpServer;
 import org.abondar.experimental.async.nio.PipeCommand;
+import org.abondar.experimental.async.nio.PoodleCommand;
 
 public class NioCommandSwitcher extends CommandSwitcher{
     @Override
@@ -114,6 +115,11 @@ public class NioCommandSwitcher extends CommandSwitcher{
                   case PIC:
                       PipeCommand pic = new PipeCommand();
                       executor.executeCommand(pic);
+                      break;
+
+                  case POC:
+                      PoodleCommand poc = new PoodleCommand();
+                      executor.executeCommand(poc);
                       break;
               }
           } catch (IllegalArgumentException ex){
