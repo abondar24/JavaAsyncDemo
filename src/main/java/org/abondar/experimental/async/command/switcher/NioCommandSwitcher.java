@@ -24,6 +24,7 @@ import org.abondar.experimental.async.nio.PoodleCommand;
 import org.abondar.experimental.async.nio.RegexAppendCommand;
 import org.abondar.experimental.async.nio.RegexReplaceCommand;
 import org.abondar.experimental.async.nio.SimpleGrepCommand;
+import org.abondar.experimental.async.nio.SocketSelectorServer;
 import org.abondar.experimental.async.nio.SocketServer;
 
 public class NioCommandSwitcher extends CommandSwitcher{
@@ -134,6 +135,11 @@ public class NioCommandSwitcher extends CommandSwitcher{
                   case RRC:
                       RegexReplaceCommand rrc = new RegexReplaceCommand();
                       executor.executeCommand(rrc);
+                      break;
+
+                  case SES:
+                      SocketSelectorServer ses = new SocketSelectorServer();
+                      executor.executeCommand(ses);
                       break;
 
                   case SGC:

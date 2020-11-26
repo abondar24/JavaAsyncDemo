@@ -13,9 +13,9 @@ public class SocketSelectorServerThreadPool extends SocketSelectorServer {
     private ThreadPool pool = new ThreadPool(MAX_THREADS);
 
 
-    public static void main(String[] args) throws Exception {
-        new SocketSelectorServerThreadPool().go(args);
-    }
+//    public static void main(String[] args) throws Exception {
+//        new SocketSelectorServerThreadPool().go(args);
+//    }
 
 
     protected void readDataFromSocket(SelectionKey key) throws Exception {
