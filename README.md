@@ -35,6 +35,8 @@ Use arg (nio) to run demos.
 8. Charset Decode (cdc) - Enter a string and decode it to another encoding
 9. Complex Grep (cgc) - Grep from multiple files in different modes(one by one, ignore case)
 10. Email finder (efc) - Check if a string from list matches an email-regex.
+11. Encode Text (etc) - Encode incoming string to different encodings.
+
 
 ## RX
 

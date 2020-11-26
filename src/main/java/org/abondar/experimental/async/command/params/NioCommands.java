@@ -11,4 +11,5 @@ public enum NioCommands {
     CTF,
     CSC,
     EFC,
+    ETC,
 }

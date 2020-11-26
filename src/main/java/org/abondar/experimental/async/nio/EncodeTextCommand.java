@@ -1,19 +1,14 @@
 package org.abondar.experimental.async.nio;
 
 
+import org.abondar.experimental.async.command.Command;
+
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 
-public class EncodeText {
+public class EncodeTextCommand implements Command {
 
-    public static void main(String[] args) throws Exception {
-        String input = "\u00bfMa\u00f1ana?";
-
-        String[] charsetNames = {"US-ASCII", "UTF-8", "UTF-16BE", "UTF-16"};
-
-        Arrays.asList(charsetNames).forEach(charsetName -> doEncode(Charset.forName(charsetName), input));
-    }
 
     private static void doEncode(Charset charsetName, String input) {
         ByteBuffer bb = charsetName.encode(input);
@@ -48,5 +43,16 @@ public class EncodeText {
         }
 
         System.out.println(sb.toString());
+    }
+
+    @Override
+    public void execute() {
+        String input = "\u00bfMa\u00f1ana?";
+
+        String[] charsetNames = {"US-ASCII", "UTF-8", "UTF-16BE", "UTF-16"};
+
+        System.out.println("Encoding input: " + input);
+
+        Arrays.asList(charsetNames).forEach(charsetName -> doEncode(Charset.forName(charsetName), input));
     }
 }
