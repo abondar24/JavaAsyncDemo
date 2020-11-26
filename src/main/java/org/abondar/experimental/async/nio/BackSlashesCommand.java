@@ -1,12 +1,15 @@
 package org.abondar.experimental.async.nio;
 
 
+import org.abondar.experimental.async.command.Command;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BackSlashes {
+public class BackSlashesCommand implements Command  {
 
-    public static void main(String[] args) {
+    @Override
+    public void execute() {
 
         // substitute a\b for XYZ or ABC in input
         String rep = "a\\\\b";
@@ -28,6 +31,5 @@ public class BackSlashes {
         System.out.println(input);
         System.out.println("After (dos-ified, escaped):");
         System.out.println(matcher.replaceAll(rep));
-
     }
 }

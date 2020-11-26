@@ -3,6 +3,7 @@ package org.abondar.experimental.async.command.switcher;
 
 import org.abondar.experimental.async.command.params.NioCommands;
 import org.abondar.experimental.async.nio.AsyncClient;
+import org.abondar.experimental.async.nio.BackSlashesCommand;
 
 public class NioCommandSwitcher extends CommandSwitcher{
     @Override
@@ -12,6 +13,11 @@ public class NioCommandSwitcher extends CommandSwitcher{
                   case AC:
                       AsyncClient ac = new AsyncClient();
                       executor.executeCommand(ac);
+                      break;
+
+                  case BSC:
+                      BackSlashesCommand bsc = new BackSlashesCommand();
+                      executor.executeCommand(bsc);
                       break;
               }
           } catch (IllegalArgumentException ex){
