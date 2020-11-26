@@ -1,46 +1,37 @@
 package org.abondar.experimental.async.nio;
 
 
+import org.abondar.experimental.async.command.Command;
+
+import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.channels.DatagramChannel;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
-public class TimeClient {
-    private static final int DEFAULT_TIME_PORT = 37;
+public class TimeClient implements Command {
+    private static final int DEFAULT_TIME_PORT = 1037;
     private static final long DIFF_1900 = 2208988800L;
     protected int port = DEFAULT_TIME_PORT;
-    protected List remoteHosts;
-    protected DatagramChannel channel;
 
-    public TimeClient(String[] args) throws Exception {
-        if (args.length == 0) {
-            System.err.println("Usage: [-p port ] host ...");
-            System.exit(1);
-        }
+    private List<InetSocketAddress> remoteHosts;
 
-        parseArgs(args);
-        this.channel = DatagramChannel.open();
-    }
+    private DatagramChannel channel;
 
 
-    protected InetSocketAddress recievePacket(DatagramChannel channel, ByteBuffer buffer) throws Exception {
+    protected InetSocketAddress recievePacket(DatagramChannel channel, ByteBuffer buffer) throws IOException {
         buffer.clear();
 
         return (InetSocketAddress) channel.receive(buffer);
     }
 
-    protected void sendRequests() throws Exception {
+    private void sendRequests() throws IOException {
         ByteBuffer buffer = ByteBuffer.allocate(1);
-        Iterator it = remoteHosts.iterator();
 
-        while (it.hasNext()) {
-            InetSocketAddress sa = (InetSocketAddress) it.next();
-
+        for (InetSocketAddress sa : remoteHosts) {
             System.out.println("Requesting time from " + sa.getHostName() + ":" + sa.getPort());
 
             buffer.clear().flip();
@@ -49,7 +40,7 @@ public class TimeClient {
     }
 
 
-    protected void getReplies() throws Exception {
+    private void getReplies() throws IOException {
         ByteBuffer longBuffer = ByteBuffer.allocate(8);
 
         longBuffer.order(ByteOrder.BIG_ENDIAN);
@@ -63,7 +54,7 @@ public class TimeClient {
         int expect = remoteHosts.size();
         int replies = 0;
 
-        System.out.println("");
+        System.out.println();
         System.out.println("Waiting for replies...");
 
         while (true) {
@@ -105,33 +96,33 @@ public class TimeClient {
         }
     }
 
-    private void parseArgs(String[] args) {
 
-        remoteHosts = new ArrayList();
+    @Override
+    public void execute() {
+        String[] hosts = new String[]{"localhost", "google.com", "vk.com"};
 
-        for(int i=0; i<args.length;i++){
-            String arg = args[i];
 
-            if (arg.equals("-p")){
-                i++;
-                this.port = Integer.parseInt(args[i]);
-                continue;
-            }
+        remoteHosts = new ArrayList<>();
 
-            InetSocketAddress sa = new InetSocketAddress(arg, port);
-            if (sa.getAddress()==null){
-                System.out.println("Cannot resolve address: "+ arg);
+        for (String host : hosts) {
+
+            InetSocketAddress sa = new InetSocketAddress(host, port);
+            if (sa.getAddress() == null) {
+                System.out.println("Cannot resolve address: " + host);
                 continue;
             }
 
             remoteHosts.add(sa);
         }
-    }
 
-    public static void main(String[] args) throws Exception {
-        TimeClient client = new TimeClient(args);
-        client.sendRequests();
-        client.getReplies();
+        try {
+            this.channel = DatagramChannel.open();
+            sendRequests();
+            getReplies();
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+            System.exit(2);
+        }
 
     }
 }

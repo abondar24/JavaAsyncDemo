@@ -27,4 +27,6 @@ public enum NioCommands {
     SEST,
     SGC,
     SS,
+    TC,
+    TS,
 }

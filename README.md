@@ -51,6 +51,8 @@ Use arg (nio) to run demos.
 24. Socket Selector Server (ses) - Server with socket selector. Access via localhost:1234.
 25. Socket Selector Thread pool Server (sest) - Server with socket selector and multithreaded worker.
  Access via localhost:1234.
+26. Time Server - Tiny time server. Access via localhost:1037.
+27. Time Client - Tiny client for time server on port 1037.
 
 ## RX
 

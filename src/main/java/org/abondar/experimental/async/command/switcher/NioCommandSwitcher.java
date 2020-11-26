@@ -28,6 +28,10 @@ import org.abondar.experimental.async.nio.SimpleGrepCommand;
 import org.abondar.experimental.async.nio.SocketSelectorServer;
 import org.abondar.experimental.async.nio.SocketSelectorServerThreadPool;
 import org.abondar.experimental.async.nio.SocketServer;
+import org.abondar.experimental.async.nio.TimeClient;
+import org.abondar.experimental.async.nio.TimeServer;
+
+import java.sql.Time;
 
 public class NioCommandSwitcher extends CommandSwitcher{
     @Override
@@ -161,6 +165,16 @@ public class NioCommandSwitcher extends CommandSwitcher{
                   case SS:
                       SocketServer ss = new SocketServer();
                       executor.executeCommand(ss);
+                      break;
+
+                  case TC:
+                      TimeClient tc = new TimeClient();
+                      executor.executeCommand(tc);
+                      break;
+
+                  case TS:
+                      TimeServer ts = new TimeServer();
+                      executor.executeCommand(ts);
                       break;
               }
           } catch (IllegalArgumentException ex){
