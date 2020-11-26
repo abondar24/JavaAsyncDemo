@@ -1,6 +1,8 @@
 package org.abondar.experimental.async.nio;
 
 
+import org.abondar.experimental.async.command.Command;
+
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.ByteBuffer;
@@ -9,22 +11,13 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.charset.*;
 
-public class CharsetDecode {
+public class CharsetDecodeCommand implements Command {
 
-    public static void main(String[] args) throws IOException {
-        String charsetName = "UTF-8";
 
-        if (args.length > 0) {
-            charsetName = args[0];
-        }
-        decodeChannel(Channels.newChannel(System.in), new OutputStreamWriter(System.out),
-                Charset.forName(charsetName));
-    }
-
-    private static void decodeChannel(ReadableByteChannel src, OutputStreamWriter writer, Charset charset)
+    private static void decodeChannel(ReadableByteChannel src, OutputStreamWriter writer)
             throws IOException, UnsupportedCharsetException {
 
-        CharsetDecoder decoder = charset.newDecoder();
+        CharsetDecoder decoder =  StandardCharsets.ISO_8859_1.newDecoder();
 
         decoder.onMalformedInput(CodingErrorAction.REPLACE);
         decoder.onUnmappableCharacter(CodingErrorAction.REPLACE);
@@ -66,5 +59,17 @@ public class CharsetDecode {
             writer.write(charBuffer.toString());
         }
         charBuffer.clear();
+    }
+
+    @Override
+    public void execute() {
+        try {
+            System.out.println("Enter something and press CTRL+D when finished:");
+            decodeChannel(Channels.newChannel(System.in), new OutputStreamWriter(System.out));
+        } catch (IOException ex){
+            System.err.println(ex.getMessage());
+            System.exit(2);
+        }
+
     }
 }

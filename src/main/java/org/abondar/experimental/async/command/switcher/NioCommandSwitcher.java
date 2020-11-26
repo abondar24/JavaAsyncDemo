@@ -9,6 +9,7 @@ import org.abondar.experimental.async.nio.BufferFillDrainCommand;
 import org.abondar.experimental.async.nio.ChannelCopyCommand;
 import org.abondar.experimental.async.nio.ChannelTransferFilesCommand;
 import org.abondar.experimental.async.nio.CharSeqCommand;
+import org.abondar.experimental.async.nio.CharsetDecodeCommand;
 
 public class NioCommandSwitcher extends CommandSwitcher{
     @Override
@@ -33,6 +34,11 @@ public class NioCommandSwitcher extends CommandSwitcher{
                   case BFD:
                       BufferFillDrainCommand bfd = new BufferFillDrainCommand();
                       executor.executeCommand(bfd);
+                      break;
+
+                  case CDC:
+                      CharsetDecodeCommand cdc = new CharsetDecodeCommand();
+                      executor.executeCommand(cdc);
                       break;
 
                   case CHC:
