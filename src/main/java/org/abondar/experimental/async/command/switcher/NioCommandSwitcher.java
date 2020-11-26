@@ -24,6 +24,7 @@ import org.abondar.experimental.async.nio.PoodleCommand;
 import org.abondar.experimental.async.nio.RegexAppendCommand;
 import org.abondar.experimental.async.nio.RegexReplaceCommand;
 import org.abondar.experimental.async.nio.SimpleGrepCommand;
+import org.abondar.experimental.async.nio.SocketServer;
 
 public class NioCommandSwitcher extends CommandSwitcher{
     @Override
@@ -138,6 +139,11 @@ public class NioCommandSwitcher extends CommandSwitcher{
                   case SGC:
                       SimpleGrepCommand sgc = new SimpleGrepCommand();
                       executor.executeCommand(sgc);
+                      break;
+
+                  case SS:
+                      SocketServer ss = new SocketServer();
+                      executor.executeCommand(ss);
                       break;
               }
           } catch (IllegalArgumentException ex){
