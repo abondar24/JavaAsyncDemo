@@ -8,6 +8,7 @@ import org.abondar.experimental.async.nio.BufferCharViewCommand;
 import org.abondar.experimental.async.nio.BufferFillDrainCommand;
 import org.abondar.experimental.async.nio.ChannelCopyCommand;
 import org.abondar.experimental.async.nio.ChannelTransferFilesCommand;
+import org.abondar.experimental.async.nio.CharSeqCommand;
 
 public class NioCommandSwitcher extends CommandSwitcher{
     @Override
@@ -42,6 +43,11 @@ public class NioCommandSwitcher extends CommandSwitcher{
                   case CTF:
                       ChannelTransferFilesCommand ctf = new ChannelTransferFilesCommand();
                       executor.executeCommand(ctf);
+                      break;
+
+                  case CSC:
+                      CharSeqCommand csc = new CharSeqCommand();
+                      executor.executeCommand(csc);
                       break;
               }
           } catch (IllegalArgumentException ex){

@@ -1,10 +1,19 @@
 package org.abondar.experimental.async.nio;
 
 
+import org.abondar.experimental.async.command.Command;
+
 import java.nio.CharBuffer;
 
-public class CharSeqDemo {
-    public static void main(String[] args) {
+public class CharSeqCommand implements Command {
+
+    private static void printCharSeq(CharSequence sequence) {
+        System.out.println("length="+sequence.length()+
+                ", content='"+sequence.toString()+"'");
+    }
+
+    @Override
+    public void execute() {
         StringBuffer stringBuffer = new StringBuffer("Hi");
         CharBuffer charBuffer = CharBuffer.allocate(20);
 
@@ -27,10 +36,5 @@ public class CharSeqDemo {
 
         charBuffer.clear();
         printCharSeq(charSequence);
-    }
-
-    private static void printCharSeq(CharSequence sequence) {
-        System.out.println("length="+sequence.length()+
-                ", content='"+sequence.toString()+"'");
     }
 }
