@@ -34,6 +34,7 @@ Use arg (nio) to run demos.
 7. Char sequence (csc) - Char sequence and char buffer usage.
 8. Charset Decode (cdc) - Enter a string and decode it to another encoding
 9. Complex Grep (cgc) - Grep from multiple files in different modes(one by one, ignore case)
+10. Email finder (efc) - Check if a string from list matches an email-regex.
 
 ## RX
 

@@ -11,6 +11,7 @@ import org.abondar.experimental.async.nio.ChannelTransferFilesCommand;
 import org.abondar.experimental.async.nio.CharSeqCommand;
 import org.abondar.experimental.async.nio.CharsetDecodeCommand;
 import org.abondar.experimental.async.nio.ComplexGrepCommand;
+import org.abondar.experimental.async.nio.EmailFinderCommand;
 
 public class NioCommandSwitcher extends CommandSwitcher{
     @Override
@@ -60,6 +61,11 @@ public class NioCommandSwitcher extends CommandSwitcher{
                   case CSC:
                       CharSeqCommand csc = new CharSeqCommand();
                       executor.executeCommand(csc);
+                      break;
+
+                  case EFC:
+                      EmailFinderCommand efc = new EmailFinderCommand();
+                      executor.executeCommand(efc);
                       break;
               }
           } catch (IllegalArgumentException ex){

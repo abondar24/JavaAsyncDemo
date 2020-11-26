@@ -1,17 +1,19 @@
 package org.abondar.experimental.async.nio;
 
 
+import org.abondar.experimental.async.command.Command;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class EmailFinder {
+public class EmailFinderCommand implements Command {
 
-    public static void main(String[] args) {
-        if (args.length < 1) {
-            System.err.println("Usage: email ... ");
-            System.exit(1);
-        }
-
+    @Override
+    public void execute() {
+        String[] emails = new String[]{
+                "abondar1992@gmail.com",
+                "dummy-email.com"
+        };
         Pattern pattern = Pattern.compile(
                 "([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]"
                         + "{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))"
@@ -20,10 +22,9 @@ public class EmailFinder {
 
         Matcher matcher = pattern.matcher("");
 
-        for (String arg : args) {
+        for (String arg : emails) {
             boolean matched = false;
 
-            System.out.println("");
             System.out.println("Looking at " + arg + " ...");
             matcher.reset(arg);
 
