@@ -30,6 +30,7 @@ Use arg (nio) to run demos.
 3. Buffer Char View (bcv) - Fill buffer and print it.
 4. Buffer Fill Drain (bfd) - Fill char buffer and drain it.
 5. Channel Copy (chc) - Enter data to channel and copy it to another channel.
+6. Channel Transfer Files (ctf) - Read the list of files, put their contents to the same channel and print it.
 
 ## RX
 
