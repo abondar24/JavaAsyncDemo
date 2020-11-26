@@ -18,6 +18,7 @@ import org.abondar.experimental.async.nio.FileLockQueryCommand;
 import org.abondar.experimental.async.nio.FileLockUpdateCommand;
 import org.abondar.experimental.async.nio.GatheringWriteCommand;
 import org.abondar.experimental.async.nio.MapFileCommand;
+import org.abondar.experimental.async.nio.MappedHttpServer;
 
 public class NioCommandSwitcher extends CommandSwitcher{
     @Override
@@ -102,6 +103,11 @@ public class NioCommandSwitcher extends CommandSwitcher{
                   case MFC:
                       MapFileCommand mfc = new MapFileCommand();
                       executor.executeCommand(mfc);
+                      break;
+
+                  case MHS:
+                      MappedHttpServer mhs = new MappedHttpServer();
+                      executor.executeCommand(mhs);
                       break;
               }
           } catch (IllegalArgumentException ex){
