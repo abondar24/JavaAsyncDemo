@@ -29,6 +29,7 @@ Use arg (nio) to run demos.
 2. Back Slashes (bsc) - Change Windows-style back slashes to Unix-style. 
 3. Buffer Char View (bcv) - Fill buffer and print it.
 4. Buffer Fill Drain (bfd) - Fill char buffer and drain it.
+5. Channel Copy (chc) - Enter data to channel and copy it to another channel.
 
 ## RX
 

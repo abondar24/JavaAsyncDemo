@@ -1,29 +1,15 @@
 package org.abondar.experimental.async.nio;
 
 
+import org.abondar.experimental.async.command.Command;
+
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.channels.WritableByteChannel;
 
-public class ChannelCopy {
-
-    public static void main(String[] args) throws IOException {
-        ReadableByteChannel src = Channels.newChannel(System.in);
-        WritableByteChannel dst = Channels.newChannel(System.out);
-
-
-        switch (args[0]) {
-            case "1":
-                channelCopy1(src, dst);
-            case "2":
-                channelCopy2(src, dst);
-        }
-
-        src.close();
-        dst.close();
-    }
+public class ChannelCopyCommand implements Command {
 
 
     private static void channelCopy1(ReadableByteChannel src, WritableByteChannel dst) throws IOException {
@@ -56,4 +42,24 @@ public class ChannelCopy {
 
     }
 
+    @Override
+    public void execute() {
+        try {
+            System.out.println("Enter something:");
+            ReadableByteChannel src = Channels.newChannel(System.in);
+            WritableByteChannel dst = Channels.newChannel(System.out);
+
+
+            channelCopy1(src, dst);
+            channelCopy2(src, dst);
+
+            src.close();
+            dst.close();
+        } catch (IOException ex){
+            System.err.println(ex.getMessage());
+            System.exit(2);
+        }
+
+
+    }
 }

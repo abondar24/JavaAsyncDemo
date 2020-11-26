@@ -6,6 +6,7 @@ import org.abondar.experimental.async.nio.AsyncClient;
 import org.abondar.experimental.async.nio.BackSlashesCommand;
 import org.abondar.experimental.async.nio.BufferCharViewCommand;
 import org.abondar.experimental.async.nio.BufferFillDrainCommand;
+import org.abondar.experimental.async.nio.ChannelCopyCommand;
 
 public class NioCommandSwitcher extends CommandSwitcher{
     @Override
@@ -28,8 +29,13 @@ public class NioCommandSwitcher extends CommandSwitcher{
                       break;
 
                   case BFD:
-                      BufferFillDrainCommand bfdc = new BufferFillDrainCommand();
-                      executor.executeCommand(bfdc);
+                      BufferFillDrainCommand bfd = new BufferFillDrainCommand();
+                      executor.executeCommand(bfd);
+                      break;
+
+                  case CHC:
+                      ChannelCopyCommand chc = new ChannelCopyCommand();
+                      executor.executeCommand(chc);
                       break;
               }
           } catch (IllegalArgumentException ex){
