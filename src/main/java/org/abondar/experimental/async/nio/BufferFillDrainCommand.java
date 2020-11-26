@@ -1,29 +1,21 @@
 package org.abondar.experimental.async.nio;
 
 
+import org.abondar.experimental.async.command.Command;
+
 import java.nio.CharBuffer;
 
-public class BufferFillDrain {
+public class BufferFillDrainCommand implements Command {
 
     private static int index = 0;
 
-    private static String[] strings = {
+    private static final String[] strings = {
             "A random string value",
             "I like burgers",
             "Let's race",
             "I believe I can fly",
             "Who's an engineer?"
     };
-
-    public static void main(String[] args) throws Exception {
-        CharBuffer buffer = CharBuffer.allocate(100);
-
-        while (fillBuffer(buffer)) {
-            buffer.flip();
-            drainBuffer(buffer);
-            buffer.clear();
-        }
-    }
 
     private static void drainBuffer(CharBuffer buffer) {
         while (buffer.hasRemaining()) {
@@ -46,4 +38,14 @@ public class BufferFillDrain {
     }
 
 
+    @Override
+    public void execute() {
+        CharBuffer buffer = CharBuffer.allocate(100);
+
+        while (fillBuffer(buffer)) {
+            buffer.flip();
+            drainBuffer(buffer);
+            buffer.clear();
+        }
+    }
 }

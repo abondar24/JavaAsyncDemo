@@ -4,4 +4,5 @@ public enum NioCommands {
     AC,
     BSC,
     BCV,
+    BFD,
 }
