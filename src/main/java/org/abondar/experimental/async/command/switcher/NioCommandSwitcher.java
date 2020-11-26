@@ -17,6 +17,7 @@ import org.abondar.experimental.async.nio.FileHoleCommand;
 import org.abondar.experimental.async.nio.FileLockQueryCommand;
 import org.abondar.experimental.async.nio.FileLockUpdateCommand;
 import org.abondar.experimental.async.nio.GatheringWriteCommand;
+import org.abondar.experimental.async.nio.MapFileCommand;
 
 public class NioCommandSwitcher extends CommandSwitcher{
     @Override
@@ -96,6 +97,11 @@ public class NioCommandSwitcher extends CommandSwitcher{
                   case GWC:
                       GatheringWriteCommand gwc = new GatheringWriteCommand();
                       executor.executeCommand(gwc);
+                      break;
+
+                  case MFC:
+                      MapFileCommand mfc = new MapFileCommand();
+                      executor.executeCommand(mfc);
                       break;
               }
           } catch (IllegalArgumentException ex){

@@ -16,4 +16,5 @@ public enum NioCommands {
     FLQ,
     FLU,
     GWC,
+    MFC,
 }
