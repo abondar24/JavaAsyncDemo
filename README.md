@@ -44,6 +44,8 @@ Use arg (nio) to run demos.
 17. Mapped HTTP Server (mhs) - Write file contents with HTTP headers to output file.
 18. Pipe (pic) - Create pipe from read and write buffers.
 19. Poodle (poc) - Generate XML style table based on input and regex patterns.
+20. Regex Append (rac) - Append string contents by regex.
+
 
 ## RX
 

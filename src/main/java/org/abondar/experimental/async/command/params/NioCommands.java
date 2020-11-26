@@ -20,4 +20,5 @@ public enum NioCommands {
     MHS,
     PIC,
     POC,
+    RAC,
 }

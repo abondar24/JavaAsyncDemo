@@ -21,6 +21,7 @@ import org.abondar.experimental.async.nio.MapFileCommand;
 import org.abondar.experimental.async.nio.MappedHttpServer;
 import org.abondar.experimental.async.nio.PipeCommand;
 import org.abondar.experimental.async.nio.PoodleCommand;
+import org.abondar.experimental.async.nio.RegexAppendCommand;
 
 public class NioCommandSwitcher extends CommandSwitcher{
     @Override
@@ -120,6 +121,11 @@ public class NioCommandSwitcher extends CommandSwitcher{
                   case POC:
                       PoodleCommand poc = new PoodleCommand();
                       executor.executeCommand(poc);
+                      break;
+
+                  case RAC:
+                      RegexAppendCommand rac = new RegexAppendCommand();
+                      executor.executeCommand(rac);
                       break;
               }
           } catch (IllegalArgumentException ex){

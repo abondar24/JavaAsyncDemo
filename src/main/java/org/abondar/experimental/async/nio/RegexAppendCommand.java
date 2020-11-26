@@ -1,12 +1,16 @@
 package org.abondar.experimental.async.nio;
 
 
+import org.abondar.experimental.async.command.Command;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegexAppend {
+public class RegexAppendCommand implements Command {
 
-    public static void main(String[] args) {
+
+    @Override
+    public void execute() {
         String input = "Thanks, thanks a lot";
         String regex = "([Tt])hanks";
         Pattern pattern = Pattern.compile(regex);
