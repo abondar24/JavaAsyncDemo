@@ -23,6 +23,7 @@ import org.abondar.experimental.async.nio.PipeCommand;
 import org.abondar.experimental.async.nio.PoodleCommand;
 import org.abondar.experimental.async.nio.RegexAppendCommand;
 import org.abondar.experimental.async.nio.RegexReplaceCommand;
+import org.abondar.experimental.async.nio.SimpleGrepCommand;
 
 public class NioCommandSwitcher extends CommandSwitcher{
     @Override
@@ -132,6 +133,11 @@ public class NioCommandSwitcher extends CommandSwitcher{
                   case RRC:
                       RegexReplaceCommand rrc = new RegexReplaceCommand();
                       executor.executeCommand(rrc);
+                      break;
+
+                  case SGC:
+                      SimpleGrepCommand sgc = new SimpleGrepCommand();
+                      executor.executeCommand(sgc);
                       break;
               }
           } catch (IllegalArgumentException ex){

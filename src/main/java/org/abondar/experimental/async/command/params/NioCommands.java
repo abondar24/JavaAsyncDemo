@@ -22,4 +22,5 @@ public enum NioCommands {
     POC,
     RAC,
     RRC,
+    SGC,
 }
