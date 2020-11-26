@@ -18,4 +18,5 @@ public enum NioCommands {
     GWC,
     MFC,
     MHS,
+    PIC,
 }

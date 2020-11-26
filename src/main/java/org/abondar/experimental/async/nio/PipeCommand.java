@@ -1,6 +1,9 @@
 package org.abondar.experimental.async.nio;
 
 
+import org.abondar.experimental.async.command.Command;
+
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
@@ -8,39 +11,48 @@ import java.nio.channels.ReadableByteChannel;
 import java.nio.channels.WritableByteChannel;
 import java.util.Random;
 
-public class PipeDemo {
+public class PipeCommand implements Command {
 
-    public static void main(String[] args) throws Exception {
-        WritableByteChannel out = Channels.newChannel(System.out);
-        ReadableByteChannel workerChannel = startWorker(10);
-        ByteBuffer buffer = ByteBuffer.allocate(1000);
 
-        while (workerChannel.read(buffer) >= 0) {
-            buffer.flip();
-            out.write(buffer);
-            buffer.clear();
-        }
-    }
 
-    private static ReadableByteChannel startWorker(int reps) throws Exception {
+    private static ReadableByteChannel startWorker(int reps) throws IOException {
         Pipe pipe = Pipe.open();
         Worker worker = new Worker(pipe.sink(), reps);
         worker.start();
         return pipe.source();
     }
 
+    @Override
+    public void execute() {
+        try {
+            WritableByteChannel out = Channels.newChannel(System.out);
+            ReadableByteChannel workerChannel = startWorker(10);
+            ByteBuffer buffer = ByteBuffer.allocate(1000);
+
+            while (workerChannel.read(buffer) >= 0) {
+                buffer.flip();
+                out.write(buffer);
+                buffer.clear();
+            }
+        } catch (IOException ex){
+            System.err.println(ex.getMessage());
+            System.exit(2);
+        }
+
+    }
+
     private static class Worker extends Thread {
         WritableByteChannel channel;
-        private int reps;
+        private final int reps;
 
 
-        private String[] products = {
+        private final String[] products = {
                 "To be or not to be",
                 "What is the sense of life?",
                 "My karma ran over my dogma"
         };
 
-        private Random random = new Random();
+        private final Random random = new Random();
 
 
         Worker(WritableByteChannel channel, int reps) {
