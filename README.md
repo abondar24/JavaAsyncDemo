@@ -5,6 +5,7 @@ Set of Java Multithreading, NIO and RX demos.
 ## Multithreading
 
 Use arg (mt) to run demos.
+
 1. Thread (tc) - run several threads.
 2. Thread Pool (tpc) - create a thread pool via executor service. 
 3. Thread Synchronization (tsc) - synchronize threads by flag.
@@ -24,6 +25,8 @@ Use arg (mt) to run demos.
 
 Use arg (nio) to run demos.
 
+1. Async Client (ac) - Tiny client for web server.
+
 ## RX
 
 Use arg (rx) to run demos.
@@ -38,4 +41,5 @@ java -jar <jar-locaiton>/async.jar <demo-type> <demo-name>
 
 ##Notes
 
-- All demo names are in ()
+- All demo names are in ().
+- Async Client requires a web server(nginx or apache).
