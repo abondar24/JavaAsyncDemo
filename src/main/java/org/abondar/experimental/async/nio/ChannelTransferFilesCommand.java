@@ -27,7 +27,7 @@ public class ChannelTransferFilesCommand implements Command {
     @Override
     public void execute() {
         try {
-            String[] files = new String[]{"pom.xml","README.md"};
+            String[] files = new String[]{"pom.xml","README.md","dummy_text.txt"};
             catFiles(Channels.newChannel(System.out),files);
         } catch (IOException ex){
             System.err.println(ex.getMessage());

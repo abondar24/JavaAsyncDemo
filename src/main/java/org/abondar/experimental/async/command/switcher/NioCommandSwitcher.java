@@ -10,6 +10,7 @@ import org.abondar.experimental.async.nio.ChannelCopyCommand;
 import org.abondar.experimental.async.nio.ChannelTransferFilesCommand;
 import org.abondar.experimental.async.nio.CharSeqCommand;
 import org.abondar.experimental.async.nio.CharsetDecodeCommand;
+import org.abondar.experimental.async.nio.ComplexGrepCommand;
 
 public class NioCommandSwitcher extends CommandSwitcher{
     @Override
@@ -39,6 +40,11 @@ public class NioCommandSwitcher extends CommandSwitcher{
                   case CDC:
                       CharsetDecodeCommand cdc = new CharsetDecodeCommand();
                       executor.executeCommand(cdc);
+                      break;
+
+                  case CGC:
+                      ComplexGrepCommand cgc = new ComplexGrepCommand();
+                      executor.executeCommand(cgc);
                       break;
 
                   case CHC:
