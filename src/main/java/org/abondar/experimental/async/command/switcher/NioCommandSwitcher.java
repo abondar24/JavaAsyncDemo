@@ -4,6 +4,7 @@ package org.abondar.experimental.async.command.switcher;
 import org.abondar.experimental.async.command.params.NioCommands;
 import org.abondar.experimental.async.nio.AsyncClient;
 import org.abondar.experimental.async.nio.BackSlashesCommand;
+import org.abondar.experimental.async.nio.BufferCharViewCommand;
 
 public class NioCommandSwitcher extends CommandSwitcher{
     @Override
@@ -18,6 +19,11 @@ public class NioCommandSwitcher extends CommandSwitcher{
                   case BSC:
                       BackSlashesCommand bsc = new BackSlashesCommand();
                       executor.executeCommand(bsc);
+                      break;
+
+                  case BCV:
+                      BufferCharViewCommand bcv = new BufferCharViewCommand();
+                      executor.executeCommand(bcv);
                       break;
               }
           } catch (IllegalArgumentException ex){

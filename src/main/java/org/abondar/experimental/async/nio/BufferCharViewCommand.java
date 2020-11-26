@@ -1,13 +1,23 @@
 package org.abondar.experimental.async.nio;
 
 
+import org.abondar.experimental.async.command.Command;
+
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.CharBuffer;
 
-public class BufferCharView {
-    public static void main(String[] args) throws Exception {
+public class BufferCharViewCommand implements Command {
+
+    private static void printBuffer(Buffer buffer) {
+        System.out.printf("pos=%d, limit=%d, capacity=%d: '%s'\n",
+                buffer.position(),buffer.limit(),buffer.capacity(),buffer.toString());
+
+    }
+
+    @Override
+    public void execute() {
         ByteBuffer byteBuffer = ByteBuffer.allocate(7).order(ByteOrder.BIG_ENDIAN);
         CharBuffer charBuffer = byteBuffer.asCharBuffer();
 
@@ -21,12 +31,5 @@ public class BufferCharView {
 
         printBuffer(byteBuffer);
         printBuffer(charBuffer);
-
-    }
-
-    private static void printBuffer(Buffer buffer) {
-        System.out.printf("pos=%d, limit=%d, capacity=%d: '%s'\n",
-                buffer.position(),buffer.limit(),buffer.capacity(),buffer.toString());
-
     }
 }

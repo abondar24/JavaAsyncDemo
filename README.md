@@ -27,6 +27,8 @@ Use arg (nio) to run demos.
 
 1. Async Client (ac) - Tiny client for web server.
 2. Back Slashes (bsc) - Change Windows-style back slashes to Unix-style. 
+3. Buffer Char View (bcv) - Fill buffer and print it.
+
 
 ## RX
 
