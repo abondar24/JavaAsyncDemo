@@ -2,6 +2,7 @@ package org.abondar.experimental.async.command.params;
 
 public enum  RxCommands {
     ASYC,
+    BPC,
     CC,
     DC,
     DEC,

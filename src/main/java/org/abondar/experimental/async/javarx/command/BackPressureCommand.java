@@ -1,5 +1,6 @@
-package org.abondar.experimental.async.javarx;
+package org.abondar.experimental.async.javarx.command;
 
+import org.abondar.experimental.async.command.Command;
 import org.abondar.experimental.async.javarx.data.Dish;
 import org.abondar.experimental.async.javarx.util.SleeperUtil;
 import rx.Observable;
@@ -11,34 +12,31 @@ import java.time.Duration;
 /**
  * Created by alexabon on 2/9/2017.
  */
-public class BackPressure {
+public class BackPressureCommand implements Command {
 
-    public static void dishesRange() {
+    @Override
+    public void execute() {
+        System.out.println("Standard range");
         Observable.range(1, 1_00)
                 .map(Dish::new)
                 .subscribe(x -> {
                     System.out.println("Washing: " + x);
                     SleeperUtil.sleep(Duration.ofMillis(50));
                 });
-    }
 
 
-    public static void dishesMyRange() {
+        System.out.println("Custom range");
         myRange(1, 1_00)
                 .map(Dish::new)
                 .subscribe(x -> {
                     System.out.println("Washing: " + x);
                     SleeperUtil.sleep(Duration.ofMillis(50));
                 });
+
     }
 
-
-
-    private static Observable<Integer> myRange(int from, int count) {
+    private Observable<Integer> myRange(int from, int count) {
         return   Observable.create(new OnSubscribeRange(from, count));
     }
-
-
-
 
 }

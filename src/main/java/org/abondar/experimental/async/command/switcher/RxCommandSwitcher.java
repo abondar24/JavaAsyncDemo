@@ -3,6 +3,7 @@ package org.abondar.experimental.async.command.switcher;
 import org.abondar.experimental.async.command.params.RxCommands;
 import org.abondar.experimental.async.javarx.IntervalCommand;
 import org.abondar.experimental.async.javarx.command.AsyncComputationCommand;
+import org.abondar.experimental.async.javarx.command.BackPressureCommand;
 import org.abondar.experimental.async.javarx.command.CompletableCommand;
 import org.abondar.experimental.async.javarx.command.DayCommand;
 import org.abondar.experimental.async.javarx.command.DelayCommand;
@@ -37,6 +38,11 @@ public class RxCommandSwitcher extends CommandSwitcher{
                 case ASYC:
                     AsyncComputationCommand asc = new AsyncComputationCommand();
                     executor.executeCommand(asc);
+                    break;
+
+                case BPC:
+                    BackPressureCommand bpc = new BackPressureCommand();
+                    executor.executeCommand(bpc);
                     break;
 
                 case CC:

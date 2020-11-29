@@ -85,6 +85,7 @@ merge them to one observable and subscribe to it.
 24. Delay Command (dec) - Observable calculating the timestamp after delay.
 25. Delay Names (dnc) - Usage of some operators with observable.
 26. List Buffer (lbc) - Usage of list buffer and calculation of average in the list.
+27. Back Pressuer (bpc) - Back pressure functionality implemented via JavaRX.
 
 ## Build and run
 ````yaml
