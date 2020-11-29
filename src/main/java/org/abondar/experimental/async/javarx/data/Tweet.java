@@ -8,7 +8,7 @@ public class Tweet {
 
     private final String text;
 
-    Tweet(String text) {
+    public Tweet(String text) {
         this.text = text;
     }
 

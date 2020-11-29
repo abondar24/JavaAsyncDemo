@@ -58,7 +58,7 @@ Use arg (nio) to run demos.
 
 Use arg (rx) to run demos.
 
-1. Hello (hc) - Java RX Hello World.
+1. Hello (hc) - JavaRX Hello World.
 2. In Memory (imc) - Read data from fake cache via observable and subscriber.
 3. Synchronous Computation (syc) - Synchronous computation via observable and subscriber.
 4. Asychronous Computation (asyc) - Asychronous computation via observable and subscriber.
@@ -66,6 +66,7 @@ Use arg (rx) to run demos.
 merge them to one observable and subscribe to it.
 6. Singles Command (sc) - Merge two singles into one observable and subscribe to it. 
 7. Completable (cc) - Usage of Completable class for asynchronous data writing.
+8. Notifications (nc) - Dummy example of subscription to tweets stream via JavaRX.
 
 
 

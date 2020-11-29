@@ -2,7 +2,6 @@ package org.abondar.experimental.async.javarx;
 
 import org.abondar.experimental.async.javarx.data.Data;
 import org.abondar.experimental.async.javarx.data.Sound;
-import org.abondar.experimental.async.javarx.data.Tweet;
 import rx.*;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.Subscriptions;
@@ -14,7 +13,6 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.*;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import static java.math.BigInteger.ONE;
@@ -32,72 +30,6 @@ import org.apache.commons.lang3.tuple.Pair;
  */
 public class Basics {
 
-
-    public static void subscribeToNotfications() {
-        Observable<Tweet> tweets = Observable.empty();
-
-        tweets.subscribe(System.out::println,
-                Throwable::printStackTrace,
-                Basics::noMore);
-    }
-
-    public static void captureAllNotifications() {
-        Observable<Tweet> tweets = Observable.empty();
-
-        Observer<Tweet> observer = new Observer<Tweet>() {
-
-            @Override
-            public void onCompleted() {
-                noMore();
-            }
-
-            @Override
-            public void onError(Throwable throwable) {
-                throwable.printStackTrace();
-            }
-
-            @Override
-            public void onNext(Tweet tweet) {
-                System.out.println(tweet);
-            }
-        };
-
-        tweets.subscribe(observer);
-    }
-
-
-    public static void listenerControl() {
-        Observable<Tweet> tweets = Observable.empty();
-
-        Subscription subscription = tweets.subscribe(System.out::println);
-
-        subscription.unsubscribe();
-    }
-
-
-    public static void listenerControl1() {
-        Observable<Tweet> tweets = Observable.empty();
-
-        Subscriber<Tweet> subscriber = new Subscriber<Tweet>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable throwable) {
-                throwable.printStackTrace();
-            }
-
-            @Override
-            public void onNext(Tweet tweet) {
-                if (tweet.getText().contains("java")) {
-                    unsubscribe();
-                }
-            }
-        };
-
-    }
 
     public static void masteringObservable() {
         log("Before");
@@ -471,8 +403,6 @@ public class Basics {
 
     }
 
-
-
     private static double averageOfList(List<Double> list){
         return list.stream().collect(Collectors.averagingDouble(x->x));
     }
@@ -503,8 +433,6 @@ public class Basics {
         return delayedNames;
     }
 
-
-
     private static Observable<String> speak(String quote, long millisPerChar) {
         String[] tokens = quote.replaceAll("[:,]", "").split(" ");
         Observable<String> words = Observable.from(tokens);
@@ -529,9 +457,6 @@ public class Basics {
     }
 
 
-
-    private static void noMore() {
-    }
 
     private static void log(Object msg) {
         System.out.println(
