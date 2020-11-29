@@ -30,18 +30,7 @@ import org.apache.commons.lang3.tuple.Pair;
 public class Basics {
 
     public static void multipleSubscribers() {
-//        Observable<Integer> ints =
-//                Observable.<Integer>create(subscriber -> {
-//                            log("Create");
-//                            subscriber.onNext(42);
-//                            subscriber.onCompleted();
-//                        }
-//                ).cache();
-//
-//        log("Starting");
-//        ints.subscribe(i -> log("Element A: " + i));
-//        ints.subscribe(i -> log("Element B: " + i));
-//        log("Exit");
+
     }
 
 
