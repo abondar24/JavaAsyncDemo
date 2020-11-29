@@ -6,61 +6,12 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-import static java.util.concurrent.TimeUnit.MILLISECONDS;
-import static java.util.concurrent.TimeUnit.SECONDS;
 import static rx.Observable.just;
 
 /**
  * Created by abondar on 2/2/17.
  */
 public class Basics {
-
-    public static void delayedNamesSample() {
-        Observable<String> delayedNames = delayedNames();
-        delayedNames.sample(1, SECONDS)
-                .subscribe(System.out::println);
-    }
-
-    public static void delayedNamesConcatWith() {
-        Observable<String> delayedNames = delayedNames();
-
-        delayedNames
-                .concatWith(Observable.<String>empty().delay(1, SECONDS))
-                .sample(1, SECONDS)
-                .subscribe(System.out::println);
-    }
-
-    public static void delayedNamesThrottleFirst() {
-        Observable<String> delayedNames = delayedNames();
-
-        delayedNames
-                .throttleFirst(1, SECONDS)
-                .subscribe(System.out::println);
-    }
-
-    public static void delayedNamesBuffered(){
-        Observable<String> names =
-                just("Mary", "Patricia", "Linda",
-                        "Barbara",
-                        "Elizabeth", "Jennifer", "Maria", "Susan",
-                        "Margaret", "Dorothy");
-
-        Observable<Long> absDelayMillis =
-                just(0.1, 0.6, 0.9,
-                        1.1,
-                        3.3, 3.4, 3.5, 3.6,
-                        4.4, 4.8)
-                        .map(d -> (long) (d * 1_000));
-
-        final Observable<String> delayedNames =Observable
-                .zip(names,absDelayMillis,
-                        (n, d) -> just(n).delay(d, MILLISECONDS))
-                .flatMap(o -> o);
-
-        delayedNames.buffer(1,SECONDS)
-                .subscribe(System.out::println);
-
-    }
 
     public static void listBuffer(){
         Observable.range(1,7)
@@ -85,30 +36,6 @@ public class Basics {
     private static void listOP(List<Integer> list){
         list.forEach(System.out::println);
     }
-
-
-    private static Observable<String> delayedNames() {
-        Observable<String> names =
-                just("Mary", "Patricia", "Linda",
-                        "Barbara",
-                        "Elizabeth", "Jennifer", "Maria", "Susan",
-                        "Margaret", "Dorothy");
-
-        Observable<Long> absDelayMillis =
-                just(0.1, 0.6, 0.9,
-                        1.1,
-                        3.3, 3.4, 3.5, 3.6,
-                        4.4, 4.8)
-                        .map(d -> (long) (d * 1_000));
-
-        final Observable<String> delayedNames = names
-                .zipWith(absDelayMillis,
-                        (n, d) -> just(n).delay(d, MILLISECONDS))
-                .flatMap(o -> o);
-
-        return delayedNames;
-    }
-
 
     private static Callback getDataAsynchronously(String key) {
         final Callback callback = new Callback();

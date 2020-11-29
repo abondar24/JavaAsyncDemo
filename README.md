@@ -83,6 +83,7 @@ merge them to one observable and subscribe to it.
 22. True False (tfc) - Compare numbers in range.
 23. Scheduler Worker (swc) - Reactive worker with a scheduler.
 24. Delay Command (dec) - Observable calculating the timestamp after delay.
+25. Delay Names (dnc) - Usage of some operators with observable.
 
 ## Build and run
 ````yaml
