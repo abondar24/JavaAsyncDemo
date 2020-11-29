@@ -75,7 +75,7 @@ merge them to one observable and subscribe to it.
 14. Timed Observable (toc) - Thread sleep functionality in JavaRX style.
 15. Interval (ic) - Observable which prints data within an interval.
 16. Filter (fc) - Filter data in observable.
-17. Flat Map (flc) - Flat map usage in JavaRX.
+17. Morse (mc) - Morse encoding via flat map usage in JavaRX.
 
 
 ## Build and run

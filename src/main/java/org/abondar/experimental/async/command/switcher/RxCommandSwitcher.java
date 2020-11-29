@@ -6,9 +6,9 @@ import org.abondar.experimental.async.javarx.command.AsyncComputationCommand;
 import org.abondar.experimental.async.javarx.command.CompletableCommand;
 import org.abondar.experimental.async.javarx.command.DelayedObservableCommand;
 import org.abondar.experimental.async.javarx.command.FilterCommand;
-import org.abondar.experimental.async.javarx.command.FlatMapCommand;
 import org.abondar.experimental.async.javarx.command.HelloCommand;
 import org.abondar.experimental.async.javarx.command.InMemoryCommand;
+import org.abondar.experimental.async.javarx.command.MorseCommand;
 import org.abondar.experimental.async.javarx.command.MultipleSubscribersCommand;
 import org.abondar.experimental.async.javarx.command.NaturalNumbersCommand;
 import org.abondar.experimental.async.javarx.command.NotificationsCommand;
@@ -18,7 +18,6 @@ import org.abondar.experimental.async.javarx.command.SinglesCommand;
 import org.abondar.experimental.async.javarx.command.SyncComputationCommand;
 import org.abondar.experimental.async.javarx.command.TimedObservableCommand;
 import org.abondar.experimental.async.javarx.command.TwoThreadsCommand;
-import org.abondar.experimental.async.nio.FileHoleCommand;
 
 public class RxCommandSwitcher extends CommandSwitcher{
     @Override
@@ -46,11 +45,6 @@ public class RxCommandSwitcher extends CommandSwitcher{
                     executor.executeCommand(fc);
                     break;
 
-                case FLC:
-                    FlatMapCommand flc = new FlatMapCommand();
-                    executor.executeCommand(flc);
-                    break;
-
                 case HC:
                     HelloCommand hc = new HelloCommand();
                     executor.executeCommand(hc);
@@ -64,6 +58,11 @@ public class RxCommandSwitcher extends CommandSwitcher{
                 case IMC:
                     InMemoryCommand imc = new InMemoryCommand();
                     executor.executeCommand(imc);
+                    break;
+
+                case MC:
+                    MorseCommand mc = new MorseCommand();
+                    executor.executeCommand(mc);
                     break;
 
                 case MSC:

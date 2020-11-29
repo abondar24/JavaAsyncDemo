@@ -37,10 +37,7 @@ public class Main {
     }
 
     public static void showMorse(){
-        just('S','p','a','r','t','a')
-                .map(Character::toLowerCase)
-                .flatMap(Basics::toMorseCode)
-        .subscribe(System.out::println);
+
     }
 
     public static void showForDay(){
