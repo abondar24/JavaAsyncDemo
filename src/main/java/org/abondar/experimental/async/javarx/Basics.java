@@ -21,15 +21,6 @@ import org.apache.commons.lang3.tuple.Pair;
  */
 public class Basics {
 
-    //eq to thread sleep
-    public static void observableByTimer() {
-//        Observable
-//                .timer(1, SECONDS)
-//                .subscribe(Basics::log);
-//        Sleeper.sleep(Duration.ofSeconds(2));
-    }
-
-
     public static void interval() {
 //        Observable
 //                .interval(1_000_000 / 60, MICROSECONDS)

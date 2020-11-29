@@ -13,6 +13,7 @@ public enum  RxCommands {
     PLC,
     SC,
     SYC,
+    TOC,
     TTC,
 
 }

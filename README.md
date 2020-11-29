@@ -72,6 +72,7 @@ merge them to one observable and subscribe to it.
 11. Natural Numbers (nnc) - Count natural numbers in loop while subscribed.
 12. Delayed Observable (doc) - Custom observable with delay.
 13. Parallel Load (plc) - Load data in parallel from two different observables.
+14. Timed Observable (toc) - Thread sleep functionality in JavaRX style.
 
 
 

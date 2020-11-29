@@ -13,6 +13,7 @@ import org.abondar.experimental.async.javarx.command.ObservableCommand;
 import org.abondar.experimental.async.javarx.command.ParallelLoadCommand;
 import org.abondar.experimental.async.javarx.command.SinglesCommand;
 import org.abondar.experimental.async.javarx.command.SyncComputationCommand;
+import org.abondar.experimental.async.javarx.command.TimedObservableCommand;
 import org.abondar.experimental.async.javarx.command.TwoThreadsCommand;
 
 public class RxCommandSwitcher extends CommandSwitcher{
@@ -79,6 +80,11 @@ public class RxCommandSwitcher extends CommandSwitcher{
                 case SYC:
                     SyncComputationCommand syc = new SyncComputationCommand();
                     executor.executeCommand(syc);
+                    break;
+
+                case TOC:
+                    TimedObservableCommand toc = new TimedObservableCommand();
+                    executor.executeCommand(toc);
                     break;
 
                 case TTC:
