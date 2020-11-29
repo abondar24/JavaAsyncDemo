@@ -2,7 +2,6 @@ package org.abondar.experimental.async.javarx;
 
 import org.abondar.experimental.async.javarx.util.SleeperUtil;
 import rx.*;
-import rx.schedulers.Schedulers;
 import java.time.Duration;
 import java.util.List;
 import java.util.Random;
@@ -11,39 +10,11 @@ import java.util.stream.Collectors;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static rx.Observable.just;
-import org.apache.commons.lang3.tuple.Pair;
-
 
 /**
  * Created by abondar on 2/2/17.
  */
 public class Basics {
-
-    public static void scheduler1() {
-        Scheduler scheduler = Schedulers.immediate();
-        //Scheduler scheduler = Schedulers.trampoline();
-        Scheduler.Worker worker = scheduler.createWorker();
-        System.out.println("Main start");
-        worker.schedule(() -> {
-            System.out.println("Outer start");
-            SleeperUtil.sleep(Duration.ofSeconds(1));
-            worker.schedule(() -> {
-                System.out.println("Middle start");
-                SleeperUtil.sleep(Duration.ofSeconds(1));
-                worker.schedule(() -> {
-                    System.out.println("Inner start");
-                    SleeperUtil.sleep(Duration.ofSeconds(1));
-                    System.out.println("Inner end");
-                });
-                System.out.println("Middle end");
-            });
-
-            System.out.println("Outer End");
-
-        });
-        System.out.println("Main end");
-        worker.unsubscribe();
-    }
 
     public static void delays() {
         long startTime = System.currentTimeMillis();

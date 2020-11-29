@@ -81,6 +81,7 @@ merge them to one observable and subscribe to it.
 20. Tweet Command (tc) - Dummy reactive client for Twitter.
 21. Shakespaere (shc) - Split strings with Shakespaere quotes ,map,zip and merge/concat results.
 22. True False (tfc) - Compare numbers in range.
+23. Scheduler Worker (swc) - Reactive worker with a scheduler.
 
 ## Build and run
 ````yaml
