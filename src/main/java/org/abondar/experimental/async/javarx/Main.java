@@ -28,21 +28,8 @@ public class Main {
         sub2.unsubscribe();
         System.out.println("Unsubscribed 2");
 
-        showMorse();
-
-
         client.processTweets();
         client.mapTweets();
-        showForDay();
     }
 
-    public static void showMorse(){
-
-    }
-
-    public static void showForDay(){
-        Observable
-                .just(DayOfWeek.SUNDAY,DayOfWeek.MONDAY)
-                .concatMap(Basics::loadRecordsFor);
-    }
 }

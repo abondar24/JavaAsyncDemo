@@ -76,6 +76,7 @@ merge them to one observable and subscribe to it.
 15. Interval (ic) - Observable which prints data within an interval.
 16. Filter (fc) - Filter data in observable.
 17. Morse (mc) - Morse encoding via flat map usage in JavaRX.
+18. Day command (dc) - Usage of concatmap in observable.
 
 
 ## Build and run

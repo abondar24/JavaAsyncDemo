@@ -1,10 +1,8 @@
 package org.abondar.experimental.async.javarx;
 
-import org.abondar.experimental.async.javarx.data.Sound;
 import org.abondar.experimental.async.javarx.util.SleeperUtil;
 import rx.*;
 import rx.schedulers.Schedulers;
-import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
@@ -21,25 +19,6 @@ import org.apache.commons.lang3.tuple.Pair;
  * Created by abondar on 2/2/17.
  */
 public class Basics {
-
-
-
-    public static Observable<String> loadRecordsFor(DayOfWeek dow) {
-        switch (dow) {
-            case SUNDAY:
-                return Observable
-                        .interval(90, MILLISECONDS)
-                        .take(5)
-                        .map(i -> "Sun-" + i);
-            case MONDAY:
-                return Observable
-                        .interval(65, MILLISECONDS)
-                        .take(5)
-                        .map(i -> "Mon-" + i);
-            default:
-                throw new IllegalArgumentException("Illegal: " + dow);
-        }
-    }
 
     //TODO: split to two commands
     public static void shakespeare() {
