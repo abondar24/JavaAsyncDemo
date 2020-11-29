@@ -4,7 +4,6 @@ import org.abondar.experimental.async.javarx.util.SleeperUtil;
 import rx.*;
 import rx.schedulers.Schedulers;
 import java.time.Duration;
-import java.time.Instant;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.*;
@@ -19,19 +18,6 @@ import org.apache.commons.lang3.tuple.Pair;
  * Created by abondar on 2/2/17.
  */
 public class Basics {
-
-    public static void trueFalse() {
-        Observable<Boolean> trueFalse = Observable.just(true, false).repeat();
-        Observable<Integer> upstream = Observable.range(30, 8);
-        Observable<Integer> downstream = upstream
-                .zipWith(trueFalse, Pair::of)
-                .filter(Pair::getRight)
-                .map(Pair::getLeft);
-
-        downstream.subscribe(System.out::println);
-
-    }
-
 
     public static void scheduler1() {
         Scheduler scheduler = Schedulers.immediate();

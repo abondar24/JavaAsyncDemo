@@ -20,6 +20,7 @@ public enum  RxCommands {
     SHC,
     SYC,
     TC,
+    TFC,
     TOC,
     TTC,
 

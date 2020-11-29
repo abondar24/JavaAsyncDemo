@@ -20,6 +20,7 @@ import org.abondar.experimental.async.javarx.command.ShakespaereCommand;
 import org.abondar.experimental.async.javarx.command.SingleCommand;
 import org.abondar.experimental.async.javarx.command.SyncComputationCommand;
 import org.abondar.experimental.async.javarx.command.TimedObservableCommand;
+import org.abondar.experimental.async.javarx.command.TrueFalseCommand;
 import org.abondar.experimental.async.javarx.command.TweetCommand;
 import org.abondar.experimental.async.javarx.command.TwoThreadsCommand;
 
@@ -122,6 +123,11 @@ public class RxCommandSwitcher extends CommandSwitcher{
                 case TC:
                     TweetCommand tc = new TweetCommand();
                     executor.executeCommand(tc);
+                    break;
+
+                case TFC:
+                    TrueFalseCommand tfc = new TrueFalseCommand();
+                    executor.executeCommand(tfc);
                     break;
 
                 case TOC:
