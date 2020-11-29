@@ -30,33 +30,18 @@ import org.apache.commons.lang3.tuple.Pair;
 public class Basics {
 
 
-    public static void syncAsyncComputation() {
-        Observable.<Integer>create(subscriber -> {
-            new Thread(() -> subscriber.onNext(42), "Blackjack Thread").start();
-        })
-                .doOnNext(i -> System.out.println(Thread.currentThread()))
-                .filter(i -> i % 2 == 0)
-                .map(i -> "Value " + i + " processed on " + Thread.currentThread())
-                .subscribe(subscriber -> System.out.println("Some Value -> " + subscriber));
-        System.out.println("Values are not emmited yet");
-    }
-
     public static void twoThreads() {
-        Observable<String> a = Observable.create(subscriber -> {
-            new Thread(() -> {
-                subscriber.onNext("one");
-                subscriber.onNext("two");
-                subscriber.onCompleted();
-            }).start();
-        });
+        Observable<String> a = Observable.create(subscriber -> new Thread(() -> {
+            subscriber.onNext("one");
+            subscriber.onNext("two");
+            subscriber.onCompleted();
+        }).start());
 
-        Observable<String> b = Observable.create(subscriber -> {
-            new Thread(() -> {
-                subscriber.onNext("three");
-                subscriber.onNext("four");
-                subscriber.onCompleted();
-            }).start();
-        });
+        Observable<String> b = Observable.create(subscriber -> new Thread(() -> {
+            subscriber.onNext("three");
+            subscriber.onNext("four");
+            subscriber.onCompleted();
+        }).start());
 
         Observable<String> c = Observable.merge(a, b);
         c.subscribe(System.out::println);

@@ -60,7 +60,8 @@ Use arg (rx) to run demos.
 
 1. Hello (hc) - Java RX Hello World.
 2. In Memory (imc) - Read data from fake cache via observer and subscriber.
-3. Synchronous Computation (syc) - Synchronous computation via observer and subscriber
+3. Synchronous Computation (syc) - Synchronous computation via observer and subscriber.
+4. Asychronous Computation (asyc) - Asychronous computation via observer and subscriber
 
 
 
