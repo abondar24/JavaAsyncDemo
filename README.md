@@ -77,6 +77,7 @@ merge them to one observable and subscribe to it.
 16. Filter (fc) - Filter data in observable.
 17. Morse (mc) - Morse encoding via flat map usage in JavaRX.
 18. Day command (dc) - Usage of concatmap in observable.
+19. Tweet Command (tc) - Dummy reactive client for Twitter.
 
 
 ## Build and run

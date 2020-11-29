@@ -1,22 +1,19 @@
-package org.abondar.experimental.async.javarx;
+package org.abondar.experimental.async.javarx.command;
 
-import rx.Completable;
+import org.abondar.experimental.async.command.Command;
+import org.abondar.experimental.async.javarx.TwitterClient;
 import rx.Observable;
 import rx.Subscription;
 import twitter4j.Status;
 
-import java.time.DayOfWeek;
-
-import static rx.Observable.just;
 
 /**
  * Created by abondar on 2/2/17.
  */
-public class Main {
+public class TweetCommand implements Command {
 
-    public static void main(String[] args) {
-
-
+    @Override
+    public void execute() {
         TwitterClient client = new TwitterClient();
         Observable<Status> observable = client.consumeTweets();
         Subscription sub1 = observable.subscribe();
@@ -31,5 +28,4 @@ public class Main {
         client.processTweets();
         client.mapTweets();
     }
-
 }
