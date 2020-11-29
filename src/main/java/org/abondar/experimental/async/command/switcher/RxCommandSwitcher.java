@@ -5,6 +5,7 @@ import org.abondar.experimental.async.javarx.IntervalCommand;
 import org.abondar.experimental.async.javarx.command.AsyncComputationCommand;
 import org.abondar.experimental.async.javarx.command.CompletableCommand;
 import org.abondar.experimental.async.javarx.command.DayCommand;
+import org.abondar.experimental.async.javarx.command.DelayCommand;
 import org.abondar.experimental.async.javarx.command.DelayedObservableCommand;
 import org.abondar.experimental.async.javarx.command.FilterCommand;
 import org.abondar.experimental.async.javarx.command.HelloCommand;
@@ -44,6 +45,11 @@ public class RxCommandSwitcher extends CommandSwitcher{
                 case DC:
                     DayCommand dc = new DayCommand();
                     executor.executeCommand(dc);
+                    break;
+
+                case DEC:
+                    DelayCommand dec = new DelayCommand();
+                    executor.executeCommand(dec);
                     break;
 
                 case DOC:

@@ -82,6 +82,7 @@ merge them to one observable and subscribe to it.
 21. Shakespaere (shc) - Split strings with Shakespaere quotes ,map,zip and merge/concat results.
 22. True False (tfc) - Compare numbers in range.
 23. Scheduler Worker (swc) - Reactive worker with a scheduler.
+24. Delay Command (dec) - Observable calculating the timestamp after delay.
 
 ## Build and run
 ````yaml
