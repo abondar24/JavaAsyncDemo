@@ -6,6 +6,7 @@ import org.abondar.experimental.async.javarx.command.AsyncComputationCommand;
 import org.abondar.experimental.async.javarx.command.CompletableCommand;
 import org.abondar.experimental.async.javarx.command.DelayedObservableCommand;
 import org.abondar.experimental.async.javarx.command.FilterCommand;
+import org.abondar.experimental.async.javarx.command.FlatMapCommand;
 import org.abondar.experimental.async.javarx.command.HelloCommand;
 import org.abondar.experimental.async.javarx.command.InMemoryCommand;
 import org.abondar.experimental.async.javarx.command.MultipleSubscribersCommand;
@@ -43,6 +44,11 @@ public class RxCommandSwitcher extends CommandSwitcher{
                 case FC:
                     FilterCommand fc = new FilterCommand();
                     executor.executeCommand(fc);
+                    break;
+
+                case FLC:
+                    FlatMapCommand flc = new FlatMapCommand();
+                    executor.executeCommand(flc);
                     break;
 
                 case HC:

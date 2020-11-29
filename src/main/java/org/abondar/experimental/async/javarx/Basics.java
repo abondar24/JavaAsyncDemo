@@ -22,15 +22,6 @@ import org.apache.commons.lang3.tuple.Pair;
  */
 public class Basics {
 
-    public static void numbersFlatMap() {
-        Observable<Integer> numbers = just(1, 2, 3, 4);
-
-
-        numbers.flatMap(x -> just(x * 2));
-        numbers.flatMap(x -> (x != 10) ? just(x) : Observable.create(System.out::println));
-    }
-
-
     public static Observable<Sound> toMorseCode(char ch) {
         switch (ch) {
             case 'a':
