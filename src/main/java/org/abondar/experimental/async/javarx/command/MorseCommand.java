@@ -1,7 +1,6 @@
 package org.abondar.experimental.async.javarx.command;
 
 import org.abondar.experimental.async.command.Command;
-import org.abondar.experimental.async.javarx.Basics;
 import org.abondar.experimental.async.javarx.data.Sound;
 import rx.Observable;
 

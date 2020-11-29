@@ -11,6 +11,7 @@ import org.abondar.experimental.async.javarx.command.DelayedObservableCommand;
 import org.abondar.experimental.async.javarx.command.FilterCommand;
 import org.abondar.experimental.async.javarx.command.HelloCommand;
 import org.abondar.experimental.async.javarx.command.InMemoryCommand;
+import org.abondar.experimental.async.javarx.command.ListBufferCommand;
 import org.abondar.experimental.async.javarx.command.MorseCommand;
 import org.abondar.experimental.async.javarx.command.MultipleSubscribersCommand;
 import org.abondar.experimental.async.javarx.command.NaturalNumbersCommand;
@@ -81,6 +82,11 @@ public class RxCommandSwitcher extends CommandSwitcher{
                 case IMC:
                     InMemoryCommand imc = new InMemoryCommand();
                     executor.executeCommand(imc);
+                    break;
+
+                case LBC:
+                    ListBufferCommand lbc = new ListBufferCommand();
+                    executor.executeCommand(lbc);
                     break;
 
                 case MC:
