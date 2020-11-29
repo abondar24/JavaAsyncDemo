@@ -3,6 +3,7 @@ package org.abondar.experimental.async.command.switcher;
 import org.abondar.experimental.async.command.params.RxCommands;
 import org.abondar.experimental.async.javarx.command.AsyncComputationCommand;
 import org.abondar.experimental.async.javarx.command.CompletableCommand;
+import org.abondar.experimental.async.javarx.command.DelayedObservableCommand;
 import org.abondar.experimental.async.javarx.command.HelloCommand;
 import org.abondar.experimental.async.javarx.command.InMemoryCommand;
 import org.abondar.experimental.async.javarx.command.MultipleSubscribersCommand;
@@ -27,6 +28,11 @@ public class RxCommandSwitcher extends CommandSwitcher{
                 case CC:
                     CompletableCommand cc = new CompletableCommand();
                     executor.executeCommand(cc);
+                    break;
+
+                case DOC:
+                    DelayedObservableCommand doc = new DelayedObservableCommand();
+                    executor.executeCommand(doc);
                     break;
 
                 case HC:

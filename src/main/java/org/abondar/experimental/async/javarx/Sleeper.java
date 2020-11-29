@@ -23,7 +23,15 @@ public class Sleeper {
         try {
             TimeUnit.MILLISECONDS.sleep(duration.toMillis());
         } catch (InterruptedException e) {
-            log.warn("Sleep interrupted", e);
+            log.error("Sleep interrupted", e);
+        }
+    }
+
+   public static void sleep(int timeout, TimeUnit unit) {
+        try {
+            unit.sleep(timeout);
+        } catch (InterruptedException e) {
+            log.error("Sleep interrupted", e);
         }
     }
 }

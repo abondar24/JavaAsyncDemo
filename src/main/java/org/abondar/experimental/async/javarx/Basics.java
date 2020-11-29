@@ -23,22 +23,6 @@ import org.apache.commons.lang3.tuple.Pair;
  */
 public class Basics {
 
-    public static <T> Observable<T> delayed(T x) {
-        return Observable.create(subscriber -> {
-            Runnable r = () -> {
-                sleep(10, SECONDS);
-                if (!subscriber.isUnsubscribed()) {
-                    subscriber.onNext(x);
-                    subscriber.onCompleted();
-                }
-            };
-            final Thread thread = new Thread(r);
-            thread.start();
-            subscriber.add(Subscriptions.create(thread::interrupt));
-        });
-    }
-
-
     //parrallelloading of data
     public static Observable<Data> rxLoad(int id) {
         return Observable.create(subscriber -> {
@@ -54,7 +38,6 @@ public class Basics {
     public static Observable<Data> rxLoad1(int id) {
         return Observable.fromCallable(() -> load(id));
     }
-
 
     //eq to thread sleep
     public static void observableByTimer() {
@@ -394,7 +377,6 @@ public class Basics {
                         .delay(pair.getRight(), MILLISECONDS));
     }
 
-
     private static Callback getDataAsynchronously(String key) {
         final Callback callback = new Callback();
         new Thread(() -> {
@@ -402,14 +384,6 @@ public class Basics {
             callback.getOnResponse().accept(key + ":123");
         }).start();
         return callback;
-    }
-
-    private static void sleep(int timeout, TimeUnit unit) {
-        try {
-            unit.sleep(timeout);
-        } catch (InterruptedException ignored) {
-            //intentionally ignored
-        }
     }
 
     private static Data load(Integer id) {
