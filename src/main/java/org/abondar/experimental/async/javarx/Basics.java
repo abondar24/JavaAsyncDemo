@@ -17,7 +17,6 @@ import java.util.stream.Collectors;
 
 import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.ZERO;
-import static java.util.concurrent.TimeUnit.MICROSECONDS;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static rx.Observable.just;
@@ -30,49 +29,25 @@ import org.apache.commons.lang3.tuple.Pair;
  */
 public class Basics {
 
-
-    public static void masteringObservable() {
-        log("Before");
-        Observable
-                .range(5, 3)
-                .subscribe(Basics::log);
-        log("After");
-    }
-
-    public static void masteringObservableDeeper() {
-        Observable<Integer> ints = Observable.create(subscriber -> {
-            log("Create");
-            subscriber.onNext(5);
-            subscriber.onNext(6);
-            subscriber.onNext(7);
-            log("Completed");
-        });
-
-        log("Starting");
-        ints.subscribe(i -> log("Element: " + i));
-        log("Exit");
-    }
-
-
     public static void multipleSubscribers() {
-        Observable<Integer> ints =
-                Observable.<Integer>create(subscriber -> {
-                            log("Create");
-                            subscriber.onNext(42);
-                            subscriber.onCompleted();
-                        }
-                ).cache();
-
-        log("Starting");
-        ints.subscribe(i -> log("Element A: " + i));
-        ints.subscribe(i -> log("Element B: " + i));
-        log("Exit");
+//        Observable<Integer> ints =
+//                Observable.<Integer>create(subscriber -> {
+//                            log("Create");
+//                            subscriber.onNext(42);
+//                            subscriber.onCompleted();
+//                        }
+//                ).cache();
+//
+//        log("Starting");
+//        ints.subscribe(i -> log("Element A: " + i));
+//        ints.subscribe(i -> log("Element B: " + i));
+//        log("Exit");
     }
 
 
     public static void loopsAndSubscribers() {
-        Subscription subscription = naturalNumbers().subscribe(Basics::log);
-        subscription.unsubscribe();
+//        Subscription subscription = naturalNumbers().subscribe(Basics::log);
+//        subscription.unsubscribe();
     }
 
     public static <T> Observable<T> delayed(T x) {
@@ -110,18 +85,18 @@ public class Basics {
 
     //eq to thread sleep
     public static void observableByTimer() {
-        Observable
-                .timer(1, SECONDS)
-                .subscribe(Basics::log);
-        Sleeper.sleep(Duration.ofSeconds(2));
+//        Observable
+//                .timer(1, SECONDS)
+//                .subscribe(Basics::log);
+//        Sleeper.sleep(Duration.ofSeconds(2));
     }
 
 
     public static void interval() {
-        Observable
-                .interval(1_000_000 / 60, MICROSECONDS)
-                .subscribe((Long i) -> log(i));
-        Sleeper.sleep(Duration.ofSeconds(2));
+//        Observable
+//                .interval(1_000_000 / 60, MICROSECONDS)
+//                .subscribe((Long i) -> log(i));
+//        Sleeper.sleep(Duration.ofSeconds(2));
     }
 
     public static void simpleFilter() {
@@ -458,10 +433,7 @@ public class Basics {
 
 
 
-    private static void log(Object msg) {
-        System.out.println(
-                Thread.currentThread().getName() + " " + msg);
-    }
+
 
     private static Observable<BigInteger> naturalNumbers() {
         Observable<BigInteger> naturalNumbers = Observable.create(

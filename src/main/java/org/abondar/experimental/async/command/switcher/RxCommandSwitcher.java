@@ -6,6 +6,7 @@ import org.abondar.experimental.async.javarx.command.CompletableCommand;
 import org.abondar.experimental.async.javarx.command.HelloCommand;
 import org.abondar.experimental.async.javarx.command.InMemoryCommand;
 import org.abondar.experimental.async.javarx.command.NotificationsCommand;
+import org.abondar.experimental.async.javarx.command.ObservableCommand;
 import org.abondar.experimental.async.javarx.command.SinglesCommand;
 import org.abondar.experimental.async.javarx.command.SyncComputationCommand;
 import org.abondar.experimental.async.javarx.command.TwoThreadsCommand;
@@ -39,6 +40,11 @@ public class RxCommandSwitcher extends CommandSwitcher{
                 case NC:
                     NotificationsCommand nc = new NotificationsCommand();
                     executor.executeCommand(nc);
+                    break;
+
+                case OC:
+                    ObservableCommand oc = new ObservableCommand();
+                    executor.executeCommand(oc);
                     break;
 
                 case SC:

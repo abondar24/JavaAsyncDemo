@@ -67,6 +67,7 @@ merge them to one observable and subscribe to it.
 6. Singles Command (sc) - Merge two singles into one observable and subscribe to it. 
 7. Completable (cc) - Usage of Completable class for asynchronous data writing.
 8. Notifications (nc) - Dummy example of subscription to tweets stream via JavaRX.
+9. Observable (oc) - Basic Usage of observable
 
 
 
