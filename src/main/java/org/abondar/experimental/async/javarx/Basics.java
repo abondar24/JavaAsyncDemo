@@ -1,7 +1,5 @@
 package org.abondar.experimental.async.javarx;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import rx.*;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.Subscriptions;
@@ -30,30 +28,6 @@ import org.apache.commons.lang3.tuple.Pair;
  * Created by abondar on 2/2/17.
  */
 public class Basics {
-
-    public static String SOME_KEY = "SS217";
-    private static final Logger log = LoggerFactory.getLogger(Basics.class);
-
-
-
-    public static void inMemoryData() {
-        Observable.create(subscriber -> {
-            String fromCahce = getFromCache(SOME_KEY);
-            if (fromCahce != null) {
-                subscriber.onNext(fromCahce);
-                subscriber.onCompleted();
-            } else {
-                getDataAsynchronously(SOME_KEY)
-                        .onResponse(val -> {
-                            putInCache(SOME_KEY, val);
-                            subscriber.onNext(val);
-                            subscriber.onCompleted();
-                        }).onFailure(exception -> {
-                    subscriber.onError(exception);
-                });
-            }
-        }).subscribe(System.out::println);
-    }
 
     public static void syncComputation() {
         Observable<Integer> observable = Observable.create(subscriber -> {
@@ -612,13 +586,6 @@ public class Basics {
             callback.getOnResponse().accept(key + ":123");
         }).start();
         return callback;
-    }
-
-    private static String getFromCache(String key) {
-        return key + ":644";
-    }
-
-    private static void putInCache(String key, String val) {
     }
 
     private static Single<String> getDataA() {
