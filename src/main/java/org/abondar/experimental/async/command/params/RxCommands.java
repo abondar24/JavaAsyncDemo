@@ -4,6 +4,7 @@ public enum  RxCommands {
     ASYC,
     HC,
     IMC,
+    SC,
     SYC,
     TTC,
 

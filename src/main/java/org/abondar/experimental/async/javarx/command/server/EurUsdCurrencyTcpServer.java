@@ -1,4 +1,4 @@
-package org.abondar.experimental.async.javarx;
+package org.abondar.experimental.async.javarx.command.server;
 
 import java.math.BigDecimal;
 import java.util.concurrent.TimeUnit;

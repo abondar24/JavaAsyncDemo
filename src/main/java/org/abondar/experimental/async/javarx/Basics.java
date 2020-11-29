@@ -1,5 +1,8 @@
 package org.abondar.experimental.async.javarx;
 
+import org.abondar.experimental.async.javarx.data.Data;
+import org.abondar.experimental.async.javarx.data.Sound;
+import org.abondar.experimental.async.javarx.data.Tweet;
 import rx.*;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.Subscriptions;
@@ -29,20 +32,6 @@ import org.apache.commons.lang3.tuple.Pair;
  */
 public class Basics {
 
-
-    public static void singles() {
-
-        Observable<String> aMergeb = getDataA().mergeWith(getDataB());
-        aMergeb.subscribe(System.out::println);
-    }
-
-    public static void singles1() {
-        Single<String> s1 = getDataAsSingle(1);
-        Single<String> s2 = getDataAsSingle(2);
-
-        Observable<String> observable = Single.merge(s1, s2);
-        observable.subscribe(System.out::println);
-    }
 
     public static Completable writeToDb(String data) {
         return Completable.create(s -> {
@@ -547,23 +536,6 @@ public class Basics {
         return callback;
     }
 
-
-    private static Single<String> getDataA() {
-        return Single.<String>create(observer -> {
-            observer.onSuccess("DataA");
-        }).subscribeOn(Schedulers.io());
-    }
-
-    private static Single<String> getDataB() {
-        return Single.<String>create(observer -> {
-            observer.onSuccess("DataB");
-        }).subscribeOn(Schedulers.io());
-    }
-
-    private static Single<String> getDataAsSingle(int i) {
-        return Single.just("Done: " + i);
-    }
-
     private static void doAsyncWrite(String data, Runnable onSuccess, Consumer<Exception> onError) {
         onSuccess.run();
     }
@@ -602,6 +574,4 @@ public class Basics {
     private static Data load(Integer id) {
         return new Data();
     }
-
-
 }

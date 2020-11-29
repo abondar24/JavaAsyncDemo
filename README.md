@@ -63,7 +63,8 @@ Use arg (rx) to run demos.
 3. Synchronous Computation (syc) - Synchronous computation via observable and subscriber.
 4. Asychronous Computation (asyc) - Asychronous computation via observable and subscriber.
 5. Two Threads (ttc) - Create two observables with two threads inside,
-merge them to one observable and subscribe to it
+merge them to one observable and subscribe to it.
+6. Singles Command (sc) - Merge two singles into one observable and subscribe to it. 
 
 
 

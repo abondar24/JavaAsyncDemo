@@ -1,4 +1,4 @@
-package org.abondar.experimental.async.javarx;
+package org.abondar.experimental.async.javarx.data;
 
 /**
  * Created by alexabon on 2/9/2017.

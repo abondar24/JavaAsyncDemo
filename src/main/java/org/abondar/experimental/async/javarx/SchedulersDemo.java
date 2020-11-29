@@ -17,26 +17,22 @@ import static java.util.concurrent.Executors.newFixedThreadPool;
  */
 public class SchedulersDemo {
 
-    private ExecutorService poolA;
-    private ExecutorService poolB;
-    private ExecutorService poolC;
-
-    private Scheduler schedulerA;
-    private Scheduler schedulerB;
-    private Scheduler schedulerC;
+    private final Scheduler schedulerA;
+    private final Scheduler schedulerB;
+    private final Scheduler schedulerC;
 
     private final long start;
 
 
     public SchedulersDemo() {
-        poolA = newFixedThreadPool(10, threadFactory("Sched-A-%d"));
+        ExecutorService poolA = newFixedThreadPool(10, threadFactory("Sched-A-%d"));
         schedulerA = Schedulers.from(poolA);
 
-        poolB = newFixedThreadPool(10, threadFactory("Sched-B-%d"));
+        ExecutorService poolB = newFixedThreadPool(10, threadFactory("Sched-B-%d"));
         schedulerB = Schedulers.from(poolB);
 
 
-        poolC = newFixedThreadPool(10, threadFactory("Sched-C-%d"));
+        ExecutorService poolC = newFixedThreadPool(10, threadFactory("Sched-C-%d"));
         schedulerC = Schedulers.from(poolC);
 
 

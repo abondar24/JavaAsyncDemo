@@ -1,4 +1,4 @@
-package org.abondar.experimental.async.javarx;
+package org.abondar.experimental.async.javarx.data;
 
 /**
  * Created by abondar on 2/2/17.
@@ -12,7 +12,7 @@ public class Tweet {
         this.text = text;
     }
 
-    String getText() {
+    public String getText() {
         return text;
     }
 }

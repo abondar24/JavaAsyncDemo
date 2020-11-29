@@ -1,4 +1,4 @@
-package org.abondar.experimental.async.javarx;
+package org.abondar.experimental.async.javarx.command.server;
 
 import io.reactivex.netty.protocol.http.server.HttpServer;
 import rx.Observable;

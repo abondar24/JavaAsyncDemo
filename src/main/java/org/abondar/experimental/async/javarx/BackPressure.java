@@ -1,5 +1,6 @@
 package org.abondar.experimental.async.javarx;
 
+import org.abondar.experimental.async.javarx.data.Dish;
 import rx.Observable;
 import rx.internal.operators.OnSubscribeRange;
 
