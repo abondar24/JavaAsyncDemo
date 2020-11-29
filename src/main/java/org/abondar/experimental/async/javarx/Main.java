@@ -15,20 +15,6 @@ import static rx.Observable.just;
 public class Main {
 
     public static void main(String[] args) {
-        Basics.helloRx();
-        Basics.inMemoryData();
-        Basics.syncComputation();
-        Basics.syncAsyncComputation();
-        Basics.twoThreads();
-        Basics.singles();
-        Basics.singles1();
-
-        Basics.masteringObservable();
-        Basics.masteringObservableDeeper();
-        Basics.multipleSubscribers();
-        Basics.loopsAndSubscribers();
-        Basics.observableByTimer();
-        Basics.interval();
 
 
         TwitterClient client = new TwitterClient();
@@ -41,24 +27,14 @@ public class Main {
         System.out.println("Unsubscribed 1");
         sub2.unsubscribe();
         System.out.println("Unsubscribed 2");
-        Basics.simpleFilterWithMap();
-        Basics.numbersFlatMap();
+
         showMorse();
-        Basics.shakespeare();
-        Basics.trueFalse();
 
 
                 //these methods are just skeletons to understand. there is no actual subscribtion made
         Completable completable = Basics.writeToDb("salo");
-        Basics.subscribeToNotfications();
-        Basics.captureAllNotifications();
-        Basics.listenerControl();
-        Basics.listenerControl1();
-        Basics.delayed("sss");
-        Basics.rxLoad(24);
-        Basics.rxLoad1(1);
+
         client.processTweets();
-        Basics.simpleFilter();
         client.mapTweets();
         showForDay();
     }

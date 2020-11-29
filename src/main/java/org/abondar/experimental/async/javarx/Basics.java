@@ -34,12 +34,7 @@ public class Basics {
     public static String SOME_KEY = "SS217";
     private static final Logger log = LoggerFactory.getLogger(Basics.class);
 
-    public static void helloRx() {
-        Observable.create(subscriber -> {
-            subscriber.onNext("Hello World!");
-            subscriber.onCompleted();
-        }).subscribe(System.out::println);
-    }
+
 
     public static void inMemoryData() {
         Observable.create(subscriber -> {
@@ -407,6 +402,7 @@ public class Basics {
         }
     }
 
+    //TODO: split to two commands
     public static void shakespeare() {
         Observable<String> alice = speak(
                 "To be, or not to be: that is the question", 110);
@@ -415,7 +411,7 @@ public class Basics {
         Observable<String> jane = speak(
                 "There are more things in Heaven and Earth, " +
                         "Horatio, than are dreamt of in your philosophy", 100);
-//
+
 //        Observable
 //                .merge(
 //                        alice.map(w -> "Alice: " + w),
