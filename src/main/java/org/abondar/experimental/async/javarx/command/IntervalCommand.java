@@ -1,4 +1,4 @@
-package org.abondar.experimental.async.javarx;
+package org.abondar.experimental.async.javarx.command;
 
 import org.abondar.experimental.async.command.Command;
 import rx.Observable;

@@ -1,4 +1,4 @@
-package org.abondar.experimental.async.javarx;
+package org.abondar.experimental.async.javarx.command;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import rx.Observable;
@@ -15,16 +15,16 @@ import static java.util.concurrent.Executors.newFixedThreadPool;
 /**
  * Created by abondar on 2/8/17.
  */
-public class SchedulersDemo {
+public class SchedulerAbstractCommand {
 
-    private final Scheduler schedulerA;
-    private final Scheduler schedulerB;
-    private final Scheduler schedulerC;
+    protected final Scheduler schedulerA;
+    protected final Scheduler schedulerB;
+    protected final Scheduler schedulerC;
 
-    private final long start;
+    protected final long start;
 
 
-    public SchedulersDemo() {
+    public SchedulerAbstractCommand() {
         ExecutorService poolA = newFixedThreadPool(10, threadFactory("Sched-A-%d"));
         schedulerA = Schedulers.from(poolA);
 
@@ -41,17 +41,6 @@ public class SchedulersDemo {
 
     }
 
-    public void subscribeOnDemo() {
-        log("Starting");
-        Observable<String> observable = simple();
-        log("Created");
-        observable.subscribeOn(schedulerA)
-                .subscribeOn(schedulerB)
-                .subscribe(x -> log("Got " + x),
-                        Throwable::printStackTrace,
-                        () -> log("Completed"));
-        log("Exiting");
-    }
 
     public void observeOnDemo(){
         log("Starting");
@@ -89,7 +78,7 @@ public class SchedulersDemo {
         log("Exiting");
     }
 
-    private Observable<String> simple() {
+    protected Observable<String> simple() {
         return Observable.create(subscriber -> {
             log("Subscribed");
             subscriber.onNext("A");
@@ -99,20 +88,20 @@ public class SchedulersDemo {
     }
 
 
-    private void log(Object label) {
+    protected void log(Object label) {
         System.out.println(
                 System.currentTimeMillis() - start + "\t| " +
                         Thread.currentThread().getName() + "\t| " +
                         label);
     }
 
-    private ThreadFactory threadFactory(String pattern) {
+    protected ThreadFactory threadFactory(String pattern) {
         return new ThreadFactoryBuilder()
                 .setNameFormat(pattern)
                 .build();
     }
 
-    Observable<UUID> store(String s) {
+    protected Observable<UUID> store(String s) {
         return Observable.create(subscriber -> {
             log("Storing " + s);
             subscriber.onNext(UUID.randomUUID());
