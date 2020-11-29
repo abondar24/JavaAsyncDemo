@@ -20,6 +20,7 @@ import org.abondar.experimental.async.javarx.command.NotificationsCommand;
 import org.abondar.experimental.async.javarx.command.ObservableCommand;
 import org.abondar.experimental.async.javarx.command.ParallelLoadCommand;
 import org.abondar.experimental.async.javarx.command.MergeSinglesCommand;
+import org.abondar.experimental.async.javarx.command.SchedulerObserveCommand;
 import org.abondar.experimental.async.javarx.command.SchedulerSubscribeCommand;
 import org.abondar.experimental.async.javarx.command.SchedulerWorkerCommand;
 import org.abondar.experimental.async.javarx.command.ShakespaereCommand;
@@ -139,6 +140,11 @@ public class RxCommandSwitcher extends CommandSwitcher{
                 case SHC:
                     ShakespaereCommand shc = new ShakespaereCommand();
                     executor.executeCommand(shc);
+                    break;
+
+                case SOC:
+                    SchedulerObserveCommand sos = new SchedulerObserveCommand();
+                    executor.executeCommand(sos);
                     break;
 
                 case SSC:

@@ -41,23 +41,6 @@ public class SchedulerAbstractCommand {
 
     }
 
-
-    public void observeOnDemo(){
-        log("Starting");
-        final Observable<String> observable = simple();
-        log("created");
-        observable
-                .doOnNext(x -> log("Found 1: " +x))
-                .observeOn(schedulerA)
-                .doOnNext(x -> log("Found 2: " +x))
-                .subscribe(
-                        x->log("Got 1: "+x),
-                        Throwable::printStackTrace,
-                        ()->log("Completed"));
-        log("Exiting");
-    }
-
-
     public void subcribeOnObserveOnDemo(){
         log("Starting");
         Observable<String> observable = Observable.create(subscriber -> {

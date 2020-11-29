@@ -86,7 +86,8 @@ merge them to one observable and subscribe to it.
 25. Delay Names (dnc) - Usage of some operators with observable.
 26. List Buffer (lbc) - Usage of list buffer and calculation of average in the list.
 27. Back Pressure (bpc) - Back pressure functionality implemented via JavaRX.
-28. Scheduler Subscribe (ssc) - Usage of scheduler with subscription. 
+28. Scheduler Subscribe (ssc) - Usage of  subscription to scheduler.
+29. Scheduler Observe (soc) - Usage of observe on scheduler. 
 
 ## Build and run
 ````yaml
