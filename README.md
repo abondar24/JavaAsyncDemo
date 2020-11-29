@@ -79,7 +79,7 @@ merge them to one observable and subscribe to it.
 18. Morse (mc) - Morse encoding via flat map usage in JavaRX.
 19. Day command (dc) - Usage of concatmap in observable.
 20. Tweet Command (tc) - Dummy reactive client for Twitter.
-
+21. Shakespaere (shc) - Split string ,map,zip and merge/concat results.
 
 ## Build and run
 ````yaml

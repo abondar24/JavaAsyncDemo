@@ -20,38 +20,6 @@ import org.apache.commons.lang3.tuple.Pair;
  */
 public class Basics {
 
-    //TODO: split to two commands
-    public static void shakespeare() {
-        Observable<String> alice = speak(
-                "To be, or not to be: that is the question", 110);
-        Observable<String> bob = speak(
-                "Though this be madness, yet there is method in't", 90);
-        Observable<String> jane = speak(
-                "There are more things in Heaven and Earth, " +
-                        "Horatio, than are dreamt of in your philosophy", 100);
-
-//        Observable
-//                .merge(
-//                        alice.map(w -> "Alice: " + w),
-//                        bob.map(w   -> "Bob:   " + w),
-//                        jane.map(w  -> "Jane:  " + w)
-//                )
-//                .subscribe(System.out::println);
-//
-
-
-        Observable
-                .concat(
-                        alice.map(w -> "Alice: " + w),
-                        bob.map(w -> "Bob:   " + w),
-                        jane.map(w -> "Jane:  " + w)
-                )
-                .subscribe(System.out::println);
-
-
-        SleeperUtil.sleep(Duration.ofSeconds(10));
-    }
-
     public static void trueFalse() {
         Observable<Boolean> trueFalse = Observable.just(true, false).repeat();
         Observable<Integer> upstream = Observable.range(30, 8);
@@ -194,18 +162,6 @@ public class Basics {
         return delayedNames;
     }
 
-    private static Observable<String> speak(String quote, long millisPerChar) {
-        String[] tokens = quote.replaceAll("[:,]", "").split(" ");
-        Observable<String> words = Observable.from(tokens);
-        Observable<Long> absDelay = words
-                .map(String::length)
-                .map(len -> len * millisPerChar)
-                .scan((total, currernt) -> total + currernt);
-        return words
-                .zipWith(absDelay.startWith(0L), Pair::of)
-                .flatMap(pair -> just(pair.getLeft())
-                        .delay(pair.getRight(), MILLISECONDS));
-    }
 
     private static Callback getDataAsynchronously(String key) {
         final Callback callback = new Callback();
