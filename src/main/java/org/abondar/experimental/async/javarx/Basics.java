@@ -1,10 +1,8 @@
 package org.abondar.experimental.async.javarx;
 
-import org.abondar.experimental.async.javarx.data.Data;
 import org.abondar.experimental.async.javarx.data.Sound;
 import rx.*;
 import rx.schedulers.Schedulers;
-import rx.subscriptions.Subscriptions;
 import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.Instant;
@@ -22,22 +20,6 @@ import org.apache.commons.lang3.tuple.Pair;
  * Created by abondar on 2/2/17.
  */
 public class Basics {
-
-    //parrallelloading of data
-    public static Observable<Data> rxLoad(int id) {
-        return Observable.create(subscriber -> {
-            try {
-                subscriber.onNext(load(id));
-                subscriber.onCompleted();
-            } catch (Exception e) {
-                subscriber.onError(e);
-            }
-        });
-    }
-
-    public static Observable<Data> rxLoad1(int id) {
-        return Observable.fromCallable(() -> load(id));
-    }
 
     //eq to thread sleep
     public static void observableByTimer() {
@@ -384,9 +366,5 @@ public class Basics {
             callback.getOnResponse().accept(key + ":123");
         }).start();
         return callback;
-    }
-
-    private static Data load(Integer id) {
-        return new Data();
     }
 }

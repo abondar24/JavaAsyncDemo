@@ -10,6 +10,7 @@ public enum  RxCommands {
     NC,
     NNC,
     OC,
+    PLC,
     SC,
     SYC,
     TTC,

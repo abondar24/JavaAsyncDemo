@@ -10,6 +10,7 @@ import org.abondar.experimental.async.javarx.command.MultipleSubscribersCommand;
 import org.abondar.experimental.async.javarx.command.NaturalNumbersCommand;
 import org.abondar.experimental.async.javarx.command.NotificationsCommand;
 import org.abondar.experimental.async.javarx.command.ObservableCommand;
+import org.abondar.experimental.async.javarx.command.ParallelLoadCommand;
 import org.abondar.experimental.async.javarx.command.SinglesCommand;
 import org.abondar.experimental.async.javarx.command.SyncComputationCommand;
 import org.abondar.experimental.async.javarx.command.TwoThreadsCommand;
@@ -63,6 +64,11 @@ public class RxCommandSwitcher extends CommandSwitcher{
                 case OC:
                     ObservableCommand oc = new ObservableCommand();
                     executor.executeCommand(oc);
+                    break;
+
+                case PLC:
+                    ParallelLoadCommand plc = new ParallelLoadCommand();
+                    executor.executeCommand(plc);
                     break;
 
                 case SC:
