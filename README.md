@@ -69,6 +69,7 @@ merge them to one observable and subscribe to it.
 8. Notifications (nc) - Dummy example of subscription to tweets stream via JavaRX.
 9. Observable (oc) - Basic Usage of observable.
 10. Multiple Subscribers (msc) - Usage of observable with multiple subscribers.
+11. Natural Numbers (nnc) - Count natural numbers in loop while subscribed.
 
 
 

@@ -5,8 +5,6 @@ import org.abondar.experimental.async.javarx.data.Sound;
 import rx.*;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.Subscriptions;
-
-import java.math.BigInteger;
 import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.Instant;
@@ -14,13 +12,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.*;
 import java.util.stream.Collectors;
-
-import static java.math.BigInteger.ONE;
-import static java.math.BigInteger.ZERO;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static rx.Observable.just;
-
 import org.apache.commons.lang3.tuple.Pair;
 
 
@@ -28,16 +22,6 @@ import org.apache.commons.lang3.tuple.Pair;
  * Created by abondar on 2/2/17.
  */
 public class Basics {
-
-    public static void multipleSubscribers() {
-
-    }
-
-
-    public static void loopsAndSubscribers() {
-//        Subscription subscription = naturalNumbers().subscribe(Basics::log);
-//        subscription.unsubscribe();
-    }
 
     public static <T> Observable<T> delayed(T x) {
         return Observable.create(subscriber -> {
@@ -418,25 +402,6 @@ public class Basics {
             callback.getOnResponse().accept(key + ":123");
         }).start();
         return callback;
-    }
-
-
-
-
-
-    private static Observable<BigInteger> naturalNumbers() {
-        Observable<BigInteger> naturalNumbers = Observable.create(
-                subscriber -> {
-                    Runnable r = () -> {
-                        BigInteger i = ZERO;
-                        while (!subscriber.isUnsubscribed()) {
-                            subscriber.onNext(i);
-                            i = i.add(ONE);
-                        }
-                    };
-                    new Thread(r).start();
-                });
-        return naturalNumbers;
     }
 
     private static void sleep(int timeout, TimeUnit unit) {
