@@ -22,25 +22,6 @@ import org.apache.commons.lang3.tuple.Pair;
  */
 public class Basics {
 
-    public static void simpleFilter() {
-        Observable<String> strings = Observable.empty();
-        Observable<String> filtered = strings.filter(s -> s.startsWith("#"));
-        filtered.subscribe(System.out::println);
-    }
-
-
-    public static void simpleFilterWithMap() {
-        just(8, 9, 10)
-                .doOnNext(i -> System.out.println("A: " + i))
-                .filter(i -> i % 3 > 0)
-                .doOnNext(i -> System.out.println("B: " + i))
-                .map(i -> "#" + i * 10)
-                .doOnNext(s -> System.out.println("C: " + s))
-                .filter(s -> s.length() < 4)
-                .subscribe(s -> System.out.println("D: " + s));
-    }
-
-
     public static void numbersFlatMap() {
         Observable<Integer> numbers = just(1, 2, 3, 4);
 

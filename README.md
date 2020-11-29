@@ -73,8 +73,8 @@ merge them to one observable and subscribe to it.
 12. Delayed Observable (doc) - Custom observable with delay.
 13. Parallel Load (plc) - Load data in parallel from two different observables.
 14. Timed Observable (toc) - Thread sleep functionality in JavaRX style.
-15. Interval (ic) - Observer which prints data within an interval.
-
+15. Interval (ic) - Observable which prints data within an interval.
+16. Filter (fc) - Filter data in observable.
 
 
 ## Build and run
