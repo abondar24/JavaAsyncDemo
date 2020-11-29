@@ -15,7 +15,8 @@ import org.abondar.experimental.async.javarx.command.NaturalNumbersCommand;
 import org.abondar.experimental.async.javarx.command.NotificationsCommand;
 import org.abondar.experimental.async.javarx.command.ObservableCommand;
 import org.abondar.experimental.async.javarx.command.ParallelLoadCommand;
-import org.abondar.experimental.async.javarx.command.SinglesCommand;
+import org.abondar.experimental.async.javarx.command.MergeSinglesCommand;
+import org.abondar.experimental.async.javarx.command.SingleCommand;
 import org.abondar.experimental.async.javarx.command.SyncComputationCommand;
 import org.abondar.experimental.async.javarx.command.TimedObservableCommand;
 import org.abondar.experimental.async.javarx.command.TweetCommand;
@@ -77,6 +78,11 @@ public class RxCommandSwitcher extends CommandSwitcher{
                     executor.executeCommand(msc);
                     break;
 
+                case MSIC:
+                    MergeSinglesCommand msic = new MergeSinglesCommand();
+                    executor.executeCommand(msic);
+                    break;
+
                 case NC:
                     NotificationsCommand nc = new NotificationsCommand();
                     executor.executeCommand(nc);
@@ -98,7 +104,7 @@ public class RxCommandSwitcher extends CommandSwitcher{
                     break;
 
                 case SC:
-                    SinglesCommand sc = new SinglesCommand();
+                    SingleCommand sc = new SingleCommand();
                     executor.executeCommand(sc);
                     break;
 

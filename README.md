@@ -64,20 +64,21 @@ Use arg (rx) to run demos.
 4. Asychronous Computation (asyc) - Asychronous computation via observable and subscriber.
 5. Two Threads (ttc) - Create two observables with two threads inside,
 merge them to one observable and subscribe to it.
-6. Singles Command (sc) - Merge two singles into one observable and subscribe to it. 
-7. Completable (cc) - Usage of Completable class for asynchronous data writing.
-8. Notifications (nc) - Dummy example of subscription to tweets stream via JavaRX.
-9. Observable (oc) - Basic Usage of observable.
-10. Multiple Subscribers (msc) - Usage of observable with multiple subscribers.
-11. Natural Numbers (nnc) - Count natural numbers in loop while subscribed.
-12. Delayed Observable (doc) - Custom observable with delay.
-13. Parallel Load (plc) - Load data in parallel from two different observables.
-14. Timed Observable (toc) - Thread sleep functionality in JavaRX style.
-15. Interval (ic) - Observable which prints data within an interval.
-16. Filter (fc) - Filter data in observable.
-17. Morse (mc) - Morse encoding via flat map usage in JavaRX.
-18. Day command (dc) - Usage of concatmap in observable.
-19. Tweet Command (tc) - Dummy reactive client for Twitter.
+6. Single - usage of single with error handling.
+7. Merge Singles (msic) - Merge two singles into one observable and subscribe to it. 
+8. Completable (cc) - Usage of Completable class for asynchronous data writing.
+9. Notifications (nc) - Dummy example of subscription to tweets stream via JavaRX.
+10. Observable (oc) - Basic Usage of observable.
+11. Multiple Subscribers (msc) - Usage of observable with multiple subscribers.
+12. Natural Numbers (nnc) - Count natural numbers in loop while subscribed.
+13. Delayed Observable (doc) - Custom observable with delay.
+14. Parallel Load (plc) - Load data in parallel from two different observables.
+15. Timed Observable (toc) - Thread sleep functionality in JavaRX style.
+16. Interval (ic) - Observable which prints data within an interval.
+17. Filter (fc) - Filter data in observable.
+18. Morse (mc) - Morse encoding via flat map usage in JavaRX.
+19. Day command (dc) - Usage of concatmap in observable.
+20. Tweet Command (tc) - Dummy reactive client for Twitter.
 
 
 ## Build and run

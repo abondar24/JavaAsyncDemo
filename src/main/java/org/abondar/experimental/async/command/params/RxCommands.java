@@ -11,6 +11,7 @@ public enum  RxCommands {
     IMC,
     MC,
     MSC,
+    MSIC,
     NC,
     NNC,
     OC,

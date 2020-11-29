@@ -5,7 +5,7 @@ import rx.Observable;
 import rx.Single;
 import rx.schedulers.Schedulers;
 
-public class SinglesCommand implements Command {
+public class MergeSinglesCommand implements Command {
     @Override
     public void execute() {
       mergedObserver();
