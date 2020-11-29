@@ -19,6 +19,7 @@ public enum  RxCommands {
     NC,
     NNC,
     NHS,
+    NTS,
     OC,
     PLC,
     SC,

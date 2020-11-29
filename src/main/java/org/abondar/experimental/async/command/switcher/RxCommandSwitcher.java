@@ -32,6 +32,7 @@ import org.abondar.experimental.async.javarx.command.TrueFalseCommand;
 import org.abondar.experimental.async.javarx.command.TweetCommand;
 import org.abondar.experimental.async.javarx.command.TwoThreadsCommand;
 import org.abondar.experimental.async.javarx.command.server.NettyHttpServer;
+import org.abondar.experimental.async.javarx.command.server.NettyTcpServer;
 
 public class RxCommandSwitcher extends CommandSwitcher{
     @Override
@@ -127,6 +128,11 @@ public class RxCommandSwitcher extends CommandSwitcher{
                 case NNC:
                     NaturalNumbersCommand nnc = new NaturalNumbersCommand();
                     executor.executeCommand(nnc);
+                    break;
+
+                case NTS:
+                    NettyTcpServer nts = new NettyTcpServer();
+                    executor.executeCommand(nts);
                     break;
 
                 case OC:

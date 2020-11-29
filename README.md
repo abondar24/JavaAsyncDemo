@@ -89,8 +89,8 @@ merge them to one observable and subscribe to it.
 28. Scheduler Subscribe (ssc) - Usage of  subscription to scheduler.
 29. Scheduler Observe (soc) - Usage of observe on scheduler.
 30. Scheduler Combo (scc) - Combination of  Scheduler Subscribe and Observe.
-31. NettyHttpServer (nhs) - Reactive HTTP server based on Netty. Access via: localhost:8086
-
+31. Netty HTTP Server (nhs) - Reactive HTTP server based on Netty. Access via: localhost:8086
+32. Netty TCP Server (nts) -  Reactive TCP server based on Netty. Access via: localhost:8084
 ## Build and run
 ````yaml
 java -jar <jar-locaiton>/async.jar <demo-type> <demo-name>
