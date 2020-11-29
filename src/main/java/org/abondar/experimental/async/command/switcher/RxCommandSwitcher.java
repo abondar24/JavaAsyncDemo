@@ -31,6 +31,7 @@ import org.abondar.experimental.async.javarx.command.TimedObservableCommand;
 import org.abondar.experimental.async.javarx.command.TrueFalseCommand;
 import org.abondar.experimental.async.javarx.command.TweetCommand;
 import org.abondar.experimental.async.javarx.command.TwoThreadsCommand;
+import org.abondar.experimental.async.javarx.command.server.NettyHttpServer;
 
 public class RxCommandSwitcher extends CommandSwitcher{
     @Override
@@ -116,6 +117,11 @@ public class RxCommandSwitcher extends CommandSwitcher{
                 case NC:
                     NotificationsCommand nc = new NotificationsCommand();
                     executor.executeCommand(nc);
+                    break;
+
+                case NHS:
+                    NettyHttpServer nhs = new NettyHttpServer();
+                    executor.executeCommand(nhs);
                     break;
 
                 case NNC:

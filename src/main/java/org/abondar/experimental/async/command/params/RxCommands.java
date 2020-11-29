@@ -18,6 +18,7 @@ public enum  RxCommands {
     MSIC,
     NC,
     NNC,
+    NHS,
     OC,
     PLC,
     SC,
