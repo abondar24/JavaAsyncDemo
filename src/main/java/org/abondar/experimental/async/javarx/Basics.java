@@ -1,6 +1,7 @@
 package org.abondar.experimental.async.javarx;
 
 import org.abondar.experimental.async.javarx.data.Sound;
+import org.abondar.experimental.async.javarx.util.SleeperUtil;
 import rx.*;
 import rx.schedulers.Schedulers;
 import java.time.DayOfWeek;
@@ -20,13 +21,6 @@ import org.apache.commons.lang3.tuple.Pair;
  * Created by abondar on 2/2/17.
  */
 public class Basics {
-
-    public static void interval() {
-//        Observable
-//                .interval(1_000_000 / 60, MICROSECONDS)
-//                .subscribe((Long i) -> log(i));
-//        Sleeper.sleep(Duration.ofSeconds(2));
-    }
 
     public static void simpleFilter() {
         Observable<String> strings = Observable.empty();
@@ -181,7 +175,7 @@ public class Basics {
                 .subscribe(System.out::println);
 
 
-        Sleeper.sleep(Duration.ofSeconds(10));
+        SleeperUtil.sleep(Duration.ofSeconds(10));
     }
 
     public static void trueFalse() {
@@ -204,13 +198,13 @@ public class Basics {
         System.out.println("Main start");
         worker.schedule(() -> {
             System.out.println("Outer start");
-            Sleeper.sleep(Duration.ofSeconds(1));
+            SleeperUtil.sleep(Duration.ofSeconds(1));
             worker.schedule(() -> {
                 System.out.println("Middle start");
-                Sleeper.sleep(Duration.ofSeconds(1));
+                SleeperUtil.sleep(Duration.ofSeconds(1));
                 worker.schedule(() -> {
                     System.out.println("Inner start");
-                    Sleeper.sleep(Duration.ofSeconds(1));
+                    SleeperUtil.sleep(Duration.ofSeconds(1));
                     System.out.println("Inner end");
                 });
                 System.out.println("Middle end");
@@ -353,7 +347,7 @@ public class Basics {
     private static Callback getDataAsynchronously(String key) {
         final Callback callback = new Callback();
         new Thread(() -> {
-            Sleeper.sleep(Duration.ofSeconds(1));
+            SleeperUtil.sleep(Duration.ofSeconds(1));
             callback.getOnResponse().accept(key + ":123");
         }).start();
         return callback;

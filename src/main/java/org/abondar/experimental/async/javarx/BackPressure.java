@@ -1,6 +1,7 @@
 package org.abondar.experimental.async.javarx;
 
 import org.abondar.experimental.async.javarx.data.Dish;
+import org.abondar.experimental.async.javarx.util.SleeperUtil;
 import rx.Observable;
 import rx.internal.operators.OnSubscribeRange;
 
@@ -17,7 +18,7 @@ public class BackPressure {
                 .map(Dish::new)
                 .subscribe(x -> {
                     System.out.println("Washing: " + x);
-                    Sleeper.sleep(Duration.ofMillis(50));
+                    SleeperUtil.sleep(Duration.ofMillis(50));
                 });
     }
 
@@ -27,7 +28,7 @@ public class BackPressure {
                 .map(Dish::new)
                 .subscribe(x -> {
                     System.out.println("Washing: " + x);
-                    Sleeper.sleep(Duration.ofMillis(50));
+                    SleeperUtil.sleep(Duration.ofMillis(50));
                 });
     }
 

@@ -1,7 +1,6 @@
 package org.abondar.experimental.async.javarx.command;
 
 import org.abondar.experimental.async.command.Command;
-import org.abondar.experimental.async.javarx.LogUtil;
 import rx.Observable;
 import rx.Subscription;
 
@@ -9,7 +8,7 @@ import java.math.BigInteger;
 
 import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.ZERO;
-import static org.abondar.experimental.async.javarx.LogUtil.log;
+import static org.abondar.experimental.async.javarx.util.LogUtil.log;
 
 public class NaturalNumbersCommand implements Command {
     @Override

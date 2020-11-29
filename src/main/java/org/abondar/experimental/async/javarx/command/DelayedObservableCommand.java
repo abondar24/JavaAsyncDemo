@@ -5,7 +5,7 @@ import rx.Observable;
 import rx.subscriptions.Subscriptions;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
-import static org.abondar.experimental.async.javarx.Sleeper.sleep;
+import static org.abondar.experimental.async.javarx.util.SleeperUtil.sleep;
 
 public class DelayedObservableCommand implements Command {
     @Override

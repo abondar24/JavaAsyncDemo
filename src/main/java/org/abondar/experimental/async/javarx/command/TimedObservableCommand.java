@@ -1,13 +1,13 @@
 package org.abondar.experimental.async.javarx.command;
 
 import org.abondar.experimental.async.command.Command;
-import org.abondar.experimental.async.javarx.Sleeper;
+import org.abondar.experimental.async.javarx.util.SleeperUtil;
 import rx.Observable;
 
 import java.time.Duration;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
-import static org.abondar.experimental.async.javarx.LogUtil.log;
+import static org.abondar.experimental.async.javarx.util.LogUtil.log;
 
 public class TimedObservableCommand implements Command {
     @Override
@@ -15,6 +15,6 @@ public class TimedObservableCommand implements Command {
         Observable
                 .timer(1, SECONDS)
                 .subscribe(msg->log("TOC",msg));
-        Sleeper.sleep(Duration.ofSeconds(2));
+        SleeperUtil.sleep(Duration.ofSeconds(2));
     }
 }

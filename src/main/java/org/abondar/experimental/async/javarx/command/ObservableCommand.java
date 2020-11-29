@@ -4,7 +4,7 @@ import org.abondar.experimental.async.command.Command;
 
 import rx.Observable;
 
-import static org.abondar.experimental.async.javarx.LogUtil.log;
+import static org.abondar.experimental.async.javarx.util.LogUtil.log;
 
 public class ObservableCommand implements Command {
     @Override

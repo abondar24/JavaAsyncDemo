@@ -1,4 +1,4 @@
-package org.abondar.experimental.async.javarx;
+package org.abondar.experimental.async.javarx.util;
 
 import java.time.Duration;
 import java.util.Random;
@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by abondar on 2/2/17.
  */
-public class Sleeper {
-    private static final Logger log = LoggerFactory.getLogger(Sleeper.class);
+public class SleeperUtil {
+    private static final Logger log = LoggerFactory.getLogger(SleeperUtil.class);
     public static final Random RAND = new Random();
 
     public static void sleep(Duration duration, Duration stdDev) {
@@ -34,4 +34,6 @@ public class Sleeper {
             log.error("Sleep interrupted", e);
         }
     }
+
+    private SleeperUtil(){}
 }

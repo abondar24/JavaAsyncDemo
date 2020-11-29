@@ -1,6 +1,7 @@
 package org.abondar.experimental.async.command.switcher;
 
 import org.abondar.experimental.async.command.params.RxCommands;
+import org.abondar.experimental.async.javarx.IntervalCommand;
 import org.abondar.experimental.async.javarx.command.AsyncComputationCommand;
 import org.abondar.experimental.async.javarx.command.CompletableCommand;
 import org.abondar.experimental.async.javarx.command.DelayedObservableCommand;
@@ -40,6 +41,11 @@ public class RxCommandSwitcher extends CommandSwitcher{
                 case HC:
                     HelloCommand hc = new HelloCommand();
                     executor.executeCommand(hc);
+                    break;
+
+                case IC:
+                    IntervalCommand ic = new IntervalCommand();
+                    executor.executeCommand(ic);
                     break;
 
                 case IMC:
