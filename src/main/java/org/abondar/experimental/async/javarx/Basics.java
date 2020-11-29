@@ -29,15 +29,6 @@ import org.apache.commons.lang3.tuple.Pair;
  */
 public class Basics {
 
-    public static void syncComputation() {
-        Observable<Integer> observable = Observable.create(subscriber -> {
-            subscriber.onNext(1);
-            subscriber.onNext(2);
-            subscriber.onNext(3);
-        });
-
-        observable.map(i -> "Number " + i).subscribe(System.out::println);
-    }
 
     public static void syncAsyncComputation() {
         Observable.<Integer>create(subscriber -> {
@@ -587,6 +578,7 @@ public class Basics {
         }).start();
         return callback;
     }
+
 
     private static Single<String> getDataA() {
         return Single.<String>create(observer -> {

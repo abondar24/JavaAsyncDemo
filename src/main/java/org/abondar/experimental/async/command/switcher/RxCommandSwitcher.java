@@ -3,6 +3,7 @@ package org.abondar.experimental.async.command.switcher;
 import org.abondar.experimental.async.command.params.RxCommands;
 import org.abondar.experimental.async.javarx.command.HelloCommand;
 import org.abondar.experimental.async.javarx.command.InMemoryCommand;
+import org.abondar.experimental.async.javarx.command.SyncComputationCommand;
 
 public class RxCommandSwitcher extends CommandSwitcher{
     @Override
@@ -17,6 +18,11 @@ public class RxCommandSwitcher extends CommandSwitcher{
                 case IMC:
                     InMemoryCommand imc = new InMemoryCommand();
                     executor.executeCommand(imc);
+                    break;
+
+                case SYC:
+                    SyncComputationCommand syc = new SyncComputationCommand();
+                    executor.executeCommand(syc);
                     break;
             }
         } catch (IllegalArgumentException ex){
