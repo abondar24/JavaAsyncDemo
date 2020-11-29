@@ -59,9 +59,11 @@ Use arg (nio) to run demos.
 Use arg (rx) to run demos.
 
 1. Hello (hc) - Java RX Hello World.
-2. In Memory (imc) - Read data from fake cache via observer and subscriber.
-3. Synchronous Computation (syc) - Synchronous computation via observer and subscriber.
-4. Asychronous Computation (asyc) - Asychronous computation via observer and subscriber
+2. In Memory (imc) - Read data from fake cache via observable and subscriber.
+3. Synchronous Computation (syc) - Synchronous computation via observable and subscriber.
+4. Asychronous Computation (asyc) - Asychronous computation via observable and subscriber.
+5. Two Threads (ttc) - Create two observables with two threads inside,
+merge them to one observable and subscribe to it
 
 
 

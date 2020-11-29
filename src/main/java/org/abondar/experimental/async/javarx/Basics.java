@@ -30,23 +30,6 @@ import org.apache.commons.lang3.tuple.Pair;
 public class Basics {
 
 
-    public static void twoThreads() {
-        Observable<String> a = Observable.create(subscriber -> new Thread(() -> {
-            subscriber.onNext("one");
-            subscriber.onNext("two");
-            subscriber.onCompleted();
-        }).start());
-
-        Observable<String> b = Observable.create(subscriber -> new Thread(() -> {
-            subscriber.onNext("three");
-            subscriber.onNext("four");
-            subscriber.onCompleted();
-        }).start());
-
-        Observable<String> c = Observable.merge(a, b);
-        c.subscribe(System.out::println);
-    }
-
     public static void singles() {
 
         Observable<String> aMergeb = getDataA().mergeWith(getDataB());

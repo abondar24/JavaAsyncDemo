@@ -5,6 +5,7 @@ import org.abondar.experimental.async.javarx.command.AsyncComputationCommand;
 import org.abondar.experimental.async.javarx.command.HelloCommand;
 import org.abondar.experimental.async.javarx.command.InMemoryCommand;
 import org.abondar.experimental.async.javarx.command.SyncComputationCommand;
+import org.abondar.experimental.async.javarx.command.TwoThreadsCommand;
 
 public class RxCommandSwitcher extends CommandSwitcher{
     @Override
@@ -30,6 +31,11 @@ public class RxCommandSwitcher extends CommandSwitcher{
                 case SYC:
                     SyncComputationCommand syc = new SyncComputationCommand();
                     executor.executeCommand(syc);
+                    break;
+
+                case TTC:
+                    TwoThreadsCommand ttc = new TwoThreadsCommand();
+                    executor.executeCommand(ttc);
                     break;
             }
         } catch (IllegalArgumentException ex){
