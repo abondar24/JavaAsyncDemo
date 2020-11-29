@@ -104,7 +104,7 @@ Response: {"EUR": 100, "USD": 106.55500}
 java -jar <jar-locaiton>/async.jar <demo-type> <demo-name>
 ````
 
-##Notes
+## Notes
 
 - All demo names are in ().
 - Async Client requires a web server(nginx or apache).
