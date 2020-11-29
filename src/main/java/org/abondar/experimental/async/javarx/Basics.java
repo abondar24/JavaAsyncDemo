@@ -33,14 +33,6 @@ import org.apache.commons.lang3.tuple.Pair;
 public class Basics {
 
 
-    public static Completable writeToDb(String data) {
-        return Completable.create(s -> {
-            doAsyncWrite(data,
-                    s::onCompleted,
-                    s::onError);
-        });
-    }
-
     public static void subscribeToNotfications() {
         Observable<Tweet> tweets = Observable.empty();
 
@@ -536,9 +528,7 @@ public class Basics {
         return callback;
     }
 
-    private static void doAsyncWrite(String data, Runnable onSuccess, Consumer<Exception> onError) {
-        onSuccess.run();
-    }
+
 
     private static void noMore() {
     }

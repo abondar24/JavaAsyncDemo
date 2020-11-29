@@ -31,9 +31,6 @@ public class Main {
         showMorse();
 
 
-                //these methods are just skeletons to understand. there is no actual subscribtion made
-        Completable completable = Basics.writeToDb("salo");
-
         client.processTweets();
         client.mapTweets();
         showForDay();

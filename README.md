@@ -65,6 +65,7 @@ Use arg (rx) to run demos.
 5. Two Threads (ttc) - Create two observables with two threads inside,
 merge them to one observable and subscribe to it.
 6. Singles Command (sc) - Merge two singles into one observable and subscribe to it. 
+7. Completable (cc) - Usage of Completable class for asynchronous data writing.
 
 
 
