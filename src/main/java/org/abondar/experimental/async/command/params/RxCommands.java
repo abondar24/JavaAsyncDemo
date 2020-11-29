@@ -31,6 +31,7 @@ public enum  RxCommands {
     SWC,
     SYC,
     TC,
+    TCS,
     TFC,
     TOC,
     TTC,

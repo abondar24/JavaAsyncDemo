@@ -34,6 +34,7 @@ import org.abondar.experimental.async.javarx.command.TwoThreadsCommand;
 import org.abondar.experimental.async.javarx.command.server.NettyHttpServer;
 import org.abondar.experimental.async.javarx.command.server.NettyTcpServer;
 import org.abondar.experimental.async.javarx.command.server.RestCurrencyServer;
+import org.abondar.experimental.async.javarx.command.server.TcpCurrencyServer;
 
 public class RxCommandSwitcher extends CommandSwitcher{
     @Override
@@ -189,6 +190,11 @@ public class RxCommandSwitcher extends CommandSwitcher{
                 case TC:
                     TweetCommand tc = new TweetCommand();
                     executor.executeCommand(tc);
+                    break;
+
+                case TCS:
+                    TcpCurrencyServer tcs = new TcpCurrencyServer();
+                    executor.executeCommand(tcs);
                     break;
 
                 case TFC:
