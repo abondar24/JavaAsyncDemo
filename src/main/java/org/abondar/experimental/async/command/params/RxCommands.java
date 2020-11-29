@@ -22,6 +22,7 @@ public enum  RxCommands {
     NTS,
     OC,
     PLC,
+    RCS,
     SC,
     SCC,
     SHC,

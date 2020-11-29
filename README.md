@@ -90,7 +90,12 @@ merge them to one observable and subscribe to it.
 29. Scheduler Observe (soc) - Usage of observe on scheduler.
 30. Scheduler Combo (scc) - Combination of  Scheduler Subscribe and Observe.
 31. Netty HTTP Server (nhs) - Reactive HTTP server based on Netty. Access via: localhost:8086
-32. Netty TCP Server (nts) -  Reactive TCP server based on Netty. Access via: localhost:8084
+32. Netty TCP Server (nts) -  Reactive TCP server based on Netty. Access via: localhost:8084 (use tcp client e.g netcat)
+33. Rest Currency Server (rcs) - Reactive Rest server which converts EUR to USD (use any rest client).
+```yaml
+Request: GET localhost:8088/convert/100
+Response: {"EUR": 100, "USD": 106.55500}
+```
 ## Build and run
 ````yaml
 java -jar <jar-locaiton>/async.jar <demo-type> <demo-name>

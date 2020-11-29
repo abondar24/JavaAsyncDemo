@@ -33,6 +33,7 @@ import org.abondar.experimental.async.javarx.command.TweetCommand;
 import org.abondar.experimental.async.javarx.command.TwoThreadsCommand;
 import org.abondar.experimental.async.javarx.command.server.NettyHttpServer;
 import org.abondar.experimental.async.javarx.command.server.NettyTcpServer;
+import org.abondar.experimental.async.javarx.command.server.RestCurrencyServer;
 
 public class RxCommandSwitcher extends CommandSwitcher{
     @Override
@@ -143,6 +144,11 @@ public class RxCommandSwitcher extends CommandSwitcher{
                 case PLC:
                     ParallelLoadCommand plc = new ParallelLoadCommand();
                     executor.executeCommand(plc);
+                    break;
+
+                case RCS:
+                    RestCurrencyServer rcs = new RestCurrencyServer();
+                    executor.executeCommand(rcs);
                     break;
 
                 case SC:
