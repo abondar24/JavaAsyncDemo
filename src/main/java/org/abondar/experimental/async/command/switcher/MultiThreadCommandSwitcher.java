@@ -11,11 +11,13 @@ import org.abondar.experimental.async.multithread.command.ReentrantLockCommand;
 import org.abondar.experimental.async.multithread.command.SemaphoreCommand;
 import org.abondar.experimental.async.multithread.command.SynchronizedCommand;
 import org.abondar.experimental.async.multithread.command.ThreadCommand;
+import org.abondar.experimental.async.multithread.command.ThreadGroupCommand;
 import org.abondar.experimental.async.multithread.command.ThreadInterruptionCommand;
 import org.abondar.experimental.async.multithread.command.ThreadPoolCommand;
 import org.abondar.experimental.async.multithread.command.ThreadSyncCommand;
 import org.abondar.experimental.async.multithread.command.TryLockCommand;
 import org.abondar.experimental.async.multithread.command.WaitNotifyCommand;
+import sun.jvm.hotspot.debugger.ThreadAccess;
 
 public class MultiThreadCommandSwitcher extends CommandSwitcher {
 
@@ -72,6 +74,11 @@ public class MultiThreadCommandSwitcher extends CommandSwitcher {
                 case TC:
                     ThreadCommand tc = new ThreadCommand();
                     executor.executeCommand(tc);
+                    break;
+
+                case TG:
+                    ThreadGroupCommand tgc = new ThreadGroupCommand();
+                    executor.executeCommand(tgc);
                     break;
 
                 case TIC:
