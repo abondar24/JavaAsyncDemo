@@ -3,7 +3,7 @@ package org.abondar.experimental.async.multithread.command;
 
 
 import org.abondar.experimental.async.command.Command;
-import org.abondar.experimental.async.multithread.Connection;
+import org.abondar.experimental.async.multithread.data.Connection;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
