@@ -16,6 +16,7 @@ public enum  MtCommands {
     TLC,
     TPC,
     TSC,
+    VC,
     WNC,
     ;
 }
