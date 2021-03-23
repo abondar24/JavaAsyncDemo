@@ -10,7 +10,7 @@ public class VolatileCommand  implements Command {
 
         vt.start();
         try {
-            Thread.sleep(5000);
+            Thread.sleep(100);
         } catch (InterruptedException ex){
             System.err.println(ex.getMessage());
             System.exit(2);
