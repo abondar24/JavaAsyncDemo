@@ -5,45 +5,36 @@ import org.abondar.experimental.async.command.Command;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
-
-public class LockCommand implements Command {
+public class ExplicitLockCommand implements Command {
     private static final Random random = new Random();
 
 
-    private static final Object lock1 = new Object();
-    private static final Object lock2 = new Object();
+    private static final Lock lock1 = new ReentrantLock();
+    private static final Lock lock2 = new ReentrantLock();
 
     private static final List<Integer> list1 = new ArrayList<>();
     private static final List<Integer> list2 = new ArrayList<>();
 
     private static void stageOne() {
 
-        synchronized (lock1){
-            try {
-                Thread.sleep(1);
-                list1.add(random.nextInt());
-            } catch (InterruptedException ex) {
-                System.err.println(ex.getMessage());
-                System.exit(2);
-            }
+        lock1.lock();
+        try {
+            list1.add(random.nextInt());
+        }finally {
+            lock1.unlock();
         }
-
-
     }
 
     private static  void stageTwo() {
-        synchronized (lock2){
-            try {
-                Thread.sleep(1);
-                list2.add(random.nextInt(10));
-            } catch (InterruptedException ex) {
-                System.err.println(ex.getMessage());
-                System.exit(2);
-            }
-
+        lock2.lock();
+        try {
+            list2.add(random.nextInt());
+        }finally {
+            lock2.unlock();
         }
-
     }
 
     public static void process() {
@@ -69,8 +60,7 @@ public class LockCommand implements Command {
             t1.join();
             t2.join();
         } catch (InterruptedException ex) {
-            System.err.println(ex.getMessage());
-            System.exit(2);
+            ex.printStackTrace();
         }
 
         long end = System.currentTimeMillis();
@@ -81,4 +71,3 @@ public class LockCommand implements Command {
         System.out.printf("List1: %d, List2: %d\n", list1.size(), list2.size());
     }
 }
-

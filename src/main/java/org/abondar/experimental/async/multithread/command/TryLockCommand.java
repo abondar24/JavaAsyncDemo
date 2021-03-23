@@ -15,7 +15,8 @@ public class TryLockCommand implements Command {
                 try {
                     runner.firstThread();
                 }catch (InterruptedException e){
-                    e.printStackTrace();
+                    System.err.println(e.getMessage());
+                    System.exit(2);
                 }
             });
 
@@ -23,7 +24,8 @@ public class TryLockCommand implements Command {
                 try {
                     runner.secondThread();
                 }catch (InterruptedException e){
-                    e.printStackTrace();
+                    System.err.println(e.getMessage());
+                    System.exit(2);
                 }
             });
 
