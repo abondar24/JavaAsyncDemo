@@ -24,6 +24,7 @@ Use arg (mt) to run demos.
 16. Thread Group (tg) - Thread group usage.
 17. Volatile (vc) - Thread with a volatile variable as a flag.
 18. Explicit Lock (elc) - Lock implemented using ReentrantLock class.
+19. Barrier (bc) - Cyclic barrier with action.
 ## NIO
 
 Use arg (nio) to run demos.
