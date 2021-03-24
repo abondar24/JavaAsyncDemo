@@ -19,7 +19,6 @@ import org.abondar.experimental.async.multithread.command.ThreadSyncCommand;
 import org.abondar.experimental.async.multithread.command.TryLockCommand;
 import org.abondar.experimental.async.multithread.command.VolatileCommand;
 import org.abondar.experimental.async.multithread.command.WaitNotifyCommand;
-import sun.jvm.hotspot.debugger.ThreadAccess;
 
 public class MultiThreadCommandSwitcher extends CommandSwitcher {
 
