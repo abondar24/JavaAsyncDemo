@@ -25,6 +25,7 @@ Use arg (mt) to run demos.
 17. Volatile (vc) - Thread with a volatile variable as a flag.
 18. Explicit Lock (elc) - Lock implemented using ReentrantLock class.
 19. Barrier (bc) - Cyclic barrier with action.
+20. Phaser (pc) - Phaser demo.
 ## NIO
 
 Use arg (nio) to run demos.
