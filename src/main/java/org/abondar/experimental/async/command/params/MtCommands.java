@@ -5,6 +5,7 @@ public enum  MtCommands {
     CFC,
     CLC,
     DC,
+    EC,
     ELC,
     LC,
     LWC,

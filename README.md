@@ -26,6 +26,7 @@ Use arg (mt) to run demos.
 18. Explicit Lock (elc) - Lock implemented using ReentrantLock class.
 19. Barrier (bc) - Cyclic barrier with action.
 20. Phaser (pc) - Phaser demo.
+21. Exchanger (ec) - Exchange data between producer and consumer threads via exchanger.
 ## NIO
 
 Use arg (nio) to run demos.
