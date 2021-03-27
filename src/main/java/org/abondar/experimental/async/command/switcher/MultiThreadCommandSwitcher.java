@@ -8,6 +8,7 @@ import org.abondar.experimental.async.multithread.command.DaemonThreadCommand;
 import org.abondar.experimental.async.multithread.command.ExplicitLockCommand;
 import org.abondar.experimental.async.multithread.command.LockCommand;
 import org.abondar.experimental.async.multithread.command.LowLevelWaitCommand;
+import org.abondar.experimental.async.multithread.command.PhaserCommand;
 import org.abondar.experimental.async.multithread.command.ProducerConsumerCommand;
 import org.abondar.experimental.async.multithread.command.ReentrantLockCommand;
 import org.abondar.experimental.async.multithread.command.SemaphoreCommand;
@@ -61,6 +62,11 @@ public class MultiThreadCommandSwitcher extends CommandSwitcher {
                 case LWC:
                     LowLevelWaitCommand lwc = new LowLevelWaitCommand();
                     executor.executeCommand(lwc);
+                    break;
+
+                case PC:
+                    PhaserCommand pc = new PhaserCommand();
+                    executor.executeCommand(pc);
                     break;
 
                 case PCC:

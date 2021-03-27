@@ -8,6 +8,7 @@ public enum  MtCommands {
     ELC,
     LC,
     LWC,
+    PC,
     PCC,
     RLC,
     SC,
