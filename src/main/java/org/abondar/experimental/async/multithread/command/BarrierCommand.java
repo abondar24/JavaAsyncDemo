@@ -11,49 +11,24 @@ public class BarrierCommand implements Command {
         Runnable action = ()-> System.out.println("Ready for action");
         CyclicBarrier barrier = new CyclicBarrier(3,action);
 
-        Thread t1 = new Thread(()->{
-            System.out.println("T1 started");
-            try {
-                Thread.sleep(1000);
-                System.out.println("T1 Waiting");
-                barrier.await();
-                System.out.println("Barrier passed");
-            }catch (InterruptedException | BrokenBarrierException ex){
-                System.err.println(ex.getMessage());
-                System.exit(2);
-            }
+        for (int i=1;i<=3;i++){
+            final int inc=i;
+            Thread t = new Thread(()->{
+                System.out.printf("T%d started\n",inc);
+                try {
+                    Thread.sleep(1000);
+                    System.out.printf("T%d Waiting\n",inc);
+                    barrier.await();
+                    System.out.println("Barrier passed");
+                }catch (InterruptedException | BrokenBarrierException ex){
+                    System.err.println(ex.getMessage());
+                    System.exit(2);
+                }
 
-        });
-        t1.start();
+            });
+            t.start();
+        }
 
-        Thread t2 = new Thread(()->{
-            System.out.println("T2 started");
-            try {
-                Thread.sleep(2000);
-                System.out.println("T2 Waiting");
-                barrier.await();
-                System.out.println("Barrier passed");
-            }catch (InterruptedException | BrokenBarrierException ex){
-                System.err.println(ex.getMessage());
-                System.exit(2);
-            }
 
-        });
-        t2.start();
-
-        Thread t3 = new Thread(()->{
-            System.out.println("T3 started");
-            try {
-                Thread.sleep(3000);
-                System.out.println("T3 Waiting");
-                barrier.await();
-                System.out.println("Barrier passed");
-            }catch (InterruptedException | BrokenBarrierException ex){
-                System.err.println(ex.getMessage());
-                System.exit(2);
-            }
-
-        });
-        t3.start();
     }
 }
