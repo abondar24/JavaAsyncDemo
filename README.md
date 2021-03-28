@@ -27,6 +27,7 @@ Use arg (mt) to run demos.
 19. Barrier (bc) - Cyclic barrier with action.
 20. Phaser (pc) - Phaser demo.
 21. Exchanger (ec) - Exchange data between producer and consumer threads via exchanger.
+22. Scheduled executor (shc) - Scheduled executor service.
 ## NIO
 
 Use arg (nio) to run demos.
