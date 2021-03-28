@@ -1,4 +1,4 @@
-package org.abondar.experimental.async.multithread.data;
+package org.abondar.experimental.async.multithread.misc;
 
 
 import java.util.concurrent.Semaphore;
