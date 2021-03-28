@@ -7,6 +7,7 @@ import org.abondar.experimental.async.multithread.command.CountdownLatchCommand;
 import org.abondar.experimental.async.multithread.command.DaemonThreadCommand;
 import org.abondar.experimental.async.multithread.command.ExchangerCommand;
 import org.abondar.experimental.async.multithread.command.ExplicitLockCommand;
+import org.abondar.experimental.async.multithread.command.ForkJoinCommand;
 import org.abondar.experimental.async.multithread.command.LockCommand;
 import org.abondar.experimental.async.multithread.command.LowLevelWaitCommand;
 import org.abondar.experimental.async.multithread.command.PhaserCommand;
@@ -61,6 +62,11 @@ public class MultiThreadCommandSwitcher extends CommandSwitcher {
                     executor.executeCommand(elc);
                     break;
 
+                case FJC:
+                    ForkJoinCommand fjc = new ForkJoinCommand();
+                    executor.executeCommand(fjc);
+                    break;
+
                 case LC:
                     LockCommand lc = new LockCommand();
                     executor.executeCommand(lc);
@@ -95,7 +101,6 @@ public class MultiThreadCommandSwitcher extends CommandSwitcher {
                     SemaphoreCommand sec = new SemaphoreCommand();
                     executor.executeCommand(sec);
                     break;
-
 
                 case SHC:
                     ScheduledCommand shc = new ScheduledCommand();

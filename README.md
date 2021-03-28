@@ -28,6 +28,8 @@ Use arg (mt) to run demos.
 20. Phaser (pc) - Phaser demo.
 21. Exchanger (ec) - Exchange data between producer and consumer threads via exchanger.
 22. Scheduled executor (shc) - Scheduled executor service.
+23. Fork Join (fjc) - Calculate a sum of random integers between 1 and 1000 usig fork/join.
+
 ## NIO
 
 Use arg (nio) to run demos.
