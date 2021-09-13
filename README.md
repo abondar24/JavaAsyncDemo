@@ -107,6 +107,9 @@ Response: {"EUR": 100, "USD": 106.55500}
 ```
 34. TCP Currency Server (tcs) - Reactive TCP server which converts EUR to USD. Access via: localhost:8080 (use tcp client).
 
+## Vertx
+
+Use arg (vertx) to run demos.
 
 ## Build and run
 ````yaml
