@@ -1,4 +1,4 @@
-package org.abondar.experimental.async.command.switcher;
+package org.abondar.experimental.async.command;
 
 
 import org.abondar.experimental.async.command.CommandExecutor;
