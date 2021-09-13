@@ -13,6 +13,7 @@
         <module>Command</module>
         <module>MultiThread</module>
         <module>Nio</module>
+        <module>RxJava</module>
     </modules>
 
 
@@ -20,64 +21,5 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
-
-    <dependencies>
-     <dependency>
-         <groupId>io.reactivex</groupId>
-         <artifactId>rxjava</artifactId>
-         <version>1.2.5</version>
-     </dependency>
-     <dependency>
-         <groupId>org.slf4j</groupId>
-         <artifactId>slf4j-api</artifactId>
-         <version>1.7.22</version>
-     </dependency>
-     <dependency>
-         <groupId>org.twitter4j</groupId>
-         <artifactId>twitter4j-core</artifactId>
-         <version>4.0.2</version>
-     </dependency>
-     <dependency>
-         <groupId>org.twitter4j</groupId>
-         <artifactId>twitter4j-stream</artifactId>
-         <version>4.0.6</version>
-     </dependency>
-     <dependency>
-         <groupId>org.apache.commons</groupId>
-         <artifactId>commons-lang3</artifactId>
-         <version>3.0.1</version>
-     </dependency>
-     <dependency>
-         <groupId>com.google.guava</groupId>
-         <artifactId>guava</artifactId>
-         <version>r05</version>
-     </dependency>
-     <dependency>
-         <groupId>io.netty</groupId>
-         <artifactId>netty-all</artifactId>
-         <version>4.1.42.Final</version>
-     </dependency>
-     <dependency>
-         <groupId>io.reactivex</groupId>
-         <artifactId>rxnetty-http</artifactId>
-         <version>0.5.2</version>
-     </dependency>
-     <dependency>
-         <groupId>io.reactivex</groupId>
-         <artifactId>rxnetty-tcp</artifactId>
-         <version>0.5.2</version>
-     </dependency>
-
-     <dependency>
-         <groupId>io.reactivex</groupId>
-         <artifactId>rxnetty-common</artifactId>
-         <version>0.5.2</version>
-     </dependency>
-
-
-
-
- </dependencies>
-
 
 </project>
