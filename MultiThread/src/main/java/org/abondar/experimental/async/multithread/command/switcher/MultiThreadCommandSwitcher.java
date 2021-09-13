@@ -1,6 +1,7 @@
-package org.abondar.experimental.async.command.switcher;
+package org.abondar.experimental.async.multithread.command.switcher;
 
-import org.abondar.experimental.async.command.params.MtCommands;
+import org.abondar.experimental.async.command.CommandSwitcher;
+import org.abondar.experimental.async.multithread.command.params.MtCommands;
 import org.abondar.experimental.async.multithread.command.BarrierCommand;
 import org.abondar.experimental.async.multithread.command.CallableFutureCommand;
 import org.abondar.experimental.async.multithread.command.CountdownLatchCommand;

@@ -1,4 +1,4 @@
-package org.abondar.experimental.async.command.params;
+package org.abondar.experimental.async.multithread.command.params;
 
 public enum  MtCommands {
     BC,
