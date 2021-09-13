@@ -1,6 +1,7 @@
 package org.abondar.experimental.async.multithread.command.switcher;
 
 import org.abondar.experimental.async.command.CommandSwitcher;
+import org.abondar.experimental.async.multithread.command.EventLoopCommand;
 import org.abondar.experimental.async.multithread.command.params.MtCommands;
 import org.abondar.experimental.async.multithread.command.BarrierCommand;
 import org.abondar.experimental.async.multithread.command.CallableFutureCommand;
@@ -62,6 +63,11 @@ public class MultiThreadCommandSwitcher extends CommandSwitcher {
                 case ELC:
                     ExplicitLockCommand elc = new ExplicitLockCommand();
                     executor.executeCommand(elc);
+                    break;
+
+                case EVC:
+                    EventLoopCommand evc = new EventLoopCommand();
+                    executor.executeCommand(evc);
                     break;
 
                 case FJC:

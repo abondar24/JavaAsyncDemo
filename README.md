@@ -30,6 +30,7 @@ Use arg (mt) to run demos.
 22. Scheduled executor (shc) - Scheduled executor service.
 23. Fork Join (fjc) - Calculate a sum of random integers between 1 and 1000 usig fork/join.
 24. Thread Local (thlc) - Count the number of method calls in each thread using threadlocal.
+25. Event Loop (evc) - Tiny event loop vased on concurrent deque and hashmap.
 ## NIO
 
 Use arg (nio) to run demos.
