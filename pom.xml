@@ -12,6 +12,7 @@
         <module>App</module>
         <module>Command</module>
         <module>MultiThread</module>
+        <module>Nio</module>
     </modules>
 
 
