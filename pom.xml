@@ -14,6 +14,7 @@
         <module>MultiThread</module>
         <module>Nio</module>
         <module>RxJava</module>
+        <module>Vertx</module>
     </modules>
 
 
