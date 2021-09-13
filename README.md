@@ -112,6 +112,12 @@ Response: {"EUR": 100, "USD": 106.55500}
 
 Use arg (vertx) to run demos.
 
+1. Echo Server (ves) - Tiny vertex echo server based on tcp and http servers showing number of current connections.
+Access
+```yaml
+netcat localhost 3000
+http://localhost:8080
+```
 ## Build and run
 ````yaml
 java -jar <jar-locaiton>/async.jar <demo-type> <demo-name>
