@@ -1,4 +1,4 @@
-package org.abondar.experimental.async.command.params;
+package org.abondar.experimental.async.command;
 
 public enum CommandSwitchers {
     MT,

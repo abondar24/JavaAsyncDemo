@@ -1,6 +1,10 @@
-package org.abondar.experimental.async.command.switcher;
+package org.abondar.experimental.async;
 
-import org.abondar.experimental.async.command.params.CommandSwitchers;
+import org.abondar.experimental.async.command.CommandSwitcher;
+import org.abondar.experimental.async.command.CommandSwitchers;
+import org.abondar.experimental.async.multithread.command.switcher.MultiThreadCommandSwitcher;
+import org.abondar.experimental.async.nio.command.switcher.NioCommandSwitcher;
+import org.abondar.expiermental.async.rx.command.switcher.RxCommandSwitcher;
 
 import java.util.Optional;
 
