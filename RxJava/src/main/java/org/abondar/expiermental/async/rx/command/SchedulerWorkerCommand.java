@@ -1,12 +1,13 @@
 package org.abondar.expiermental.async.rx.command;
 
 import org.abondar.experimental.async.command.Command;
+import org.abondar.expiermental.async.rx.util.SleeperUtil;
 import rx.Scheduler;
 import rx.schedulers.Schedulers;
 
 import java.time.Duration;
 
-import static org.abondar.experimental.async.rx.util.SleeperUtil.sleep;
+
 
 public class SchedulerWorkerCommand implements Command {
     @Override

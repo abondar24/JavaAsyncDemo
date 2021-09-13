@@ -2,7 +2,8 @@ package org.abondar.expiermental.async.rx.command;
 
 import org.abondar.experimental.async.command.Command;
 import org.abondar.expiermental.async.rx.data.Dish;
-import org.abondar.experimental.async.rx.util.SleeperUtil;
+
+import org.abondar.expiermental.async.rx.util.SleeperUtil;
 import rx.Observable;
 import rx.internal.operators.OnSubscribeRange;
 

@@ -1,13 +1,14 @@
 package org.abondar.expiermental.async.rx.command;
 
 import org.abondar.experimental.async.command.Command;
-import org.abondar.experimental.async.rx.util.SleeperUtil;
+
+import org.abondar.expiermental.async.rx.util.LogUtil;
+import org.abondar.expiermental.async.rx.util.SleeperUtil;
 import rx.Observable;
 
 import java.time.Duration;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
-import static org.abondar.experimental.async.rx.util.LogUtil.log;
 
 public class TimedObservableCommand implements Command {
     @Override

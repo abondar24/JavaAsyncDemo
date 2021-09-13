@@ -1,11 +1,12 @@
 package org.abondar.expiermental.async.rx.command;
 
 import org.abondar.experimental.async.command.Command;
+import org.abondar.expiermental.async.rx.util.SleeperUtil;
 import rx.Observable;
 import rx.subscriptions.Subscriptions;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
-import static org.abondar.experimental.async.rx.util.SleeperUtil.sleep;
+
 
 public class DelayedObservableCommand implements Command {
     @Override

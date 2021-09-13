@@ -1,13 +1,13 @@
 package org.abondar.expiermental.async.rx.command;
 
 import org.abondar.experimental.async.command.Command;
+import org.abondar.expiermental.async.rx.util.SleeperUtil;
 import org.apache.commons.lang3.tuple.Pair;
 import rx.Observable;
 
 import java.time.Duration;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
-import static org.abondar.experimental.async.rx.util.SleeperUtil.sleep;
 import static rx.Observable.just;
 
 public class ShakespaereCommand implements Command {

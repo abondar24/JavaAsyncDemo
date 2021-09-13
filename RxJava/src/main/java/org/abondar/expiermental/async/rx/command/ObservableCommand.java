@@ -2,9 +2,9 @@ package org.abondar.expiermental.async.rx.command;
 
 import org.abondar.experimental.async.command.Command;
 
+import org.abondar.expiermental.async.rx.util.LogUtil;
 import rx.Observable;
 
-import static org.abondar.experimental.async.rx.util.LogUtil.log;
 
 public class ObservableCommand implements Command {
     @Override
