@@ -9,6 +9,6 @@ public class HelloVerticleCommand implements Command {
     @Override
     public void execute() {
         Vertx vertx = Vertx.vertx();
-        vertx.deployVerticle(new CountVerticle(vertx));
+        vertx.deployVerticle(new CountVerticle());
     }
 }

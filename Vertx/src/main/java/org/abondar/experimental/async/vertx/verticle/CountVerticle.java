@@ -10,11 +10,6 @@ public class CountVerticle extends AbstractVerticle {
     private final Logger logger = LoggerFactory.getLogger(CountVerticle.class);
     private long counter = 1;
 
-    private Vertx vertx;
-
-    public CountVerticle(Vertx vertx) {
-        this.vertx = vertx;
-    }
 
     @Override
     public void start(){

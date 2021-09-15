@@ -8,6 +8,6 @@ public class DeployVerticleCommand implements Command {
     @Override
     public void execute() {
         Vertx vertx = Vertx.vertx();
-        vertx.deployVerticle(new DeployVerticle(vertx));
+        vertx.deployVerticle(new DeployVerticle());
     }
 }

@@ -9,12 +9,8 @@ public class WorkerVerticle extends AbstractVerticle {
 
     private final Logger logger = LoggerFactory.getLogger(WorkerVerticle.class);
 
-    private Vertx vertx;
-
-
     @Override
     public void start(){
-        vertx = Vertx.currentContext().owner();
         vertx.setPeriodic(3_000,id->{
            try {
                logger.info("Sleep");

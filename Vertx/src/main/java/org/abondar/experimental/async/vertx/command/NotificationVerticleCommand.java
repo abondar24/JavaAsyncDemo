@@ -8,6 +8,6 @@ public class NotificationVerticleCommand implements Command {
     @Override
     public void execute() {
           Vertx vertx = Vertx.vertx();
-          vertx.deployVerticle(new NotificationVerticle(vertx));
+          vertx.deployVerticle(new NotificationVerticle());
     }
 }
