@@ -131,6 +131,7 @@ http://localhost:8040
 7. Worker Verticle (wv) - Verticle working on worker thread.
 8. Offload Verticle (ov) - Verticle offloading blocking code to a worker thread.
 9. Context (co) - Examples of vertx context usage.
+10. Mixed Verticle (mv) - Verticle working with some non-vert.x threading code using context.
 ## Build and run
 ````yaml
 java -jar <jar-locaiton>/async.jar <demo-type> <demo-name>
