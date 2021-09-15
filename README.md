@@ -123,6 +123,7 @@ Access
 ```yaml
 http://localhost:8024
 ```
+3. Block Event Loop (bel) - Block Event Loop based on verticle.
 ## Build and run
 ````yaml
 java -jar <jar-locaiton>/async.jar <demo-type> <demo-name>
