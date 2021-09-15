@@ -113,22 +113,20 @@ Response: {"EUR": 100, "USD": 106.55500}
 Use arg (vertx) to run demos.
 
 1. Echo Server (ves) - Tiny vertex echo server based on tcp and http servers showing number of current connections.
-Access
 ```yaml
 netcat localhost 3000
 http://localhost:8080
 ```
 2. Hello Verticle (cv) - Basic verticle with http server counting requests number.
-Access
 ```yaml
 http://localhost:8024
 ```
 3. Block Event Loop (bel) - Block Event Loop based on verticle.
 4. Notification Verticle (nv) - Verticle with http server handling asyncronous notifications.
-   Access
 ```yaml
 http://localhost:8040
 ```
+5. Deploy Verticle (dv) - Verticle deploying another verticles.
 ## Build and run
 ````yaml
 java -jar <jar-locaiton>/async.jar <demo-type> <demo-name>
