@@ -118,12 +118,17 @@ Access
 netcat localhost 3000
 http://localhost:8080
 ```
-2. Hello Verticle (cv) - Basic verticle with http counting requests number.
+2. Hello Verticle (cv) - Basic verticle with http server counting requests number.
 Access
 ```yaml
 http://localhost:8024
 ```
 3. Block Event Loop (bel) - Block Event Loop based on verticle.
+4. Notification Verticle (nv) - Verticle with http server handling asyncronous notifications.
+   Access
+```yaml
+http://localhost:8040
+```
 ## Build and run
 ````yaml
 java -jar <jar-locaiton>/async.jar <demo-type> <demo-name>
