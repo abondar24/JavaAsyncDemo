@@ -7,8 +7,10 @@ import org.abondar.experimental.async.vertx.command.DeployVerticleCommand;
 import org.abondar.experimental.async.vertx.command.HelloVerticleCommand;
 import org.abondar.experimental.async.vertx.command.NotificationVerticleCommand;
 import org.abondar.experimental.async.vertx.command.VertxEchoCommand;
+import org.abondar.experimental.async.vertx.command.WorkerVerticleCommand;
 import org.abondar.experimental.async.vertx.command.params.VertxCommands;
 import org.abondar.experimental.async.vertx.verticle.NotificationVerticle;
+import org.abondar.experimental.async.vertx.verticle.WorkerVerticle;
 
 public class VertxCommandSwitcher extends CommandSwitcher {
     @Override
@@ -39,6 +41,11 @@ public class VertxCommandSwitcher extends CommandSwitcher {
                 case NV:
                     NotificationVerticleCommand nvc = new NotificationVerticleCommand();
                     executor.executeCommand(nvc);
+                    break;
+
+                case WV:
+                    WorkerVerticleCommand wvc =  new WorkerVerticleCommand();
+                    executor.executeCommand(wvc);
                     break;
 
                 case VES:

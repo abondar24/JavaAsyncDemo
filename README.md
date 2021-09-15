@@ -128,7 +128,7 @@ http://localhost:8040
 ```
 5. Deploy Verticle (dv) - Verticle deploying another verticles.
 6. Config Verticle (cov) - Verticle accepting different deploy configurations.
-
+7. Worker Verticle (wv) - Verticle working on worker thread.
 ## Build and run
 ````yaml
 java -jar <jar-locaiton>/async.jar <demo-type> <demo-name>
