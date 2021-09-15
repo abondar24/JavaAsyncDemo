@@ -118,6 +118,11 @@ Access
 netcat localhost 3000
 http://localhost:8080
 ```
+2. Hello Verticle (cv) - Basic verticle with http counting requests number.
+Access
+```yaml
+http://localhost:8024
+```
 ## Build and run
 ````yaml
 java -jar <jar-locaiton>/async.jar <demo-type> <demo-name>
