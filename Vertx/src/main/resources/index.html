@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Message Event Bus</title>
+</head>
+<body>
+<div id="special"></div>
+<div id="main"></div>
+<script>
+    const sse = new EventSource("/sse")
+    const main = document.getElementById("main")
+    const special = document.getElementById("special")
+
+    sse.addEventListener("update",(evt) => {
+        const  data = JSON.parse(evt.data)
+        let div = document.getElementById(data.id)
+        if (div ===null){
+            div = document.createElement("div")
+            div.setAttribute("id",data.id)
+            main.appendChild(div)
+        }
+        div.innerHTML = `<strong>${data.body}</strong>(<em>${data.id}</em>)`
+    })
+
+    sse.addEventListener("special",(evt) =>{
+        const  data = JSON.parse(evt.data)
+
+        special.innerHTML = `Special message = ${data.special}`
+    })
+</script>
+</body>
+</html>

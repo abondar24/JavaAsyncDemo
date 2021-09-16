@@ -132,6 +132,10 @@ http://localhost:8040
 8. Offload Verticle (ov) - Verticle offloading blocking code to a worker thread.
 9. Context (co) - Examples of vertx context usage.
 10. Mixed Verticle (mv) - Verticle working with some non-vert.x threading code using context.
+11. Event Bus (eb) - Event bus based on several verticles and http server reading from it.
+```yaml
+http://localhost:8080
+```
 ## Build and run
 ````yaml
 java -jar <jar-locaiton>/async.jar <demo-type> <demo-name>
