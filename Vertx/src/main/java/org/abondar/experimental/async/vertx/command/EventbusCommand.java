@@ -4,7 +4,7 @@ import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
 import org.abondar.experimental.async.command.Command;
 
-public class EventBusCommand implements Command {
+public class EventbusCommand implements Command {
     @Override
     public void execute() {
         Vertx vertx = Vertx.vertx();

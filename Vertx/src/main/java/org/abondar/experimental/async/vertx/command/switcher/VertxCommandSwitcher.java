@@ -5,7 +5,8 @@ import org.abondar.experimental.async.vertx.command.BlockEventLoopCommand;
 import org.abondar.experimental.async.vertx.command.ConfigVerticleCommand;
 import org.abondar.experimental.async.vertx.command.ContextCommand;
 import org.abondar.experimental.async.vertx.command.DeployVerticleCommand;
-import org.abondar.experimental.async.vertx.command.EventBusCommand;
+import org.abondar.experimental.async.vertx.command.EventbusClusterCommand;
+import org.abondar.experimental.async.vertx.command.EventbusCommand;
 import org.abondar.experimental.async.vertx.command.HelloVerticleCommand;
 import org.abondar.experimental.async.vertx.command.MixedVerticleCommand;
 import org.abondar.experimental.async.vertx.command.NotificationVerticleCommand;
@@ -13,9 +14,6 @@ import org.abondar.experimental.async.vertx.command.OffloadCommand;
 import org.abondar.experimental.async.vertx.command.VertxEchoCommand;
 import org.abondar.experimental.async.vertx.command.WorkerVerticleCommand;
 import org.abondar.experimental.async.vertx.command.params.VertxCommands;
-import org.abondar.experimental.async.vertx.verticle.NotificationVerticle;
-import org.abondar.experimental.async.vertx.verticle.OffloadVerticle;
-import org.abondar.experimental.async.vertx.verticle.WorkerVerticle;
 
 public class VertxCommandSwitcher extends CommandSwitcher {
     @Override
@@ -49,8 +47,13 @@ public class VertxCommandSwitcher extends CommandSwitcher {
                     break;
 
                 case EB:
-                    EventBusCommand ebc = new EventBusCommand();
+                    EventbusCommand ebc = new EventbusCommand();
                     executor.executeCommand(ebc);
+                    break;
+
+                case EBC:
+                    EventbusClusterCommand ebcc = new EventbusClusterCommand();
+                    executor.executeCommand(ebcc);
                     break;
 
                 case MV:

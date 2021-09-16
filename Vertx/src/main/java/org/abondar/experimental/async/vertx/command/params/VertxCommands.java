@@ -7,6 +7,7 @@ public enum VertxCommands {
     CV,
     DV,
     EB,
+    EBC,
     MV,
     NV,
     OV,

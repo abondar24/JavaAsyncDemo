@@ -136,6 +136,11 @@ http://localhost:8040
 ```yaml
 http://localhost:8080
 ```
+12. Event Bus Cluster (ebc) - Event bus demo running in a cluster.
+ ```yaml
+http://localhost:8080
+http://localhost:8081
+```
 ## Build and run
 ````yaml
 java -jar <jar-locaiton>/async.jar <demo-type> <demo-name>
