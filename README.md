@@ -141,6 +141,7 @@ http://localhost:8080
 http://localhost:8080
 http://localhost:8081
 ```
+13. Read File (rf) - Read file using Vert.x
 ## Build and run
 ````yaml
 java -jar <jar-locaiton>/async.jar <demo-type> <demo-name>

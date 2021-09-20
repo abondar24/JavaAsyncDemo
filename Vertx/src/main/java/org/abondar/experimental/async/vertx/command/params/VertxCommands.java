@@ -11,6 +11,7 @@ public enum VertxCommands {
     MV,
     NV,
     OV,
+    RF,
     WV,
     VES,
 }

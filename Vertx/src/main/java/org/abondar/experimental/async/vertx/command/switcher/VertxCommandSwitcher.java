@@ -11,6 +11,7 @@ import org.abondar.experimental.async.vertx.command.HelloVerticleCommand;
 import org.abondar.experimental.async.vertx.command.MixedVerticleCommand;
 import org.abondar.experimental.async.vertx.command.NotificationVerticleCommand;
 import org.abondar.experimental.async.vertx.command.OffloadCommand;
+import org.abondar.experimental.async.vertx.command.ReadFileCommand;
 import org.abondar.experimental.async.vertx.command.VertxEchoCommand;
 import org.abondar.experimental.async.vertx.command.WorkerVerticleCommand;
 import org.abondar.experimental.async.vertx.command.params.VertxCommands;
@@ -70,6 +71,10 @@ public class VertxCommandSwitcher extends CommandSwitcher {
                     OffloadCommand oc = new OffloadCommand();
                     executor.executeCommand(oc);
                     break;
+
+                case RF:
+                    ReadFileCommand rfc = new ReadFileCommand();
+                    executor.executeCommand(rfc);
 
                 case WV:
                     WorkerVerticleCommand wvc =  new WorkerVerticleCommand();
