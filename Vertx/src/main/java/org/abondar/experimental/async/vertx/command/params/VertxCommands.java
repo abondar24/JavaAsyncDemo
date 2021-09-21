@@ -2,6 +2,7 @@ package org.abondar.experimental.async.vertx.command.params;
 
 public enum VertxCommands {
     BEL,
+    BP,
     CO,
     COV,
     CV,

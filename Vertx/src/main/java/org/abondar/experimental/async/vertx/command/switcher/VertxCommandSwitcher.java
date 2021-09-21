@@ -9,6 +9,7 @@ import org.abondar.experimental.async.vertx.command.EventbusClusterCommand;
 import org.abondar.experimental.async.vertx.command.EventbusCommand;
 import org.abondar.experimental.async.vertx.command.HelloVerticleCommand;
 import org.abondar.experimental.async.vertx.command.MixedVerticleCommand;
+import org.abondar.experimental.async.vertx.command.BackPressureCommand;
 import org.abondar.experimental.async.vertx.command.NotificationVerticleCommand;
 import org.abondar.experimental.async.vertx.command.OffloadCommand;
 import org.abondar.experimental.async.vertx.command.ReadFileCommand;
@@ -25,6 +26,11 @@ public class VertxCommandSwitcher extends CommandSwitcher {
                 case BEL:
                     BlockEventLoopCommand belc = new BlockEventLoopCommand();
                     executor.executeCommand(belc);
+                    break;
+
+                case BP:
+                    BackPressureCommand bpc = new BackPressureCommand();
+                    executor.executeCommand(bpc);
                     break;
 
                 case CO:

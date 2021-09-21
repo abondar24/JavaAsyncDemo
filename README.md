@@ -142,6 +142,18 @@ http://localhost:8080
 http://localhost:8081
 ```
 13. Read File (rf) - Read file using Vert.x
+14. Backpressure (bp) - Stream or download mp3 files using backpressure.
+```yaml
+http://localhost:8080/ - start stream 
+http://localhost:8080/download/<file-name> 
+
+net localhost 3000
+/list 
+/schedule <file-name>.mp3
+/pause
+/play
+```
+
 ## Build and run
 ````yaml
 java -jar <jar-locaiton>/async.jar <demo-type> <demo-name>
@@ -152,3 +164,5 @@ java -jar <jar-locaiton>/async.jar <demo-type> <demo-name>
 - All demo names are in ().
 - Async Client requires a web server(nginx or apache).
 - File lock demos must run in parallel.
+- Backpressure requires directory called tracks with some mp3 files in it
+- In backpressure run /schedule and /play commands via tcp before start streaming
