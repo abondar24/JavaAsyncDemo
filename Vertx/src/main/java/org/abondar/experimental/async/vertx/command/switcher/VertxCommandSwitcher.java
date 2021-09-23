@@ -5,6 +5,9 @@ import org.abondar.experimental.async.vertx.command.BlockEventLoopCommand;
 import org.abondar.experimental.async.vertx.command.ConfigVerticleCommand;
 import org.abondar.experimental.async.vertx.command.ContextCommand;
 import org.abondar.experimental.async.vertx.command.DeployVerticleCommand;
+import org.abondar.experimental.async.vertx.command.EdgeServiceCallbackCommand;
+import org.abondar.experimental.async.vertx.command.EdgeServiceFutureCommand;
+import org.abondar.experimental.async.vertx.command.EdgeServiceReactiveCommand;
 import org.abondar.experimental.async.vertx.command.EventbusClusterCommand;
 import org.abondar.experimental.async.vertx.command.EventbusCommand;
 import org.abondar.experimental.async.vertx.command.HelloVerticleCommand;
@@ -61,6 +64,21 @@ public class VertxCommandSwitcher extends CommandSwitcher {
                 case EBC:
                     EventbusClusterCommand ebcc = new EventbusClusterCommand();
                     executor.executeCommand(ebcc);
+                    break;
+
+                case ESC:
+                    EdgeServiceCallbackCommand escc = new EdgeServiceCallbackCommand();
+                    executor.executeCommand(escc);
+                    break;
+
+                case ESF:
+                    EdgeServiceFutureCommand esfc = new EdgeServiceFutureCommand();
+                    executor.executeCommand(esfc);
+                    break;
+
+                case ESR:
+                    EdgeServiceReactiveCommand esrc = new EdgeServiceReactiveCommand();
+                    executor.executeCommand(esrc);
                     break;
 
                 case MV:

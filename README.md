@@ -153,6 +153,19 @@ net localhost 3000
 /pause
 /play
 ```
+15. Edge Service Callback (esc) - Edge service for getting messages from several sources based on callback.
+```yaml
+http://localhost:8080/
+```
+
+16. Edge Service Future (esf) - Edge service for getting messages from several sources based on future.
+```yaml
+http://localhost:8080/
+```
+17. Edge Service Future (esr) - Edge service for getting messages from several sources based on integration with reactive Java.
+```yaml
+http://localhost:8080/
+```
 
 ## Build and run
 ````yaml
