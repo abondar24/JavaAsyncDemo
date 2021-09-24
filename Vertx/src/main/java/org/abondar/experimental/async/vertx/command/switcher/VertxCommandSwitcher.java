@@ -16,6 +16,7 @@ import org.abondar.experimental.async.vertx.command.BackPressureCommand;
 import org.abondar.experimental.async.vertx.command.NotificationVerticleCommand;
 import org.abondar.experimental.async.vertx.command.OffloadCommand;
 import org.abondar.experimental.async.vertx.command.ReadFileCommand;
+import org.abondar.experimental.async.vertx.command.ProxyCommand;
 import org.abondar.experimental.async.vertx.command.VertxEchoCommand;
 import org.abondar.experimental.async.vertx.command.WorkerVerticleCommand;
 import org.abondar.experimental.async.vertx.command.params.VertxCommands;
@@ -96,9 +97,15 @@ public class VertxCommandSwitcher extends CommandSwitcher {
                     executor.executeCommand(oc);
                     break;
 
+                case PRX:
+                    ProxyCommand rpcc = new ProxyCommand();
+                    executor.executeCommand(rpcc);
+                    break;
+
                 case RF:
                     ReadFileCommand rfc = new ReadFileCommand();
                     executor.executeCommand(rfc);
+                    break;
 
                 case WV:
                     WorkerVerticleCommand wvc =  new WorkerVerticleCommand();

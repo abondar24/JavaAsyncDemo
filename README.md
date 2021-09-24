@@ -166,7 +166,8 @@ http://localhost:8080/
 ```yaml
 http://localhost:8080/
 ```
-
+18. Proxy (prx) - interaction with event bus via proxy service.
+19. 
 ## Build and run
 ````yaml
 java -jar <jar-locaiton>/async.jar <demo-type> <demo-name>

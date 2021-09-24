@@ -19,7 +19,7 @@ public class MessageObserver extends AbstractVerticle {
     public void start(){
         EventBus bus = vertx.eventBus();
         bus.consumer("message.updates",this::update);
-        bus.consumer("message.special",this::special);
+        bus.consumer("message.special",this::specialMessage);
     }
 
     private void update(Message<JsonObject> message){
@@ -27,7 +27,7 @@ public class MessageObserver extends AbstractVerticle {
         storage.put(jsonObject.getString("id"),jsonObject.getString("body"));
     }
 
-    public void special(Message<JsonObject> message){
+    public void specialMessage(Message<JsonObject> message){
        Optional<String> special =  storage.values()
                .stream()
                .filter(v->v.contains("-"))
