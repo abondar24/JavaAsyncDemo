@@ -20,7 +20,7 @@ public class MessageProxyClient extends AbstractVerticle {
         MessageDataService service = MessageDataService.createProxy(vertx,"message.data-service");
 
         service.rxSpecialMessage()
-                .delaySubscription(3, TimeUnit.SECONDS, RxHelper.scheduler(vertx))
+                .delaySubscription(5, TimeUnit.SECONDS, RxHelper.scheduler(vertx))
                 .repeat()
                 .map(data -> "Special message: " + data.getString("special"))
                 .subscribe(logger::info);

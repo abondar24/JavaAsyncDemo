@@ -12,7 +12,7 @@ public class ProxyCommand implements Command {
         Vertx vertx = Vertx.vertx();
 
         vertx.deployVerticle("org.abondar.experimental.async.vertx.verticle.eventbus.MessageSource",
-                new DeploymentOptions().setInstances(5));
+                new DeploymentOptions().setInstances(10));
         vertx.deployVerticle(new MessageDataVerticle());
         vertx.deployVerticle(new MessageProxyClient());
     }

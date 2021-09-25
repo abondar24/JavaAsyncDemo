@@ -2,11 +2,15 @@ package org.abondar.experimental.async.vertx.verticle.eventbus;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.json.JsonObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Random;
 import java.util.UUID;
 
 public class MessageSource extends AbstractVerticle {
+
+    private final Logger logger = LoggerFactory.getLogger(MessageSource.class);
 
     private final Random random;
 
@@ -32,6 +36,7 @@ public class MessageSource extends AbstractVerticle {
                 .put("id",msgId)
                 .put("body",msgBody);
 
+       logger.info("Sending message: {}",payload.toString());
         vertx.eventBus().publish("message.updates",payload);
         scheduleNewMessage();
     }
