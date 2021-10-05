@@ -171,6 +171,8 @@ http://localhost:8080/
 19. 
 ## Build and run
 ````yaml
+./mvnw clean install
+
 java -jar <jar-locaiton>/async.jar <demo-type> <demo-name>
 ````
 
