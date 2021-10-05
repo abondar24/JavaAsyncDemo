@@ -2,7 +2,7 @@ package org.abondar.experimental.async.multithread.command;
 
 
 import org.abondar.experimental.async.command.Command;
-import org.abondar.experimental.async.multithread.runner.Runner;
+import org.abondar.experimental.async.multithread.runner.ReentrantLockRunner;
 
 public class ReentrantLockCommand implements Command {
 
@@ -10,11 +10,11 @@ public class ReentrantLockCommand implements Command {
     @Override
     public void execute() {
         try {
-            final Runner runner = new Runner();
+            final ReentrantLockRunner reentrantLockRunner = new ReentrantLockRunner();
 
             Thread t1 = new Thread(()->{
                 try {
-                    runner.firstThread();
+                    reentrantLockRunner.firstThread();
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
@@ -22,7 +22,7 @@ public class ReentrantLockCommand implements Command {
 
             Thread t2 = new Thread(()->{
                 try {
-                    runner.secondThread();
+                    reentrantLockRunner.secondThread();
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
@@ -34,7 +34,7 @@ public class ReentrantLockCommand implements Command {
             t1.join();
             t2.join();
 
-            runner.finished();
+            reentrantLockRunner.finished();
         } catch (InterruptedException ex){
             System.err.println(ex.getMessage());
             System.exit(2);

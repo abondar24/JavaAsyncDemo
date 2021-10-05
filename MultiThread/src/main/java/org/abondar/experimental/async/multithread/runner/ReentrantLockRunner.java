@@ -6,7 +6,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class Runner {
+public class ReentrantLockRunner {
 
     private int count = 0;
     private final Lock lock = new ReentrantLock();

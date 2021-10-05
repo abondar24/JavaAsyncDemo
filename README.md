@@ -31,6 +31,7 @@ Use arg (mt) to run demos.
 23. Fork Join (fjc) - Calculate a sum of random integers between 1 and 1000 usig fork/join.
 24. Thread Local (thlc) - Count the number of method calls in each thread using threadlocal.
 25. Event Loop (evc) - Tiny event loop vased on concurrent deque and hashmap.
+26. Read Write Lock (rwlc) - Usage of read and write locks.
 ## NIO
 
 Use arg (nio) to run demos.

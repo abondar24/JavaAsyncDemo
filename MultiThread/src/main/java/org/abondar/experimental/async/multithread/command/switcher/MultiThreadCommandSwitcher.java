@@ -1,6 +1,7 @@
 package org.abondar.experimental.async.multithread.command.switcher;
 
 import org.abondar.experimental.async.command.CommandSwitcher;
+import org.abondar.experimental.async.multithread.ReadWriteLockCommand;
 import org.abondar.experimental.async.multithread.command.EventLoopCommand;
 import org.abondar.experimental.async.multithread.command.params.MtCommands;
 import org.abondar.experimental.async.multithread.command.BarrierCommand;
@@ -98,6 +99,11 @@ public class MultiThreadCommandSwitcher extends CommandSwitcher {
                 case RLC:
                     ReentrantLockCommand rlc = new ReentrantLockCommand();
                     executor.executeCommand(rlc);
+                    break;
+
+                case RWLC:
+                    ReadWriteLockCommand rwlc = new ReadWriteLockCommand();
+                    executor.executeCommand(rwlc);
                     break;
 
                 case SC:

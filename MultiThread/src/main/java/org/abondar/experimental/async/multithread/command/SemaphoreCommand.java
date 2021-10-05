@@ -17,9 +17,7 @@ public class SemaphoreCommand implements Command {
             ExecutorService executor = Executors.newCachedThreadPool();
 
             for (int i=0;i<200;i++){
-                executor.submit(()->{
-                    Connection.getInstance().connect();
-                });
+                executor.submit(()-> Connection.getInstance().connect());
             }
 
             executor.shutdown();
